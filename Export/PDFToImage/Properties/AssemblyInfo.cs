@@ -14,12 +14,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GettingStarted_2008")]
+[assembly: AssemblyTitle("PDFToImage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Syncfusion Inc.")]
-[assembly: AssemblyProduct("GettingStarted_2008")]
-[assembly: AssemblyCopyright("Copyright © 2001-2019 Syncfusion Inc.")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("PDFToImage")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -13,173 +13,21 @@ namespace PDFToImage
         #region Fields
         ICommand m_closeWindowCommand;
         ICommand m_exportPagesCommand;
-        readonly List<float> m_dpiValues;
-        readonly List<float> m_sizeValues;
-        float m_dpiX;
-        float m_dpiY;
-        float m_imageWidth;
-        float m_imageHeight;
-        bool m_isExportAllPages = true;
-        int m_fromPageNumber = 1;
-        int m_toPageNumber = 1;
-        bool m_isCustomSize = false;
-        bool m_isCustomDpi = false;
         PdfViewerControl pdfViewerControl;
-        bool m_isMaintainAspectRatio = true;
+        public Model Model
+        {
+            get;
+            set;
+        }
 
         #endregion
 
         #region Constructor
         public ViewModel()
         {
-            m_dpiValues = new List<float> { 50, 100, 200, 300 };
-            m_dpiX = m_dpiValues[0];
-            m_dpiY = m_dpiValues[0];
-            m_sizeValues = new List<float> { 300, 500, 1000, 2000 };
-            m_imageWidth = m_sizeValues[0];
-            m_imageHeight = m_sizeValues[0];
             pdfViewerControl = new PdfViewerControl();
+            Model = new Model();
             LoadPdf();
-        }
-        #endregion
-
-        #region Properties
-        public List<float> DpiValues
-        {
-            get
-            {
-                return m_dpiValues;
-            }
-        }
-
-        public List<float> SizesValues
-        {
-            get
-            {
-                return m_sizeValues;
-            }
-        }
-
-        public float DpiX
-        {
-            get
-            {
-                return m_dpiX;
-            }
-            set
-            {
-                m_dpiX = value;
-            }
-        }
-
-        public float DpiY
-        {
-            get
-            {
-                return m_dpiY;
-            }
-            set
-            {
-                m_dpiY = value;
-            }
-        }
-
-        public bool IsExportAllPages
-        {
-            get
-            {
-                return m_isExportAllPages;
-            }
-            set
-            {
-                m_isExportAllPages = value;
-                if (!value)
-                    ToPageNumber = pdfViewerControl.PageCount;
-            }
-        }
-
-        public float ImageWidth
-        {
-            get
-            {
-                return m_imageWidth;
-            }
-            set
-            {
-                m_imageWidth = value;
-            }
-        }
-
-        public float ImageHeight
-        {
-            get
-            {
-                return m_imageHeight;
-            }
-            set
-            {
-                m_imageHeight = value;
-            }
-        }
-
-        public int FromPageNumber
-        {
-            get
-            {
-                return m_fromPageNumber;
-            }
-            set
-            {
-                m_fromPageNumber = value;
-            }
-        }
-
-        public int ToPageNumber
-        {
-            get
-            {
-                return m_toPageNumber;
-            }
-            set
-            {
-                m_toPageNumber = value;
-            }
-        }
-
-        public bool IsCustomSize
-        {
-            get
-            {
-                return m_isCustomSize;
-            }
-            set
-            {
-                m_isCustomSize = value;
-            }
-        }
-
-        public bool IsCustomDpi
-        {
-            get
-            {
-                return m_isCustomDpi;
-            }
-            set
-            {
-                m_isCustomDpi = value;
-            }
-        }
-
-        public bool IsMaintainAspectRatio
-        {
-            get
-            {
-                return m_isMaintainAspectRatio;
-            }
-            set
-            {
-                m_isMaintainAspectRatio = value;
-            }
         }
         #endregion
 
@@ -218,12 +66,12 @@ namespace PDFToImage
         {
             int startIndex = 0;
             int endIndex = 0;
-            if (IsExportAllPages)
+            if (Model.IsExportAllPages)
                 endIndex = pdfViewerControl.PageCount - 1;
             else
             {
-                startIndex = FromPageNumber - 1;
-                endIndex = ToPageNumber - 1;
+                startIndex = Model.FromPageNumber - 1;
+                endIndex = Model.ToPageNumber - 1;
             }
 
             if (endIndex >= pdfViewerControl.PageCount)
@@ -233,12 +81,15 @@ namespace PDFToImage
             else
             {
                 BitmapSource[] images = null;
-                if (IsCustomDpi && IsCustomSize)
-                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, new SizeF(ImageWidth, ImageHeight), DpiX, DpiY, IsMaintainAspectRatio);
-                else if (IsCustomDpi)
-                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, DpiX, DpiY);
-                else if (IsCustomSize)
-                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, new SizeF(ImageWidth, ImageHeight), IsMaintainAspectRatio);
+                if (Model.IsCustomDpi && Model.IsCustomSize)
+                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, 
+                        new SizeF(Model.ImageWidth, Model.ImageHeight), Model.DpiX, Model.DpiY,
+                        Model.IsMaintainAspectRatio);
+                else if (Model.IsCustomDpi)
+                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, Model.DpiX, Model.DpiY);
+                else if (Model.IsCustomSize)
+                    images = pdfViewerControl.ExportAsImage(startIndex, endIndex, 
+                        new SizeF(Model.ImageWidth, Model.ImageHeight), Model.IsMaintainAspectRatio);
                 else
                     images = pdfViewerControl.ExportAsImage(startIndex, endIndex);
 

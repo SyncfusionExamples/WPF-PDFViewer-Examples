@@ -28,7 +28,7 @@
                         <RadioButton x:Name="AllOptionRadioButton" GroupName="Page Range" 
                                  Content="All" VerticalContentAlignment="Center" 
                                  Margin="20,20,20,10" FontSize="14" 
-                                 IsChecked="{Binding IsExportAllPages}"
+                                 IsChecked="{Binding Model.IsExportAllPages}"
                                  VerticalAlignment="Center"/>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <RadioButton x:Name="PageRangeRadioButton" VerticalContentAlignment="Center" 
@@ -42,7 +42,7 @@
                                 <syncfusion:IntegerTextBox 
                                 IsEnabled="{Binding ElementName=PageRangeRadioButton, Path=IsChecked}"
                                 Margin="2,0,10,2" x:Name="FromTextBox" Width="50"
-                                     Height="25" FontSize="14" Value="{Binding FromPageNumber}" 
+                                     Height="25" FontSize="14" Value="{Binding Model.FromPageNumber}" 
                                 VerticalAlignment="Center" MinValue="1"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -51,7 +51,7 @@
                                 <syncfusion:IntegerTextBox 
                                 Margin="2,0,10,2" x:Name="ToTextBox" Width="50"                        
                                 IsEnabled="{Binding ElementName=PageRangeRadioButton, Path=IsChecked}"
-                                     Height="25" FontSize="14" Value="{Binding ToPageNumber}"
+                                     Height="25" FontSize="14" Value="{Binding Model.ToPageNumber}"
                                 VerticalAlignment="Center" MinValue="1"/>
                             </StackPanel>
                         </StackPanel>
@@ -69,13 +69,13 @@
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <CheckBox Grid.Column="0" Content="Resolution" x:Name="ResolutionCheckBox"
-                                  IsChecked="{Binding IsCustomDpi}" Margin="0,2,10,2" FontSize="14"
+                                  IsChecked="{Binding Model.IsCustomDpi}" Margin="0,2,10,2" FontSize="14"
                                   VerticalAlignment="Center" VerticalContentAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Grid.Column="1">
                                 <TextBlock Margin="0,0,2,2" Text="dpi (x):" FontSize="14"
                                        VerticalAlignment="Center"/>
                                 <ComboBox Margin="2,0,10,2" x:Name="DpiXTextBox" Width="100"
-                                  ItemsSource="{Binding DpiValues}" SelectedItem="{Binding DpiX}"
+                                  ItemsSource="{Binding Model.DpiValues}" SelectedItem="{Binding Model.DpiX}"
                                      Height="26" FontSize="14" VerticalAlignment="Center"
                                   IsEnabled="{Binding ElementName=ResolutionCheckBox, Path=IsChecked}"/>
                             </StackPanel>
@@ -83,7 +83,7 @@
                                 <TextBlock Margin="0,0,2,2" Text="dpi (y):" FontSize="14"
                                        VerticalAlignment="Center"/>
                                 <ComboBox Margin="2,0,10,2" x:Name="DpiYTextBox" Width="100" 
-                                  ItemsSource="{Binding DpiValues}" SelectedItem="{Binding DpiY}"
+                                  ItemsSource="{Binding Model.DpiValues}" SelectedItem="{Binding Model.DpiY}"
                                      Height="26" FontSize="14" VerticalAlignment="Center"
                                   IsEnabled="{Binding ElementName=ResolutionCheckBox, Path=IsChecked}"/>
                             </StackPanel>
@@ -95,13 +95,13 @@
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <CheckBox Grid.Column="0" Content="Size" x:Name="SizeCheckBox"
-                                  IsChecked="{Binding IsCustomSize}" Margin="0,4,10,2" FontSize="14"
+                                  IsChecked="{Binding Model.IsCustomSize}" Margin="0,4,10,2" FontSize="14"
                                   VerticalAlignment="Center" VerticalContentAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Grid.Column="1">
                                 <TextBlock Margin="0,0,2,2" Text="width: " FontSize="14"
                                        VerticalAlignment="Center"/>
                                 <ComboBox Margin="2,0,10,2" x:Name="WidthTextBox" Width="100"
-                                  ItemsSource="{Binding SizesValues}" SelectedItem="{Binding ImageWidth}"
+                                  ItemsSource="{Binding Model.SizesValues}" SelectedItem="{Binding Model.ImageWidth}"
                                      Height="26" FontSize="14" VerticalAlignment="Center"
                                   IsEnabled="{Binding ElementName=SizeCheckBox, Path=IsChecked}"/>
                             </StackPanel>
@@ -109,14 +109,14 @@
                                 <TextBlock Margin="0,0,2,2" Text="height:" FontSize="14"
                                        VerticalAlignment="Center"/>
                                 <ComboBox Margin="2,0,10,2" x:Name="HeightTextBox" Width="100" 
-                                  ItemsSource="{Binding SizesValues}" SelectedItem="{Binding ImageHeight}"
+                                  ItemsSource="{Binding Model.SizesValues}" SelectedItem="{Binding Model.ImageHeight}"
                                      Height="26" FontSize="14" VerticalAlignment="Center"
                                   IsEnabled="{Binding ElementName=SizeCheckBox, Path=IsChecked}"/>
                             </StackPanel>
                         </Grid>
                         <CheckBox Content="Maintain Aspect Ratio" Margin="20,10,10,10" FontSize="14"
                                   VerticalAlignment="Center" VerticalContentAlignment="Center"
-                              IsChecked="{Binding IsMaintainAspectRatio}"
+                              IsChecked="{Binding Model.IsMaintainAspectRatio}"
                               IsEnabled="{Binding ElementName=SizeCheckBox, Path=IsChecked}"/>
                     </StackPanel>
                 </GroupBox>

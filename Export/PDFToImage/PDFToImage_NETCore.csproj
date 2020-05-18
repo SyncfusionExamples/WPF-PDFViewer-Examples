@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AssemblyName>GettingStarted_2008</AssemblyName>
-    <RootNamespace>GettingStarted_2008</RootNamespace>
+    <AssemblyName>PDFToImage</AssemblyName>
+    <RootNamespace>PDFToImage</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;NETCORE</DefineConstants>
