@@ -109,7 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.PdfViewer.WPF">
-      <Version>18.1.0.52</Version>
+      <Version>18.4.0.30</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
