@@ -26,9 +26,9 @@ namespace PdfViewerDemo
         {
             //Load the stream from the local system.
 #if NETCORE
-            docStream = new FileStream(@"../../../Data/HTTP Succinctly.pdf", FileMode.OpenOrCreate);
+            docStream = new FileStream(@"../../../Data/Barcode.pdf", FileMode.OpenOrCreate);
 #else
-            docStream = new FileStream(@"../../Data/HTTP Succinctly.pdf", FileMode.OpenOrCreate);
+            docStream = new FileStream(@"../../Data/Barcode.pdf", FileMode.OpenOrCreate);
 #endif
         }
 
