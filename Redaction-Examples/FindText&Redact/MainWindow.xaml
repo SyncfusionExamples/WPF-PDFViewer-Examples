@@ -13,17 +13,15 @@
             <ColumnDefinition Width="3.5*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <syncfusion:PdfDocumentView x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Column="0"/>
+        <syncfusion:PdfDocumentView ZoomMode="FitWidth" x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Column="0"/>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
-            <TextBlock FontSize="16" Margin="10" x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Select page(s):" VerticalAlignment="Top" RenderTransformOrigin="0.515,-0.906"/>
-            <TextBox x:Name="textBox" Padding="2" Margin="10,0,10,0" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <TextBlock x:Name="placeholder" Margin="10" HorizontalAlignment="Stretch" TextWrapping="Wrap" Opacity="0.5" Text="Separate page numbers by comma ',' e.g. 0,1,2" VerticalAlignment="Top"/>
-            <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="16" Padding="4" x:Name="Clockwise" Content="Rotate Clockwise" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto"/>
-            <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="16" Padding="4" x:Name="Counterclockwise" Content="Rotate Counterclockwise" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto"/>
-            <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="16" Padding="4" x:Name="Remove" Content="Remove Pages" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto"/>
-            <RadioButton VerticalContentAlignment="Center" Margin="10" FontSize="16" Padding="4" x:Name="Rearrange" Content="Rearrange Pages" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto"/>
-            <CheckBox VerticalContentAlignment="Center" FontSize="16" Margin="10" Padding="4" x:Name="Save" Content="Save" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto"/>
-            <Button Content="Organize Pages" Name="Organize" Click="Organize_Click" FontSize="14" Padding="10" Margin="10,40,10,0" HorizontalAlignment="Center"></Button>
+            <TextBlock FontSize="16" Margin="10" x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the word would you like to redact:" VerticalAlignment="Top" RenderTransformOrigin="0.515,-0.906"/>
+            <TextBox x:Name="textBox" Padding="2" Margin="10,0,10,20" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+            <CheckBox VerticalContentAlignment="Center" FontSize="16" Margin="10" Padding="4" x:Name="MarkForRedaction" Content="Mark for redaction (Preview)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Checked="MarkForRedaction_Checked" Unchecked="MarkForRedaction_Unchecked"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Redact" Name="ApplyRedaction" Click="ApplyRedaction_Click" FontSize="14" Padding="10" Margin="10,20,10,0" HorizontalAlignment="Left"></Button>
+                <Button Content="Save" Name="Save" Click="Save_Click" FontSize="14" Padding="10" Margin="10,20,10,0" HorizontalAlignment="Left"></Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
