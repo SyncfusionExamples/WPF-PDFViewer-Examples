@@ -1,0 +1,26 @@
+﻿<Window 
+    x:Class="PdfViewerDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="PDF Viewer" WindowState="Maximized"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+    xmlns:pdfviewerdemo="clr-namespace:PdfViewerDemo">
+    <Window.DataContext>
+        <pdfviewerdemo:PdfReport/>
+    </Window.DataContext>
+    <Grid x:Name="HomeGrid" Background="#EDEDED">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.75*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <syncfusion:PdfDocumentView x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Row="1"/>
+        <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Gray">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Mark Regions" Height="24" Margin="20,10,20,10" Width="100" FontSize="12" Name="MarkRegion" Click="MarkRegions_Click" HorizontalAlignment="Left"></Button>
+                <Button Content="Redact" Height="24" Margin="20,10,20,10" Width="100" FontSize="12" Name="ApplyRedaction" Click="ApplyRedaction_Click" HorizontalAlignment="Left"></Button>
+                <Button Content="Clear" Height="24" Margin="20,10,20,10" Width="100" FontSize="12" Name="Clear" Click="Clear_Click" HorizontalAlignment="Left"></Button>
+                <Button Content="Save" Height="24" Name="Save" Width="100" FontSize="12" Margin="20,10,20,10" Click="Save_Click" HorizontalAlignment="Left"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
