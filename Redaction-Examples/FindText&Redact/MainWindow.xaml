@@ -9,12 +9,12 @@
         <pdfviewerdemo:PdfReport/>
     </Window.DataContext>
     <Grid x:Name="HomeGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3.5*"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <syncfusion:PdfDocumentView ZoomMode="FitWidth" x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Column="0"/>
-        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <syncfusion:PdfDocumentView x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Row="1"/>
+        <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
             <TextBlock FontSize="16" Margin="10" x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the word would you like to redact:" VerticalAlignment="Top" RenderTransformOrigin="0.515,-0.906"/>
             <TextBox x:Name="textBox" Padding="2" Margin="10,0,10,20" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
             <CheckBox VerticalContentAlignment="Center" FontSize="16" Margin="10" Padding="4" x:Name="MarkForRedaction" Content="Mark for redaction (Preview)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Checked="MarkForRedaction_Checked" Unchecked="MarkForRedaction_Unchecked"/>
