@@ -87,6 +87,7 @@ namespace PdfViewerDemo
                 List<RectangleF> rectangles = new List<RectangleF>();
 
                 // Add a rectangle with required dimensions. For example, X=50, Y=80, Width =150, Height=100.
+                // You can add more than one rectangle to be marked and redacted.
                 rectangles.Add(new RectangleF(50, 80, 150, 100));
 
                 // Mark the regions.
