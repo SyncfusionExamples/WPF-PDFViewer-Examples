@@ -115,7 +115,7 @@ namespace PdfViewerDemo
         /// Marks the rectangle regions to be redacted in the PDF pages
         /// </summary>
         /// <param name="bounds">It has the collection of information about the page index and the bounds of the areas to be redacted</param>
-        void MarkRegions(Dictionary<int, List<RectangleF>> bounds)
+        private void MarkRegions(Dictionary<int, List<RectangleF>> bounds)
         {
             if (bounds.Count > 0)
             {
@@ -137,12 +137,14 @@ namespace PdfViewerDemo
         /// <summary>
         /// Clears the existing regions.
         /// </summary>
-        void ClearMarkedRegions()
+        private void ClearMarkedRegions()
         {
             for (int i = 0; i < pdfViewer.PageCount; i++)
             {
+                // Pass empty rectangle collection to override (clear) the existing marked regions.
                 pdfViewer.PageRedactor.MarkRegions(i, new List<RectangleF>());
             }
+            // Disable the redaction mode.
             pdfViewer.PageRedactor.EnableRedactionMode = false;
         }
 
@@ -155,6 +157,7 @@ namespace PdfViewerDemo
         {
             if (textBox.Text.Length > 0)
             {
+                // Get the text bounds and mark regions.
                 Dictionary<int, List<RectangleF>> textBounds = GetTextBounds(textBox.Text);
                 MarkRegions(textBounds);
             }
