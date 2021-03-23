@@ -14,8 +14,28 @@ namespace PdfViewerDemo
         public MainWindow()
         {
             InitializeComponent();
+            pdfViewer.PageBorder.Color = Color.Gray;
+            pdfViewer.PageRedactor.RedactionApplied += PageRedactor_RedactionApplied;
         }
+
         #endregion
+
+        /// <summary>
+        /// Reset control values after redaction applied.
+        /// </summary>
+        private void PageRedactor_RedactionApplied(object sender, RedactionEventArgs e)
+        {
+            Reset();
+        }
+
+        /// <summary>
+        /// Resets the control values
+        /// </summary>
+        private void Reset()
+        {
+            textBox.Clear();
+            MarkForRedaction.IsChecked = false;
+        }
 
         /// <summary>
         /// On Apply redaction button is clicked.
@@ -27,13 +47,14 @@ namespace PdfViewerDemo
                 if (textBox.Text.Length > 0)
                 {
                     Dictionary<int, List<RectangleF>> textBounds = GetTextBounds(textBox.Text);
+                    // Mark the regions from the bounds of the text.
                     MarkRegions(textBounds);
                 }
                 else
-                    MessageBox.Show("Please enter the text");
+                    MessageBox.Show("Please enter the text.");
             }
+            // Apply redaction to the marked bounds.
             pdfViewer.PageRedactor.ApplyRedaction();
-            textBox.Clear();
         }
 
         /// <summary>
@@ -44,12 +65,14 @@ namespace PdfViewerDemo
         private Dictionary<int, List<RectangleF>> GetTextBounds(string text)
         {
             text = text.ToLower();
+
             Dictionary<int, List<RectangleF>> textBounds = new Dictionary<int, List<RectangleF>>();
 
             for (int i = 0; i < pdfViewer.PageCount; i++)
             {
                 List<RectangleF> bounds = new List<RectangleF>();
 
+                // Extract text and its bounds from the PDF document.
                 List<TextData> textDataCollection = new List<TextData>();
                 string extractedText = pdfViewer.ExtractText(i, out textDataCollection).ToLower();
 
@@ -58,9 +81,11 @@ namespace PdfViewerDemo
                 int end = extractedText.Length;
                 int count = 0;
 
+                // Iterate and get all the instance of the given text.
                 while ((start <= end) && (indexOfText > -1))
                 {
                     count = end - start;
+                    // Get the next index of the text to be searched 
                     indexOfText = extractedText.IndexOf(text, start, count);
                     if (indexOfText == -1)
                         break;                  
@@ -71,6 +96,7 @@ namespace PdfViewerDemo
                     // Holds the bounds of the last character in the text
                     RectangleF endCharacterBounds = textDataCollection[indexOfText + text.Length - 1].Bounds;
 
+                    // Get the bounds of the whole text
                     RectangleF rectangle = new RectangleF(startCharacterBounds.X, startCharacterBounds.Y,
                         endCharacterBounds.X - startCharacterBounds.X + endCharacterBounds.Width,
                         startCharacterBounds.Height > endCharacterBounds.Height ? startCharacterBounds.Height : endCharacterBounds.Height);
@@ -78,7 +104,9 @@ namespace PdfViewerDemo
 
                     start = indexOfText + text.Length;
                 }
-                textBounds.Add(i, bounds);
+                // Add to the collection if any text is obtained.
+                if (bounds.Count > 0)
+                    textBounds.Add(i, bounds);
             }
             return textBounds;
         }
@@ -89,17 +117,27 @@ namespace PdfViewerDemo
         /// <param name="bounds">It has the collection of information about the page index and the bounds of the areas to be redacted</param>
         void MarkRegions(Dictionary<int, List<RectangleF>> bounds)
         {
-            for (int i = 0; i < bounds.Count; i++)
+            if (bounds.Count > 0)
             {
-                pdfViewer.PageRedactor.MarkRegions(i, bounds[i]);
+                // Iterate the collection and mark regions
+                foreach (KeyValuePair<int, List<RectangleF>> textBounds in bounds)
+                {
+                    pdfViewer.PageRedactor.MarkRegions(textBounds.Key, textBounds.Value);
+                }
+                pdfViewer.PageRedactor.EnableRedactionMode = true;
             }
-            pdfViewer.PageRedactor.EnableRedactionMode = true;
+            else
+            {
+                // If no bounds are present for the given text.
+                MessageBox.Show("The text is not found in the document");
+                Reset();
+            }
         }
 
         /// <summary>
         /// Clears the existing regions.
         /// </summary>
-        void ClearRegions()
+        void ClearMarkedRegions()
         {
             for (int i = 0; i < pdfViewer.PageCount; i++)
             {
@@ -121,15 +159,10 @@ namespace PdfViewerDemo
                 MarkRegions(textBounds);
             }
             else
+            {
                 MessageBox.Show("Please enter the text");
-        }
-
-        /// <summary>
-        /// On Mark for Redaction is unchecked.
-        /// </summary>
-        private void MarkForRedaction_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ClearRegions();
+                MarkForRedaction.IsChecked = false;
+            }
         }
 
         /// <summary>
@@ -139,6 +172,16 @@ namespace PdfViewerDemo
         {
             pdfViewer.Save("Redacted.Pdf");
             MessageBox.Show("The document is saved in the application folder");
+        }
+
+        /// <summary>
+        /// On Clear button is clicked.
+        /// </summary>
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            // Clear all the marked regions.
+            ClearMarkedRegions();
+            MarkForRedaction.IsChecked = false;
         }
     }
 }
