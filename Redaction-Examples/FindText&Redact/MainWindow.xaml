@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <syncfusion:PdfDocumentView x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Row="1"/>
         <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Gray">
-            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="20,0,0,0">
                 <TextBlock x:Name="textBlock" Margin="10,10,0,10" HorizontalAlignment="Left" FontSize="14" Height="24" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enter the word or phrase would you like to redact: " />
                 <TextBox x:Name="textBox" Margin="10" HorizontalAlignment="Left" Height="24" FontSize="14" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240"/>
                 <Rectangle VerticalAlignment="Stretch" Width="0.5" Margin="10,2,10,0" Stroke="Gray"/>
