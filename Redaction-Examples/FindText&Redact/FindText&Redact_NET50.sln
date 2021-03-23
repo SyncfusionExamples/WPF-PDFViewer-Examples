@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindText&Redact_NETCore", "FindText&Redact_NETCore.csproj", "{890979AA-F9DC-4734-B979-776908689CDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindText&Redact_NET50", "FindText&Redact_NET50.csproj", "{890979AA-F9DC-4734-B979-776908689CDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
