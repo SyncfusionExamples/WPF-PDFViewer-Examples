@@ -8,20 +8,25 @@
     <Window.DataContext>
         <pdfviewerdemo:PdfReport/>
     </Window.DataContext>
-    <Grid x:Name="HomeGrid">
+    <Grid x:Name="HomeGrid" Background="#EDEDED">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
         <syncfusion:PdfDocumentView x:Name="pdfViewer" ItemSource="{Binding DocumentStream}" Grid.Row="1"/>
-        <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal">
-            <TextBlock FontSize="16" Margin="10" x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the word would you like to redact:" VerticalAlignment="Top" RenderTransformOrigin="0.515,-0.906"/>
-            <TextBox x:Name="textBox" Padding="2" Margin="10,0,10,20" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-            <CheckBox VerticalContentAlignment="Center" FontSize="16" Margin="10" Padding="4" x:Name="MarkForRedaction" Content="Mark for redaction (Preview)" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Checked="MarkForRedaction_Checked" Unchecked="MarkForRedaction_Unchecked"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Redact" Name="ApplyRedaction" Click="ApplyRedaction_Click" FontSize="14" Padding="10" Margin="10,20,10,0" HorizontalAlignment="Left"></Button>
-                <Button Content="Save" Name="Save" Click="Save_Click" FontSize="14" Padding="10" Margin="10,20,10,0" HorizontalAlignment="Left"></Button>
+        <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Gray">
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="textBlock" Margin="10,10,0,10" HorizontalAlignment="Left" FontSize="14" Height="24" VerticalAlignment="Center" TextWrapping="Wrap" Text="Enter the word or phrase would you like to redact: " />
+                <TextBox x:Name="textBox" Margin="10" HorizontalAlignment="Left" Height="24" FontSize="14" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="240"/>
+                <Rectangle VerticalAlignment="Stretch" Width="0.5" Margin="10,2,10,0" Stroke="Gray"/>
+                <CheckBox Height="24" VerticalContentAlignment="Center" Margin="10,10,10,10" FontSize="14" x:Name="MarkForRedaction" Content="Mark for redaction (Preview)" HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto" Checked="MarkForRedaction_Checked"/>
+                <Rectangle VerticalAlignment="Stretch" Width="0.5" Margin="10,2,10,0" Stroke="Gray"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="Redact" Height="24" Margin="10" Width="80" FontSize="12" Name="ApplyRedaction" Click="ApplyRedaction_Click" HorizontalAlignment="Left"></Button>
+                    <Button Content="Clear" Height="24" Margin="10" Width="80" FontSize="12" Name="Clear" Click="Clear_Click" HorizontalAlignment="Left"></Button>
+                    <Button Content="Save" Height="24" Name="Save" Width="80" FontSize="12" Margin="10" Click="Save_Click" HorizontalAlignment="Left"></Button>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </Border>
     </Grid>
 </Window>
