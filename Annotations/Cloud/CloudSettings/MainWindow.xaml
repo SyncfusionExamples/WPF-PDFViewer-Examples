@@ -1,0 +1,39 @@
+﻿<Window x:Class="PDFViewerNuget.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        xmlns:local="clr-namespace:PDFViewerNuget"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Button x:Name="AddCloud" 
+                    Content="Add Cloud"
+                    Click="AddCloud_Click"
+                    Margin="8" Height="40" Width="120">
+            </Button>
+            <Button x:Name="DefaultAppearance" 
+                    Content="Change Default Appearance"
+                    Click="DefaultAppearance_Click"
+                    Margin="8" Height="40" Width="180">
+            </Button>
+            <Button x:Name="Save" 
+                    Content="Save Document"
+                    Click="Save_Click"
+                    Margin="8" Height="40" Width="120">
+            </Button>
+        </StackPanel>
+        <Border Background="LightGray" Grid.Row="1" 
+                BorderThickness="1" Padding="2">
+            <syncfusion:PdfDocumentView Name="pdfViewer"/>
+        </Border>
+    </Grid>
+</Window>
