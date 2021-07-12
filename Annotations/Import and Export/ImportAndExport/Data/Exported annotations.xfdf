@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
+  <annots>
+    <circle page="0" rect="397.3441,577.7972,547.1419,742.7919" color="#FF0000" title="DeepakGunasekaran" subject="Oval" date="D:20210712161348+05'30'" name="5647bbbd-03df-4892-9cce-4f20656d94d9" width="2">
+      <popup page="0" rect="0,697,0,792" />
+    </circle>
+    <circle page="0" rect="397.3441,577.7972,547.1419,742.7919" color="#FF0000" title="DeepakGunasekaran" subject="Oval" date="D:20210712161348+05'30'" name="5647bbbd-03df-4892-9cce-4f20656d94d9" width="2">
+      <popup page="0" rect="0,697,0,792" />
+    </circle>
+    <square page="0" rect="72.99928,618.6117,265.3485,704.1484" color="#FF0000" title="DeepakGunasekaran" subject="Rectangle" date="D:20210712161348+05'30'" name="569abb9b-d20f-4d75-bcb8-92e13383ab0b" width="2">
+      <popup page="0" rect="0,697,0,792" />
+    </square>
+    <square page="0" rect="72.99928,618.6117,265.3485,704.1484" color="#FF0000" title="DeepakGunasekaran" subject="Rectangle" date="D:20210712161348+05'30'" name="569abb9b-d20f-4d75-bcb8-92e13383ab0b" width="2">
+      <popup page="0" rect="0,697,0,792" />
+    </square>
+    <line page="0" start="97,465" end="231,563" color="#FF0000" title="DeepakGunasekaran" subject="Line" date="D:20210712161348+05'30'" name="34502dbc-b81e-42d0-8341-1f1dcc9bb1db" rect="89,447,241,581" head="None" tail="OpenArrow" width="2" IT="LineArrow" leaderExtend="0" leaderLength="0" caption-style="Inline" caption="no">
+      <popup page="0" rect="0,697,0,792" />
+    </line>
+    <line page="0" start="360,500" end="583,501" color="#FF0000" title="DeepakGunasekaran" subject="Line" date="D:20210712161348+05'30'" name="ea89cc5e-db84-44a6-9213-be3c979247ea" rect="352,492,591,509" head="None" tail="None" width="2" IT="LineArrow" leaderExtend="0" leaderLength="0" caption-style="Inline" caption="no">
+      <popup page="0" rect="0,697,0,792" />
+    </line>
+    <line page="0" start="97,465" end="231,563" color="#FF0000" title="DeepakGunasekaran" subject="Line" date="D:20210712161348+05'30'" name="34502dbc-b81e-42d0-8341-1f1dcc9bb1db" rect="89,447,241,581" head="None" tail="OpenArrow" width="2" IT="LineArrow" leaderExtend="0" leaderLength="0" caption-style="Inline" caption="no">
+      <popup page="0" rect="0,697,0,792" />
+    </line>
+    <line page="0" start="360,500" end="583,501" color="#FF0000" title="DeepakGunasekaran" subject="Line" date="D:20210712161348+05'30'" name="ea89cc5e-db84-44a6-9213-be3c979247ea" rect="352,492,591,509" head="None" tail="None" width="2" IT="LineArrow" leaderExtend="0" leaderLength="0" caption-style="Inline" caption="no">
+      <popup page="0" rect="0,697,0,792" />
+    </line>
+  </annots>
+  <f href="" />
+</xfdf>
