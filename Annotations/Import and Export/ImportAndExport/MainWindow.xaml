@@ -1,0 +1,59 @@
+﻿<Window x:Class="PdfViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border VerticalAlignment="Stretch" BorderBrush="LightGray" Grid.Column="1" BorderThickness="1" Padding="40">
+            <Grid VerticalAlignment="Stretch">
+                <StackPanel Background="White"
+                    Orientation="Vertical"
+                VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    <GroupBox Header="Formats" FontSize="16" FontWeight="Bold">
+                        <StackPanel>
+                            <RadioButton FontWeight="Normal"
+                                x:Name="fdfRadioButton"
+                                VerticalContentAlignment="Center" FontSize="12" Margin="10"
+                                     GroupName="Formats" IsChecked="True">
+                                FDF
+                            </RadioButton>
+                            <RadioButton FontWeight="Normal"
+                                x:Name="xfdfRadioButton"
+                                VerticalContentAlignment="Center" FontSize="12" Margin="10"
+                                     GroupName="Formats">
+                                XFDF
+                            </RadioButton>
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ImportButton"
+                    Content="Import"
+                    Click="ImportButton_Click"
+                             ToolTip="Click to import the annotations in the required format"
+                    Margin="10" Width="80" Padding="10">
+                        </Button>
+                        <Button x:Name="ExportButton"
+                    Content="Export"
+                    Click="ExportButton_Click"
+                            ToolTip="Click to export the annotations in the required format"
+                    Margin="10" Width="80" Padding="10">
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border BorderBrush="LightGray"   
+                BorderThickness="0,1,1,1">
+            <syncfusion:PdfViewerControl Name="pdfViewer" Grid.Column="0" ZoomMode="FitWidth">
+            </syncfusion:PdfViewerControl>
+        </Border>
+    </Grid>
+</Window>
