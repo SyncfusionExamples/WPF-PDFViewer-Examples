@@ -1,0 +1,69 @@
+﻿<Window x:Class="PdfViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        mc:Ignorable="d"
+        xmlns:local="clr-namespace:PdfViewer"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border VerticalAlignment="Stretch" BorderBrush="LightGray" Grid.Column="1" BorderThickness="1" Padding="40">
+            <Grid VerticalAlignment="Stretch">
+                <StackPanel Background="White"
+                    Orientation="Vertical"
+                VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                    <GroupBox Header="Select the format" FontSize="14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Formats:"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       Margin="25,25,10,25"/>
+                            <ComboBox x:Name="formatCombobox" 
+                                      FontSize="12"
+                                      HorizontalAlignment="Center"
+                                      Width="100"
+                                      Margin="10,25,25,25"
+                                      SelectedIndex="{Binding FormatIndex}">
+                                <ComboBoxItem>FDF</ComboBoxItem>
+                                <ComboBoxItem>XFDF</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="ImportButton"
+                                Content="Import"
+                                ToolTip="Click to import the annotations in the required format"
+                                Command="{Binding ImportAnnotationsCommand}"
+                                CommandParameter="{Binding ElementName=pdfViewer}"
+                                Margin="25,25,10,25" Width="80" Padding="5">
+                        </Button>
+                        <Button x:Name="ExportButton"
+                                Content="Export"
+                                ToolTip="Click to export the annotations in the required format"
+                                Command="{Binding ExportAnnotationsCommand}"
+                                CommandParameter="{Binding ElementName=pdfViewer}"
+                                Margin="10,25,25,25" Width="80" Padding="5">
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border BorderBrush="LightGray"   
+                BorderThickness="0,1,1,1">
+            <syncfusion:PdfViewerControl Name="pdfViewer" 
+                                         ItemSource="{Binding DocumentStream}" 
+                                         Grid.Column="0" 
+                                         ZoomMode="FitWidth">
+            </syncfusion:PdfViewerControl>
+        </Border>
+    </Grid>
+</Window>
