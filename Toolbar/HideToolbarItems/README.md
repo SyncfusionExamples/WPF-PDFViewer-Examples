@@ -4,4 +4,7 @@ This project shows how to hide an item from the built-in toolbar of PDF Viewer. 
 * Search tool.
 * Thumbnail tool.
 
+## User Guide reference
+[Syncfusion WPF PDF Viewer toolbar items disabling](https://help.syncfusion.com/wpf/pdf-viewer/how-to/disable-toolbar-items)
+
 
