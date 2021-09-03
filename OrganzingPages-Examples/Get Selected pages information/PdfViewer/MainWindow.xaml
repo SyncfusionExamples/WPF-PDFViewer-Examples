@@ -1,0 +1,17 @@
+﻿<Window x:Class="PdfViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cc="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        xmlns:local="clr-namespace:PdfViewer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel x:Name="MainGrid">
+        <TextBlock Foreground="Red" Margin="25,0,0,0" VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="16"
+                   x:Name="SelectedPagesTextBlock" Height="25"/>
+        <cc:PdfViewerControl Name="pdfViewer"></cc:PdfViewerControl>
+    </StackPanel>
+</Window>
