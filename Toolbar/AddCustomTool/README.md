@@ -1,2 +1,2 @@
 # Add custom tool in the WPF PDF Viewer toolbar
-This project shows how to add your own custom tool in the WPF PDF Viewer standard toolbar.
+The project demonstrates how to edit the toolbar template to add a “Unload” button to the standard toolbar and how to handle the button’s click event to unload the PDF document currently displayed in the PDF Viewer.
