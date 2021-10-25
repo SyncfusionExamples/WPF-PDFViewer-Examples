@@ -3,5 +3,7 @@ This sample helps you to find and redact all the instance of a particular text f
 
 [How to redact all occurrences of a specific text in a PDF file?](https://www.syncfusion.com/kb/12872/how-to-redact-all-occurrences-of-a-specific-text-in-a-pdf-file)
 
+KB article - [Find text and redact example](https://www.syncfusion.com/kb/12872/how-to-redact-all-occurrences-of-a-specific-text-in-a-pdf-file)
+
 ## See also
 [How to Redact Confidential Data Permanently from PDF Files in WPF](https://www.syncfusion.com/blogs/post/redact-confidential-data-permanently-from-pdf-files-in-wpf.aspx)
