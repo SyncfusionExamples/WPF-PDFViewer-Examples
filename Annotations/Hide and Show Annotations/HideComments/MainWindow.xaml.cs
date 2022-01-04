@@ -1,5 +1,4 @@
-﻿using Syncfusion.Pdf.Interactive;
-using Syncfusion.Pdf.Parsing;
+﻿using Syncfusion.Pdf.Parsing;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,16 +20,8 @@ namespace HideComments
             if (pdfViewer != null)
             {
                 CheckBox checkBox = (CheckBox)sender;
-                PdfLoadedDocument pdfLoadedDocument = pdfViewer.LoadedDocument;
-                for (int i = 0; i < pdfLoadedDocument.Pages.Count; i++)
-                {
-                    for (int j = 0; j < pdfLoadedDocument.Pages[i].Annotations.Count; j++)
-                    {
-                        var annotation = pdfLoadedDocument.Pages[i].Annotations[j];
-                        if (annotation.Name.Contains(checkBox.Name))
-                            pdfViewer.ShowAnnotation(annotation.Name);
-                    }
-                }
+                //Show the annotation using author name. The checkbox name is set to that of author in this example.
+                ToggleAnnotationVisibility(checkBox.Name, true);
             }
         }
 
@@ -39,14 +30,37 @@ namespace HideComments
             if (pdfViewer != null)
             {
                 CheckBox checkBox = (CheckBox)sender;
-                PdfLoadedDocument pdfLoadedDocument = pdfViewer.LoadedDocument;
-                for (int i = 0; i < pdfLoadedDocument.Pages.Count; i++)
+                //Hide the annotation using author name. The checkbox name is set to that of author in this example.
+                ToggleAnnotationVisibility(checkBox.Name, false);
+            }
+        }
+
+        void ToggleAnnotationVisibility(string authorName, bool showAnnotation)
+        {
+            //Access the LoadedDocument property of PdfViewer to get the annotations details.
+            PdfLoadedDocument pdfLoadedDocument = pdfViewer.LoadedDocument;
+            
+            //Iterate through the pages to check for the annotations.
+            for (int i = 0; i < pdfLoadedDocument.Pages.Count; i++)
+            {
+                //Iterate through the annotations in the page.
+                for (int j = 0; j < pdfLoadedDocument.Pages[i].Annotations.Count; j++)
                 {
-                    for (int j = 0; j < pdfLoadedDocument.Pages[i].Annotations.Count; j++)
+                    var annotation = pdfLoadedDocument.Pages[i].Annotations[j];
+
+                    //Idntify if the annotation is created by the given author.
+                    if (annotation.Author == authorName)
                     {
-                        var annotation = pdfLoadedDocument.Pages[i].Annotations[j];
-                        if (annotation.Name.Contains(checkBox.Name))
+                        if (showAnnotation == true)
+                        {
+                            //Show annotation using the ShowAnnotation functionality.
+                            pdfViewer.ShowAnnotation(annotation.Name);
+                        }
+                        else
+                        {
+                            //Hide annotation using the HideAnnotation functionality.
                             pdfViewer.HideAnnotation(annotation.Name);
+                        }
                     }
                 }
             }
