@@ -48,7 +48,7 @@ namespace HideComments
                 {
                     var annotation = pdfLoadedDocument.Pages[i].Annotations[j];
 
-                    //Idntify if the annotation is created by the given author.
+                    //Identify if the annotation is created by the given author.
                     if (annotation.Author == authorName)
                     {
                         if (showAnnotation == true)
