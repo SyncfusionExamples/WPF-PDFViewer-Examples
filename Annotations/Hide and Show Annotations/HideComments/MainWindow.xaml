@@ -18,9 +18,9 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1,1,0,1">
             <StackPanel Margin="16,16,16,0">
-                <TextBlock Text="Show Comments" Margin="4" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="Filter Comments" Margin="4" FontSize="14" FontWeight="Bold"/>
                 <TreeView BorderThickness="0" Margin="0,4,0,0">
-                    <TreeViewItem FontSize="14" Margin="0,0,0,0">
+                    <TreeViewItem FontSize="12" Margin="0,0,0,4">
                         <TreeViewItem.Header>
                             <CheckBox x:Name="AllUsers" Content="All Users">
                                 <CheckBox.IsChecked>
