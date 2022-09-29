@@ -38,15 +38,6 @@ namespace WpfPDFViewer
 
             //Adds annotation to the page
             loadedDocument.Pages[0].Annotations.Add(inkAnnotation);
-
-            //Creates new memory stream
-            MemoryStream stream = new MemoryStream();
-
-            //Save the loadedDocument as stream
-            loadedDocument.Save(stream);
-
-            //Load the stream in PDF Viewer
-            pdfViewer.Load(stream);
         }
     }
 }
