@@ -28,8 +28,6 @@ namespace Mouse_KeyboardPageZoom
             PdfDocumentView1.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.FitWidth;
             //Wire PdfDocumentView PreviewMouseWheel event
             PdfDocumentView1.PreviewMouseWheel += PdfDocumentView1_PreviewMouseWheel;
-            //Wire PdfDocumentView KeyDown event
-            PdfDocumentView1.KeyDown += PdfDocumentView1_KeyDown;
         }
         /// <summary>
         /// Zooming the Pdf page based on Mouse Wheel
@@ -42,20 +40,6 @@ namespace Mouse_KeyboardPageZoom
                     PdfDocumentView1.ZoomTo(PdfDocumentView1.ZoomPercentage + 10);
                 else
                     PdfDocumentView1.ZoomTo(PdfDocumentView1.ZoomPercentage - 10);
-            }
-        }
-        /// <summary>
-        /// Set the Zoom mode as FitPage/FitWidth for Pdf page based on the key
-        /// </summary>
-        private void PdfDocumentView1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.D0 && Keyboard.IsKeyDown(Key.LeftCtrl))
-            {
-                PdfDocumentView1.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.FitPage;
-            }
-            if (e.Key == Key.D2 && Keyboard.IsKeyDown(Key.LeftCtrl))
-            {
-                PdfDocumentView1.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.FitWidth;
             }
         }
         /// <summary>
