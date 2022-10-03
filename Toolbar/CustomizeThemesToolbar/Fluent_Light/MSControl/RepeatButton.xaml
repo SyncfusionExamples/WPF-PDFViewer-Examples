@@ -1,0 +1,89 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:themelocal="clr-namespace:Syncfusion.Themes.FluentLight.WPF"
+                    xmlns:sfskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+                    xmlns:shared="clr-namespace:Syncfusion.Windows.Shared;assembly=Syncfusion.Shared.WPF"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <sfskin:ResourceDictionaryProvider DictionaryName="Common" ThemeName="FluentLight"/>
+        <sfskin:ResourceDictionaryProvider DictionaryName="Brushes" ThemeName="FluentLight"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <themelocal:RevealItem x:Key="repeatButtonRevealItem" HoverBackground="{StaticResource SecondaryBackgroundHovered}" HoverBorder="{StaticResource RevealBorder}" PressedBackground="{StaticResource RevealBackground}" CornerRadius="{StaticResource FluentLight.CornerRadius2}"/>
+    
+    <Style x:Key="WPFRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="FocusVisualStyle" 
+                Value="{x:Null}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource SecondaryForeground}"/> 
+		<Setter Property="FontFamily"
+                Value="{StaticResource FluentLight.ThemeFontFamily}"/>
+        <Setter Property="FontSize"
+                Value="{StaticResource FluentLight.BodyTextStyle}"/>
+        <Setter Property="FontWeight"
+                Value="{StaticResource FluentLight.FontWeightNormal}"/>
+        <Setter Property="BorderThickness" 
+                Value="{StaticResource FluentLight.BorderThickness1}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border x:Name="border" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="true"
+                            themelocal:FluentHelper.RevealItem="{StaticResource repeatButtonRevealItem}">
+                        <ContentPresenter x:Name="contentPresenter"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="sfskin:SfSkinManager.SizeMode" Value="Touch">
+                            <Setter Property="MinHeight" Value="{StaticResource TouchMode.MinHeight}"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BorderAlt3}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource SecondaryBackground}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BorderAlt3}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource SecondaryForeground}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource SecondaryBackgroundHovered}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SecondaryBorderHovered}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource SecondaryForegroundHovered}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource SecondaryBackgroundSelected}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SecondaryBorderSelected}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource SecondaryForegroundSelected}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource SecondaryBackgroundDisabled}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SecondaryBorderDisabled}"/>
+                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource SecondaryForegroundDisabled}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="sfskin:SkinManagerHelper.FocusVisualKind" Value="HighVisibility">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource KeyboardFocusVisualStyle}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style BasedOn="{StaticResource WPFRepeatButtonStyle}" TargetType="{x:Type RepeatButton}"/>
+</ResourceDictionary>
