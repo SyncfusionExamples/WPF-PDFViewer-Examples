@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_ScrollNavigateSample", "WPF_ScrollNavigateSample.csproj", "{767A6BCC-4D93-4B2B-8E64-75A0D6FC25FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{767A6BCC-4D93-4B2B-8E64-75A0D6FC25FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767A6BCC-4D93-4B2B-8E64-75A0D6FC25FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767A6BCC-4D93-4B2B-8E64-75A0D6FC25FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767A6BCC-4D93-4B2B-8E64-75A0D6FC25FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73F7D4F6-EF13-4602-887E-0C530FEFAEE0}
+	EndGlobalSection
+EndGlobal
