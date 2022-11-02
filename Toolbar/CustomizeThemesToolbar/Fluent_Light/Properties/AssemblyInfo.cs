@@ -60,7 +60,7 @@ using System.Windows;
 #elif SyncfusionFramework4_5_1
 [assembly: AssemblyVersion("20.2451.0.43")]
 #elif SyncfusionFramework4_5
-[assembly: AssemblyVersion("20.2450.0.43")]
+[assembly: AssemblyVersion("20.3450.0.47")]
 #elif SyncfusionFramework4_0
 [assembly: AssemblyVersion("20.2400.0.43")]
 #else

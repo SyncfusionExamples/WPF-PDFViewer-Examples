@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizeThemesToolbar", "CustomizeThemesToolbar.csproj", "{E92D8916-4A1C-403E-9072-02D94B05A008}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syncfusion.Themes.FluentLight.WPF_2012", "Fluent_Light\Syncfusion.Themes.FluentLight.WPF_2012.csproj", "{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,14 +21,6 @@ Global
 		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release-Xml|Any CPU.ActiveCfg = Release|Any CPU
 		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release-Xml|Any CPU.Build.0 = Release|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Debug-Xml|Any CPU.ActiveCfg = Debug-Xml|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Debug-Xml|Any CPU.Build.0 = Debug-Xml|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Release-Xml|Any CPU.ActiveCfg = Release-Xml|Any CPU
-		{B8DA47F3-DFEA-4FCE-B0CE-A503878D837F}.Release-Xml|Any CPU.Build.0 = Release-Xml|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
