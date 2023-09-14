@@ -7,11 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnOpenPDF" Click="btnOpenPDF_Click" Width="70" Height="30" Margin="5">Choose PDF</Button>
             <Button x:Name="convert" Content="Convert" Click="convert_Click" Width="70" Height="30" Margin="5" IsEnabled="False"/>
         </StackPanel>
