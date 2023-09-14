@@ -12,9 +12,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <Button Name="btnOpenPDF" Click="btnOpenPDF_Click" Width="70" Height="30" Margin="5">Open PDF</Button>
+            <Button Name="btnOpenPDF" Click="btnOpenPDF_Click" Width="70" Height="30" Margin="5">Choose PDF</Button>
             <Button x:Name="convert" Content="Convert" Click="convert_Click" Width="70" Height="30" Margin="5" IsEnabled="False"/>
         </StackPanel>
-        <Image Name="resultantImage" Width="300" Height="300" Grid.Row="1"/>
     </Grid>
 </Window>

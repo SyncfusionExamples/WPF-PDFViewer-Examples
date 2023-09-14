@@ -22,8 +22,7 @@ namespace Convert_PDF_page_into_image
         private void btnOpenPDF_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.DefaultExt = ".pdf";
-            openFileDialog.Filter = "PDF documents (.pdf)|*.pdf";
+            openFileDialog.Filter = "PDF documents (*.pdf)|*.PDF";
             if (openFileDialog.ShowDialog() == true)
             {
                 filePath = openFileDialog.FileName;
@@ -35,23 +34,26 @@ namespace Convert_PDF_page_into_image
 
         private void convert_Click(object sender, RoutedEventArgs e)
         {
-            PdfToImageConverter pdfToImageConvertor = new PdfToImageConverter();
-            FileStream inputPDFStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            pdfToImageConvertor.Load(inputPDFStream);
+            FileStream inputPDFStream = new FileStream(filePath, FileMode.Open, FileAccess.ReadWrite);
+            PdfToImageConverter pdfToImageConvertor = new PdfToImageConverter(inputPDFStream);
             Stream image = pdfToImageConvertor.Convert(0, false, false);
             if (image != null)
             {
-                var result = MessageBox.Show("Do you want to view the converted image?", "Confirmation", MessageBoxButton.YesNoCancel);
-                if (result == MessageBoxResult.Yes)
+                if (!Directory.Exists("PdfToImage"))
                 {
-                    BitmapImage bitmapImage = new BitmapImage();
-                    bitmapImage.BeginInit();
-                    bitmapImage.StreamSource = image;
-                    bitmapImage.EndInit();
-                    resultantImage.Source = bitmapImage;
+                    Directory.CreateDirectory("PdfToImage");
                 }
                 Bitmap bitmap = new Bitmap(image);
-                bitmap.Save("output.png");
+                bitmap.Save(@"PdfToImage\output.png");
+                pdfToImageConvertor.Dispose();
+                if(MessageBox.Show("Do you want to view the converted image?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                {
+                    //Launching the PDF file using the default Application.[Acrobat Reader]
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    process.StartInfo = new System.Diagnostics.ProcessStartInfo(System.IO.Directory.GetCurrentDirectory() + @"\PdfToImage\");
+                    process.Start();
+                }
+                
             }
         }
     }
