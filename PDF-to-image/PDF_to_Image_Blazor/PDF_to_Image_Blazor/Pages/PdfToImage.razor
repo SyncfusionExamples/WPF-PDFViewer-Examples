@@ -1,0 +1,34 @@
+﻿@page "/pdftoimage"
+@using Syncfusion.PdfToImageConverter;
+@inject IJSRuntime JSRuntime
+
+<h3>PDF to Image</h3>
+
+<InputFile OnChange="HandleFileChange"/>
+<button @onclick="RetrieveFilePath">PDF to Image</button>
+
+@code {
+    private IBrowserFile selectedFile;
+
+    private void HandleFileChange(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+    }
+
+    private async void RetrieveFilePath()
+    {
+        Stream stream = selectedFile.OpenReadStream();
+        if(stream != null && stream.CanRead)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+            PdfToImageConverter imageConverter = new PdfToImageConverter(memoryStream);
+            Stream imageStream = imageConverter.Convert(0, false, false);
+            imageStream.Position = 0;
+            await imageStream.CopyToAsync(memoryStream);
+            byte[] bytes = memoryStream.ToArray();
+            await JSRuntime.InvokeVoidAsync("saveAs", "Output.png", Convert.ToBase64String(bytes));
+            imageConverter.Dispose();
+        }
+    }
+}
