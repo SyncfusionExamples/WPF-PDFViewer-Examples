@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model MyPdfUploadViewModel
+@using (Html.BeginForm("ConvertToImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="PdfFile">Select a PDF File:</label>
+        <input type="file" asp-for="PdfFile" class="form-control-file" accept=".pdf">
+    </div>
+        <button type="submit" class="btn btn-primary" onclick="ConvertToImage">Convert to Image</button>
+</form>
+}

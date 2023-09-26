@@ -19,13 +19,17 @@ namespace PdfViewerWPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            AddUnloadTool();            
+            // This is for toolbar before 21.1.0.x version
+            AddUnloadToolInOldToolbar();
+
+            //// This for toolbar after 21.1.0.x version
+            //AddUnloadToolInNewToolbar();
         }
 
         /// <summary>
         /// Add unload tool in the toolbar.
         /// </summary>
-        private void AddUnloadTool()
+        private void AddUnloadToolInOldToolbar()
         {
             // Access the toolbar from PDF Viewer template. 
             DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
@@ -47,6 +51,29 @@ namespace PdfViewerWPF
             // Add the unload button in the toolbar.
             wrapPanel.Children.Add(unloadButton);
         }
+
+        //private void AddUnloadToolInNewToolbar()
+        //{
+        //    // Access the toolbar from PDF Viewer template. 
+        //    DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
+
+        //    // Create the custom unload button.
+        //    Button unloadButton = new Button();
+        //    unloadButton.Content = "Unload";
+
+        //    // wire the click event.
+        //    unloadButton.Click += UnloadButton_Click;
+
+        //    // Get the stack panel from the toolbar.
+        //    // The template “PART_ToolbarStack” is used to add items in the toolbar stack. 
+        //    StackPanel stackPanel = (StackPanel)toolbar.Template.FindName("PART_ToolbarStack", toolbar);
+        //    // The template “PART_AnnotationsStack” is used to add items in the annotation toolbar.
+        //    StackPanel annotationPanel = (StackPanel)toolbar.Template.FindName("PART_AnnotationsStack", toolbar);
+
+        //    // Add the unload button in the toolbar.
+        //    stackPanel.Children.Add(unloadButton);
+        //}
+
 
         /// <summary>
         /// Click event handler for unload button.
