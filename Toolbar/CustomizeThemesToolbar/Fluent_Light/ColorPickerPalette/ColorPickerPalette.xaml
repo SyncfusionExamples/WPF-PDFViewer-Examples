@@ -1,0 +1,634 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Syncfusion.Windows.Tools.Controls;assembly=Syncfusion.Shared.WPF"
+    xmlns:shared="clr-namespace:Syncfusion.Windows.Shared;assembly=Syncfusion.Shared.WPF"
+    xmlns:themelocal="clr-namespace:Syncfusion.Themes.FluentLight.WPF"
+    xmlns:sfskin="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+    xmlns:shared_resources="clr-namespace:Syncfusion.Windows.Shared;assembly=Syncfusion.Shared.WPF"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <sfskin:ResourceDictionaryProvider DictionaryName="Common" ThemeName="FluentLight"/>
+        <sfskin:ResourceDictionaryProvider DictionaryName="Brushes" ThemeName="FluentLight"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <local:MoreColorVisibilityconverter x:Key="MoreColorVisibilityconverterkey" />
+    <local:SizeToDoubleConverter x:Key="SizeToDoubleConverterKey" />
+
+    <shared:ColorToBrushConverter x:Key="ColorToBrushConverterKey" ></shared:ColorToBrushConverter>
+    <DataTemplate x:Key="HeaderTemplateKey">
+        <Grid x:Name="IconGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition x:Name="colorborder_row" Height="*" />
+            </Grid.RowDefinitions>
+            <Image
+                x:Name="image" Stretch="Uniform"
+                Width="{Binding Path=IconSize, Converter={StaticResource SizeToDoubleConverterKey}, ConverterParameter=width, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPickerPalette}}}"
+                Height="{Binding Path=IconSize, Converter={StaticResource SizeToDoubleConverterKey}, ConverterParameter=height, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPickerPalette}}}"
+                Source="{Binding Path=Icon, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPickerPalette}}, UpdateSourceTrigger=PropertyChanged}" />
+            <Border 
+                x:Name="color_border" 
+                Grid.Row="1" 
+                BorderThickness="1" 
+                MinHeight="5" 
+                Background="{Binding Path=Color, RelativeSource={RelativeSource AncestorType={x:Type local:ColorPickerPalette}},Converter={StaticResource ColorToBrushConverterKey}, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <DataTemplate.Triggers>
+            <Trigger SourceName="image" Property="Source" Value="{x:Null}">
+                <Setter TargetName="color_border" Property="BorderBrush" Value="{StaticResource BorderAlt}" />
+                <Setter TargetName="color_border" Property="CornerRadius" Value="{StaticResource FluentLight.ThemeCornerRadiusVariant1}" />
+            </Trigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!--<SolidColorBrush x:Key="ColorPickerPalette.PolygonItem.Selected.Border1" Color="#FFF0F0F0" />
+    <SolidColorBrush x:Key="ColorPickerPalette.PolygonItem.Selected.Border2" Color="#FFF0F0F0" />-->
+
+    <Style x:Key="SyncfusionColorGroupItemStyle" TargetType="{x:Type local:ColorGroupItem}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="ItemMargin" Value="0,0,0,0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderMargin" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorGroupItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border
+                            x:Name="ItemBorder"
+                            Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderWidth}"
+                            Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderHeight}"
+                            MinHeight="{TemplateBinding MinHeight}"
+                            MinWidth="{TemplateBinding MinWidth}"
+                            Margin="0.8"
+                            HorizontalAlignment="Left"
+                            BorderBrush="{StaticResource Black}"
+                            FocusVisualStyle="{x:Null}"
+                            Focusable="True"
+                            SnapsToDevicePixels="True">
+                            <Border
+                                x:Name="InnerBorder"
+                                Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Color}"
+                                BorderBrush="{StaticResource PopupBackground}">
+                                <Border.ToolTip>
+                                    <ToolTip>
+                                        <TextBlock Text="{TemplateBinding ColorName}" />
+                                    </ToolTip>
+                                </Border.ToolTip>
+                            </Border>
+                        </Border>
+
+                        <ItemsControl
+                            x:Name="Ic1"
+                            Grid.Row="1"
+                            HorizontalAlignment="Left"
+                            IsTabStop="False" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ColorName" Value="White, Background 1">
+                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                        <Trigger Property="ColorName" Value="White">
+                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="1" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="ItemBorder" Property="IsMouseOver" Value="True" />
+                                <Condition Property="sfskin:SfSkinManager.SizeMode" Value="Default" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="1" />
+                            <Setter TargetName="InnerBorder" Property="BorderThickness" Value="1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="ItemBorder" Property="IsFocused" Value="True" />
+                                <Condition Property="sfskin:SfSkinManager.SizeMode" Value="Default" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="1" />
+                            <Setter TargetName="InnerBorder" Property="BorderThickness" Value="1" />
+                        </MultiTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="ItemBorder" Property="BorderThickness" Value="2" />
+                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{StaticResource Black}" />
+
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ItemBorder" Property="BorderBrush" Value="{StaticResource BorderAlt}" />
+                        </Trigger>
+                        <Trigger Property="sfskin:SfSkinManager.SizeMode" Value="Touch">
+                            <Setter Property="MinHeight" Value="{StaticResource TouchMode.MinHeight}" />
+                            <Setter Property="MinWidth" Value="{StaticResource TouchMode.MinHeight}" />
+                        </Trigger>
+                        <Trigger Property="sfskin:SkinManagerHelper.FocusVisualKind" Value="HighVisibility">
+                            <Setter Property="FocusVisualStyle" Value="{StaticResource FlatKeyboardFocusVisualStyle}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SyncfusionColorGroupItemStyle}" TargetType="{x:Type local:ColorGroupItem}" />
+
+    <Style x:Key="SyncfusionColorGroupStyle" TargetType="{x:Type local:ColorGroup}">
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Margin" Value="0,6,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorGroup">
+                    <Grid Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PanelVisibility}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Rectangle
+                            x:Name="ColorGroupHeader"
+                            Grid.Row="0"
+                            Margin="0"
+                            HorizontalAlignment="Stretch"
+                            Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ThemeHeaderBackGround}"
+                            Visibility="{TemplateBinding HeaderVisibility}" />
+                        <TextBlock
+                            x:Name="ColorGroupHeaderText"
+                            Grid.Row="0"
+                            Margin="5,2,2,2"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="12"
+                            FontWeight="{StaticResource FluentLight.FontWeightNormal}"
+                            Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ThemeHeaderForeGround}"
+                            Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HeaderName}"
+                            Visibility="{TemplateBinding HeaderVisibility}" />
+
+                        <ItemsControl
+                            x:Name="ColorGroupItemsControl"
+                            Grid.Row="1"
+                            Margin="0,6,0,0"
+                            HorizontalAlignment="Left"
+                            IsTabStop="False"
+                            ItemsSource="{TemplateBinding DataSource}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="ColorGroupHeader" Property="Fill" Value="{StaticResource ContentBackgroundAlt1}" />
+                            <Setter TargetName="ColorGroupHeaderText" Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SyncfusionColorGroupStyle}" TargetType="{x:Type local:ColorGroup}" />
+
+    <Style x:Key="SyncfusionPolygonItemStyle" TargetType="{x:Type local:PolygonItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:PolygonItem">
+                    <Grid Focusable="False">
+                        <Polygon
+                            x:Name="polygon"
+                            Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=color}"
+                            Points="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Points}"
+                            Stroke="Black"
+                            StrokeThickness="0">
+                            <ToolTipService.ToolTip>
+                                <TextBlock Text="{TemplateBinding ColorName}" />
+                            </ToolTipService.ToolTip>
+                        </Polygon>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SyncfusionPolygonItemStyle}" TargetType="{x:Type local:PolygonItem}" />
+
+    <Style x:Key="SyncfusionColorPickerPaletteStyle" TargetType="{x:Type local:ColorPickerPalette}">
+        <Setter Property="ThemeHeaderBackGround" Value="{StaticResource ContentBackgroundAlt1}" />
+        <Setter Property="ThemeHeaderForeGround" Value="{StaticResource ContentForeground}" />
+        <Setter Property="MouseOverBackground" Value="{StaticResource SecondaryBackgroundHovered}" />
+        <Setter Property="HeaderTemplate" Value="{StaticResource HeaderTemplateKey}" />
+        <Setter Property="MoreColorsIcon">
+            <Setter.Value>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing Brush="{StaticResource ContentForeground}" Geometry="M9.9979993,11.063977 C10.516003,11.063977 10.935999,11.479943 10.935999,11.992958 10.935999,12.507011 10.516003,12.922977 9.9979993,12.922977 9.480011,12.922977 9.0599991,12.507011 9.059999,11.992958 9.0599991,11.479943 9.480011,11.063977 9.9979993,11.063977 z M11.973999,7.9989936 C12.492001,7.9989936 12.912003,8.4149916 12.912003,8.9279892 12.912003,9.4419867 12.492001,9.8579848 11.973999,9.8579848 11.455997,9.8579848 11.035995,9.4419867 11.035995,8.9279892 11.035995,8.4149916 11.455997,7.9989936 11.973999,7.9989936 z M4.130003,5.1389451 C4.6480055,5.1389451 5.0680072,5.5549569 5.0680072,6.0679712 5.0680072,6.5819855 4.6480055,6.9979973 4.130003,6.9979973 3.6120009,6.9979973 3.191999,6.5819855 3.191999,6.0679712 3.191999,5.5549569 3.6120009,5.1389451 4.130003,5.1389451 z M11.036003,4.0719666 C11.554005,4.0719666 11.974006,4.4879651 11.974006,5.0009623 11.974006,5.5149603 11.554005,5.9309583 11.036003,5.9309583 10.518,5.9309583 10.097998,5.5149603 10.097998,5.0009623 10.097998,4.4879651 10.518,4.0719666 11.036003,4.0719666 z M6.9439993,3.1419764 C7.4620016,3.1419764 7.8820034,3.5579743 7.8820035,4.0719719 7.8820034,4.5849695 7.4620016,5.0009675 6.9439993,5.0009675 6.425997,5.0009675 6.0059953,4.5849695 6.0059953,4.0719719 6.0059953,3.5579743 6.425997,3.1419764 6.9439993,3.1419764 z M8.1950004,1 C4.4090004,1 1.1800003,3.9910002 0.99900055,7.6670001 1.0110006,8.8700001 1.5560002,9.0420001 2.0300002,9.0550001 2.4320002,9.08 2.8470006,8.9100001 3.2100005,8.618 3.3400002,8.5140002 3.4720006,8.4250002 3.6050005,8.3510001 4.5110002,7.836 5.6560004,7.859 6.5940003,8.4060001 8.4990004,9.5150001 7.9560003,11.852 7.4030004,12.932 7.0800004,13.616 7.0040004,14.167 7.1920004,14.512 7.3990004,14.89 7.8980004,14.973&#xd;&#xa;7.9410005,14.979 7.9820004,14.983 8.1400003,14.999 8.1970003,15 12.011,15 15,11.924 15,8 15,4.0750003 12.011,1 8.1950004,1 z M8.1950004,0 C12.571,0 16,3.513 16,8 16,12.486 12.571,16 8.1950004,16 8.1180004,16 7.8360003,15.974 7.8360004,15.974 L7.8280005,15.973 C7.7860004,15.968 6.7910004,15.846 6.3220003,15.003 5.9620004,14.356 6.0230005,13.51 6.5050004,12.491 6.5590003,12.384 7.6530004,10.18 6.0900004,9.2690001 5.4680004,8.9070001 4.6860003,8.8890002 4.0960002,9.221 4.0080004,9.271 3.9220004,9.3290001 3.8370004,9.3970001 3.2900004,9.8370001 2.6340003,10.055 2.0030003,10.055 1.4070005,10.039 0.020000458,9.7720001 0,7.648 0.20800018,3.4170003 3.8840003,0&#xd;&#xa;8.1950004,0 z" />
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MoreColorsIconSize" Value="16,16" />
+        <Setter Property="BorderThickness" 
+                Value="{StaticResource FluentLight.BorderThickness1}"/>
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontSize" Value="{StaticResource FluentLight.BodyTextStyle}" />
+        <Setter Property="FontFamily" Value="{StaticResource FluentLight.ThemeFontFamily}" />
+        <Setter Property="FontWeight" Value="{StaticResource FluentLight.FontWeightNormal}" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="MinHeight" Value="24"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ColorPickerPalette">
+                    <Grid x:Name="OuterGrid">
+                        <Border
+                            x:Name="ColorPaletteBorder"
+                            Background="Transparent"
+                            BorderBrush="Transparent">
+                            <Grid x:Name="lay">
+                                <Grid.Resources>
+                                    <ItemsPanelTemplate x:Key="ItemPanelTemplate">
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                    <ItemsPanelTemplate x:Key="ItemPanelTemplate2">
+                                        <StackPanel Orientation="Vertical" />
+                                    </ItemsPanelTemplate>
+                                </Grid.Resources>
+
+                                <Border
+                                    x:Name="ColorPickerBorder"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}"
+                                    FocusVisualStyle="{x:Null}"
+                                    CornerRadius="{StaticResource FluentLight.CornerRadius2}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border
+                                            x:Name="ColorBorder"
+                                            FocusVisualStyle="{x:Null}"
+                                            Grid.Column="0"
+                                            Padding="2"
+                                            SnapsToDevicePixels="True">
+                                            <ContentPresenter x:Name="Header" ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                                        </Border>
+                                        <Border
+                                            x:Name="UpDownBorder"
+                                            Grid.Column="1"
+                                            MinWidth="16"
+                                            FocusVisualStyle="{TemplateBinding FocusVisualStyle}"
+                                            Background="Transparent">
+                                            <Viewbox Width="10" Height="7">
+                                                <Path
+                                                    x:Name="Txt"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Fill="Transparent" 
+                                                    Stroke="{StaticResource IconColor}"
+                                                    StrokeThickness="1">
+                                                    <Path.Data>
+                                                        <PathGeometry>M1 0.5L5 4.5L9 0.5</PathGeometry>
+                                                    </Path.Data>
+                                                </Path>
+                                            </Viewbox>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+
+                                <Popup
+                                    x:Name="pop"
+                                    AllowsTransparency="True"
+                                    Focusable="True">
+                                    <Border x:Name="b" Padding="7">
+                                        <Border.Effect>
+                                            <DropShadowEffect
+                                                BlurRadius="10"
+                                                Direction="-75"
+                                                Opacity="0.5"
+                                                ShadowDepth="2" />
+                                        </Border.Effect>
+                                        <Border
+                                            Background="{StaticResource PopupBackground}"
+                                            BorderBrush="{StaticResource BorderAlt}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="{StaticResource FluentLight.CornerRadius4}">
+                                            <Grid Margin="6">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Border
+                                                    x:Name="Automatic1"
+                                                    Grid.Row="0"
+                                                    Background="Transparent"
+                                                    FocusVisualStyle="{x:Null}"
+                                                    Focusable="True"
+                                                    Height="32"
+                                                    Visibility="{TemplateBinding AutomaticColorVisibility}">
+                                                    <Grid Margin="4">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="24" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border
+                                                            x:Name="AutoBorder1"
+                                                            Grid.Column="0"
+                                                            BorderBrush="{StaticResource PopupBackground}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="2">
+                                                            <Border
+                                                                x:Name="AutoBorder2"
+                                                                Grid.Column="0"
+                                                                Background="{StaticResource PopupBackground}"
+                                                                BorderBrush="{StaticResource PopupBackground}"
+                                                                BorderThickness="1">
+                                                                <Border
+                                                                    x:Name="aborder"
+                                                                    Grid.Column="0"
+                                                                    Background="{TemplateBinding AutomaticColor}" />
+                                                            </Border>
+                                                        </Border>
+                                                        <TextBlock
+                                                            x:Name="AutomaticText"
+                                                            Grid.Column="1"
+                                                            Margin="6,0,0,0"
+                                                            Padding="2"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="12"
+                                                            Foreground="{StaticResource ContentForeground}"
+                                                            Text="{shared_resources:SharedLocalizationResourceExtension ResourceName=AutomaticText}" />
+                                                    </Grid>
+                                                </Border>
+
+                                                <ItemsControl
+                                                    x:Name="ColorArea"
+                                                    Grid.Row="1"
+                                                    IsTabStop="False">
+                                                    <local:ColorGroup
+                                                        x:Name="item1"
+                                                        IsTabStop="False"
+                                                        HeaderName="{shared_resources:SharedLocalizationResourceExtension ResourceName=ThemeColorsText}"
+                                                        ThemeHeaderBackGround="{TemplateBinding ThemeHeaderBackGround}"
+                                                        ThemeHeaderForeGround="{TemplateBinding ThemeHeaderForeGround}" />
+                                                    <local:ColorGroup
+                                                        x:Name="item2"
+                                                        IsTabStop="False"
+                                                        HeaderName="{shared_resources:SharedLocalizationResourceExtension ResourceName=StandardColorsText}"
+                                                        ThemeHeaderBackGround="{TemplateBinding ThemeHeaderBackGround}"
+                                                        ThemeHeaderForeGround="{TemplateBinding ThemeHeaderForeGround}" />
+                                                    <local:ColorGroup
+                                                        x:Name="item3"
+                                                        IsTabStop="False"
+                                                        HeaderName="{shared_resources:SharedLocalizationResourceExtension ResourceName=RecentlyUsedText}"
+                                                        ThemeHeaderBackGround="{TemplateBinding ThemeHeaderBackGround}"
+                                                        ThemeHeaderForeGround="{TemplateBinding ThemeHeaderForeGround}" />
+                                                </ItemsControl>
+                                                <Border
+                                                    x:Name="NoColor"
+                                                    Grid.Row="2"  Height="{Binding ElementName=Automatic1, Path=Height, Mode=OneWay}"
+                                                    Background="Transparent"
+                                                    FocusVisualStyle="{x:Null}"
+                                                    Focusable="True" Margin="2,2,0,2"
+                                                    Visibility="{TemplateBinding NoColorVisibility}">
+                                                    <Grid Margin="4">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="24" />
+                                                            <ColumnDefinition />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Border
+                                                            Grid.Column="0"
+                                                            BorderBrush="{StaticResource PopupBackground}"
+                                                            BorderThickness="1"
+                                                            CornerRadius="2">
+                                                            <Border
+                                                                Grid.Column="0"
+                                                                Background="{StaticResource PopupBackground}"
+                                                                BorderBrush="{StaticResource IconColor}"
+                                                                BorderThickness="1">
+                                                                <Border Grid.Column="0" Background="Transparent" />
+                                                            </Border>
+                                                        </Border>
+                                                        <TextBlock
+                                                            x:Name="NoColorText"
+                                                            Grid.Column="1"
+                                                            Margin="6,0,0,0"
+                                                            Padding="2"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="{TemplateBinding FontSize}"
+                                                            Foreground="{StaticResource ContentForeground}"
+                                                            Text="{shared_resources:SharedLocalizationResourceExtension ResourceName=NoColorText}" />
+                                                    </Grid>
+                                                </Border>
+                                                <Border
+                                                    Grid.Row="3"
+                                                    Margin="0,3,0,3"
+                                                    BorderBrush="Transparent"
+                                                    BorderThickness=".5" />
+                                                <Border
+                                                    x:Name="MoreColors1"
+                                                    Grid.Row="4"
+                                                    Height="{Binding ElementName=Automatic1, Path=Height, Mode=OneWay}"
+                                                    Margin="0,3,0,0"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    FocusVisualStyle="{x:Null}"
+                                                    Focusable="True">
+                                                    <Border.Visibility>
+                                                        <MultiBinding Converter="{StaticResource MoreColorVisibilityconverterkey}">
+                                                            <Binding Path="IsStandardTabVisible" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                            <Binding Path="IsCustomTabVisible" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                            <Binding Path="MoreColorOptionVisibility" RelativeSource="{RelativeSource TemplatedParent}" />
+                                                        </MultiBinding>
+                                                    </Border.Visibility>
+                                                    <Grid x:Name="MoreColorsGrid">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image
+                                                            x:Name="morecolorsimage"
+                                                            Grid.Column="0"
+                                                            Width="{Binding Path=MoreColorsIconSize, Converter={StaticResource SizeToDoubleConverterKey}, ConverterParameter=width, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            Height="{Binding Path=MoreColorsIconSize, Converter={StaticResource SizeToDoubleConverterKey}, ConverterParameter=height, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            Margin="4"
+                                                            Source="{TemplateBinding MoreColorsIcon}" />
+                                                        <TextBlock
+                                                            x:Name="MoreColorText"
+                                                            Grid.Column="1"
+                                                            Margin="8,0,0,0"
+                                                            Padding="2"
+                                                            HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"
+                                                            FontSize="{TemplateBinding FontSize}"
+                                                            Foreground="{StaticResource ContentForeground}"
+                                                            Text="{shared_resources:SharedLocalizationResourceExtension ResourceName=MoreColorsText}" />
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Mode" Value="Palette">
+                            <Setter TargetName="b" Property="Effect" Value="{x:Null}"/>
+                        </Trigger>
+                        <Trigger SourceName="AutoBorder1" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="AutoBorder1" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="Automatic1" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                        </Trigger>
+                        <Trigger SourceName="Automatic1" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="AutoBorder1" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="AutoBorder2" Property="BorderBrush" Value="{StaticResource Black}" />
+                            <Setter TargetName="Automatic1" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="AutomaticText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger SourceName="Automatic1" Property="IsFocused" Value="True">
+                            <Setter TargetName="AutoBorder1" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="AutoBorder2" Property="BorderBrush" Value="{StaticResource Black}" />
+                            <Setter TargetName="Automatic1" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="AutomaticText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger SourceName="MoreColors1" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MoreColors1" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="MoreColorText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger SourceName="MoreColors1" Property="IsFocused" Value="True">
+                            <Setter TargetName="MoreColors1" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="MoreColorText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger SourceName="NoColor" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="NoColor" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="NoColorText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger SourceName="NoColor" Property="IsFocused" Value="True">
+                            <Setter TargetName="NoColor" Property="Background" Value="{StaticResource ContentBackgroundHovered}" />
+                            <Setter TargetName="NoColorText" Property="Foreground" Value="{StaticResource HoveredForeground}" />
+                        </Trigger>
+                        <Trigger Property="IsAutomaticBorderPressed" Value="True">
+                            <Setter TargetName="AutoBorder1" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="AutoBorder2" Property="BorderBrush" Value="{StaticResource Black}" />
+                            <Setter TargetName="Automatic1" Property="Background" Value="{StaticResource ContentBackgroundSelected}" />
+                            <Setter TargetName="AutomaticText" Property="Foreground" Value="{StaticResource SelectedForeground}" />
+                        </Trigger>
+                        <Trigger Property="IsMoreColorsBorderPressed" Value="True">
+                            <Setter TargetName="MoreColors1" Property="Background" Value="{StaticResource ContentBackgroundSelected}" />
+                            <Setter TargetName="MoreColorText" Property="Foreground" Value="{StaticResource SelectedForeground}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="Mode" Value="DropDown" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorHovered}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="Mode" Value="DropDown" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorHovered}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="ColorBorder" Property="IsMouseOver" Value="True" />
+                                <Condition Property="Mode" Value="Split" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="Mode" Value="Split" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ColorBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="UpDownBorder" Property="Background" Value="{StaticResource SecondaryBorderDisabled}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="UpDownBorder" Property="IsMouseOver" Value="True" />
+                                <Condition Property="Mode" Value="Split" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="UpDownBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorHovered}" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition SourceName="UpDownBorder" Property="IsFocused" Value="True" />
+                                <Condition Property="Mode" Value="Split" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="UpDownBorder" Property="Background" Value="{StaticResource SecondaryBackgroundHovered}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorHovered}" />
+                        </MultiTrigger>
+                        <Trigger SourceName="pop" Property="IsOpen" Value="True">
+                            <Setter Property="Background" Value="{StaticResource SecondaryBorderHovered}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource SecondaryBorderHovered}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorSelected}" />
+                            <!--<Setter TargetName="UpDownBorder" Property="Background" Value="{StaticResource SecondaryBackgroundSelected}" />-->
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource SecondaryBorderDisabled}" />
+                            <Setter Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="UpDownBorder" Property="BorderBrush" Value="Transparent" />
+                            <Setter TargetName="UpDownBorder" Property="Background" Value="Transparent" />
+                            <Setter TargetName="b" Property="Background" Value="{StaticResource PopupBackground}" />
+                            <Setter TargetName="b" Property="BorderBrush" Value="{StaticResource BorderAlt}" />
+                            <Setter TargetName="Automatic1" Property="Background" Value="{StaticResource DisabledForeground}" />
+                            <Setter TargetName="AutomaticText" Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter TargetName="MoreColors1" Property="Background" Value="Transparent" />
+                            <Setter TargetName="MoreColorText" Property="Foreground" Value="{StaticResource DisabledForeground}" />
+                            <Setter TargetName="Txt" Property="Stroke" Value="{StaticResource IconColorDisabled}" />
+                        </Trigger>
+                        <Trigger Property="Mode" Value="Split">
+                            <!--<Setter TargetName="ColorBorder" Property="Focusable" Value="True"/>-->
+                            <Setter TargetName="UpDownBorder" Property="Focusable" Value="True"/>
+                        </Trigger>
+                        <Trigger Property="sfskin:SfSkinManager.SizeMode" Value="Default">
+                            <Setter Property="BorderHeight" Value="24" />
+                            <Setter Property="BorderWidth" Value="24" />
+                        </Trigger>
+                        <Trigger Property="sfskin:SfSkinManager.SizeMode" Value="Touch">
+                            <Setter Property="MinHeight" Value="{StaticResource TouchMode.MinHeight}" />
+                            <Setter Property="BorderHeight" Value="{StaticResource TouchMode.MinHeight}" />
+                            <Setter Property="BorderWidth" Value="{StaticResource TouchMode.MinHeight}" />
+                            <Setter TargetName="ColorBorder" Property="MinWidth" Value="{StaticResource TouchMode.MinHeight}" />
+                        </Trigger>
+                        <Trigger Property="sfskin:SkinManagerHelper.FocusVisualKind" Value="HighVisibility">
+                            <Setter Property="FocusVisualStyle" Value="{StaticResource FlatKeyboardFocusVisualStyle}"/>
+                        </Trigger>
+                        <!--<Trigger Property="Mode" Value="DropDown">
+                            <Setter TargetName="ColorPickerBorder" Property="Focusable" Value="True"/>
+                        </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SyncfusionColorPickerPaletteStyle}" TargetType="{x:Type local:ColorPickerPalette}" />
+
+</ResourceDictionary>
