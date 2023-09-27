@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizeThemesToolbar", "CustomizeThemesToolbar.csproj", "{E92D8916-4A1C-403E-9072-02D94B05A008}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug-Xml|Any CPU = Debug-Xml|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Release-Xml|Any CPU = Release-Xml|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Debug-Xml|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Debug-Xml|Any CPU.Build.0 = Debug|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release-Xml|Any CPU.ActiveCfg = Release|Any CPU
+		{E92D8916-4A1C-403E-9072-02D94B05A008}.Release-Xml|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89109A39-8694-4A11-8C7C-9D4BFFB8EC86}
+	EndGlobalSection
+EndGlobal
