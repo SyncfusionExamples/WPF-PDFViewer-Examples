@@ -2,7 +2,6 @@
 using PDF_to_Image_Core.Models;
 using System.Diagnostics;
 using Syncfusion.PdfToImageConverter;
-using Microsoft.AspNetCore.Hosting.Server;
 
 namespace PDF_to_Image_Core.Controllers
 {
@@ -27,11 +26,14 @@ namespace PDF_to_Image_Core.Controllers
         {
             if (model.PdfFile != null && model.PdfFile.Length > 0)
             {
-                string filePath = Path.Combine(_webEnvironment.WebRootPath, "Sample.pdf");
-
-                using (var stream = new FileStream(filePath, FileMode.OpenOrCreate))
+                // Create a memory stream to hold the file data
+                using (MemoryStream stream = new MemoryStream())
                 {
-                    await model.PdfFile.CopyToAsync(stream);
+                    // Copy the file data to the memory stream
+                    model.PdfFile.CopyTo(stream);
+
+                    // Reset the position of the memory stream to the beginning
+                    stream.Seek(0, SeekOrigin.Begin);
                     PdfToImageConverter pdfToImageConverter = new PdfToImageConverter();
                     pdfToImageConverter.Load(stream);
                     Stream imageStream = pdfToImageConverter.Convert(0, false, false);
