@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_PDFViewer_Annotations", "WPF_PDFViewer_Annotations.csproj", "{9263E487-B486-44E5-8FD4-F5E8BB989203}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Release-Xml|Any CPU = Release-Xml|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Release-Xml|Any CPU.ActiveCfg = Release|Any CPU
+		{9263E487-B486-44E5-8FD4-F5E8BB989203}.Release-Xml|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {454BB598-9FDC-41F4-8B27-898950B096E2}
+	EndGlobalSection
+EndGlobal
