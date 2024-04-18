@@ -13,6 +13,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button x:Name="AddStamp" Content="Add Stamp" Width="75" Click="AddStamp_Click"/>
-        <PdfViewer:PdfViewerControl Grid.Row="1" x:Name="pdfViewer"/>
+        <PdfViewer:PdfDocumentView Grid.Row="1" x:Name="pdfViewer"/>
     </Grid>
 </Window>
