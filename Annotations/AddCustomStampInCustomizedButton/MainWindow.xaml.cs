@@ -22,7 +22,7 @@ namespace AddCustomStampInCustomizedButton
     /// </summary>
     public partial class MainWindow : Window
     {
-        private bool checkAddAnnotation = false;
+        private bool CanAddAnnotation = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace AddCustomStampInCustomizedButton
 
         private void PdfViewer_PageClicked(object sender, Syncfusion.Windows.PdfViewer.PageClickedEventArgs args)
         {
-            if(checkAddAnnotation)
+            if(CanAddAnnotation)
             {
                 PdfUnitConvertor convertor = new PdfUnitConvertor();
                 Mouse.OverrideCursor = Cursors.Arrow;
@@ -63,13 +63,13 @@ namespace AddCustomStampInCustomizedButton
                 //Enter the required size of the stamp.
                 System.Drawing.Size stampSize = new System.Drawing.Size(200, 100);
                 pdfViewer.AddStamp(pdfStamp, pageNumber, position, stampSize);
-                checkAddAnnotation = false;
+                CanAddAnnotation = false;
             }          
         }
 
         private void AddStamp_Click(object sender, RoutedEventArgs e)
         {
-            checkAddAnnotation = true;            
+            CanAddAnnotation = true;            
         }
     }
 }
