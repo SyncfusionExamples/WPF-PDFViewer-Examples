@@ -69,7 +69,7 @@ namespace AddCustomStampInCustomizedButton
 
         private void AddStamp_Click(object sender, RoutedEventArgs e)
         {
-            checkAddAnnotation = !checkAddAnnotation;            
+            checkAddAnnotation = true;            
         }
     }
 }
