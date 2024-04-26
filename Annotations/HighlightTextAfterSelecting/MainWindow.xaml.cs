@@ -27,12 +27,9 @@ namespace HighlightTextAfterSelecting
     /// </summary>
     public partial class MainWindow : Window
     {
-        PdfViewerControl pdfViewer;
         public MainWindow()
         {
-            InitializeComponent();
-            pdfViewer = new PdfViewerControl();
-            HomeGrid.Children.Add(pdfViewer);
+            InitializeComponent();           
             pdfViewer.Load(@"../../Data/HTTP_Succinctly.pdf");
             pdfViewer.TextSelectionCompleted += PdfViewer_TextSelectionCompleted;
         }
