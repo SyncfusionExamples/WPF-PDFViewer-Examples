@@ -24,8 +24,6 @@ namespace ExpandCommentsPane
         public MainWindow()
         {
             InitializeComponent();
-            PdfViewerControl pdfViewer = new PdfViewerControl();
-            HomeGrid.Children.Add(pdfViewer);
             pdfViewer.Load("../../Data/Annotations.pdf");
             pdfViewer.CommentSettings.IsExpanded = true;
         }

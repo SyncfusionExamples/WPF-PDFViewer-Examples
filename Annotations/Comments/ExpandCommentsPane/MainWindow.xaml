@@ -1,4 +1,5 @@
-﻿<Window x:Class="ExpandCommentsPane.MainWindow"
+﻿<Window xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        x:Class="ExpandCommentsPane.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +7,7 @@
         xmlns:local="clr-namespace:ExpandCommentsPane"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="HomeGrid">
-        
+    <Grid>
+        <PdfViewer:PdfViewerControl Name ="pdfViewer"/>
     </Grid>
 </Window>
