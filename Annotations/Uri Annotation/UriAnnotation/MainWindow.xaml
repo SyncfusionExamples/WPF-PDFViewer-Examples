@@ -5,15 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UriAnnotation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" >
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Add Uri Annotation" x:Name="btnUri" HorizontalAlignment="Left" Height="20" Margin="10 0 0 0" Click="BtnLoad_Click"></Button>
-        </StackPanel>
+        <Button Content="Add Uri Annotation" x:Name="btnUri" HorizontalAlignment="Center" Height="20" Margin="10 0 0 0" Click="BtnLoad_Click"></Button>
         <PdfViewer:PdfDocumentView x:Name="docView" Grid.Row="1"/>
     </Grid>
 </Window>
