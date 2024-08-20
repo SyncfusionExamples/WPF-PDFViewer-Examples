@@ -13,6 +13,7 @@ namespace NET
 
             //Load the PDF document as a stream
             FileStream inputStream = new FileStream(Path.GetFullPath(@"Data/Input.pdf"), FileMode.Open, FileAccess.ReadWrite);
+
             imageConverter.Load(inputStream);
 
             //Convert PDF to Image.
