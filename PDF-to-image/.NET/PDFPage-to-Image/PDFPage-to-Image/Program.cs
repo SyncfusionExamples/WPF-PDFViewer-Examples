@@ -25,6 +25,7 @@ namespace NET
                 //Save the image to file stream.
                 inputStream.CopyTo(outputFileStream);
             }
+            imageConverter.Dispose();
         }
     }
 }
