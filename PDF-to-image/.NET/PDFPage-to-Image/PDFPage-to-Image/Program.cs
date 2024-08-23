@@ -19,12 +19,16 @@ namespace NET
             //Convert PDF to Image.
             Stream outputStream = imageConverter.Convert(0, false, false);
 
+            //Rewind the stream position to the beginning before copying.
+            outputStream.Position = 0;
+
             //Create file stream.
             using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"Output/Output.jpeg"), FileMode.Create, FileAccess.ReadWrite))
             {
                 //Save the image to file stream.
-                inputStream.CopyTo(outputFileStream);
+                outputStream.CopyTo(outputFileStream);
             }
+            //Dispose the imageConverter
             imageConverter.Dispose();
         }
     }
