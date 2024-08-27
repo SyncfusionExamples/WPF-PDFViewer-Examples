@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Runtime.InteropServices;
 
 namespace WPFThumbnailSample
 {
@@ -15,7 +16,12 @@ namespace WPFThumbnailSample
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewerControl.Load(@"../../Data/JavaScript Succinctly.pdf");
+#else
+            pdfViewerControl.Load(@"../../../Data/JavaScript Succinctly.pdf");
+#endif
+            
             //Rise PdfViewer document loaded event
             pdfViewerControl.DocumentLoaded += PdfViewerControl_DocumentLoaded;
             //Rise PdfViewer document unloaded event

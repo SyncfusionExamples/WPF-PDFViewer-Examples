@@ -2,6 +2,7 @@
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.Windows.PdfViewer;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace PdfViewer
@@ -18,7 +19,11 @@ namespace PdfViewer
             this.WindowState = WindowState.Maximized;
             //Wire the PageSelected event
             pdfViewer.PageSelected += PdfViewer_PageSelected;
+#if NETFRAMEWORK
             pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#else
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#endif           
         }
 
         //Handle the PageSelected Event

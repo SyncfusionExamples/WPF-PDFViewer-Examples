@@ -12,7 +12,11 @@ namespace PDFViewerNuget
             InitializeComponent();
 
             // Load PDF document in the viewer
+#if NETFRAMEWORK
+            pdfViewer.Load("../../../../../PDF/Arrow.pdf");
+#else
             pdfViewer.Load("../../../../../../PDF/Arrow.pdf");
+#endif
         }
     }
 }

@@ -7,11 +7,8 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Syncfusion.Themes.FluentLight.WPF")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Syncfusion.Themes.FluentLight.WPF")]
+
 [assembly: AssemblyCopyright("Copyright © 2001-2022 Syncfusion. Inc,")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -64,10 +61,10 @@ using System.Windows;
 #elif SyncfusionFramework4_0
 [assembly: AssemblyVersion("20.2400.0.43")]
 #else
-[assembly: AssemblyVersion("20.2400.0.43")]
+
 #endif
 
 
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyFileVersion("20.2450.0.43")]
+
 

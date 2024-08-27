@@ -33,7 +33,11 @@ namespace customized_toolbar_sample
         public MainWindow()
         {
             InitializeComponent();
-            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"D:\Succinity\PDF_Succinctly.pdf");
+#if NETFRAMEWORK
+            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../Data/F Sharp Succinctly.pdf");
+#else
+            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../../Data/F Sharp Succinctly.pdf");
+#endif
             pdfViewer.Load(pdfLoadedDocument);
         }
 

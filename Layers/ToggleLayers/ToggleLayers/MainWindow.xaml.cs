@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Windows.PdfViewer;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace ToggleLayers
@@ -11,7 +12,11 @@ namespace ToggleLayers
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewerControl.Load("../../../../../PDF/LayersDocument.pdf");
+#else
+             pdfViewerControl.Load("../../../../../../PDF/LayersDocument.pdf");
+#endif
         }
 
         private void ToggleLayer_Click(object sender, RoutedEventArgs e)

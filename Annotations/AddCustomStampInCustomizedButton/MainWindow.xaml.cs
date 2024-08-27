@@ -2,7 +2,9 @@
 using Syncfusion.Windows.PdfViewer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +28,11 @@ namespace AddCustomStampInCustomizedButton
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/F#.pdf");
+#else
+             pdfViewer.Load("../../../Data/F#.pdf");
+#endif
             pdfViewer.PageClicked += PdfViewer_PageClicked;
         }
 
@@ -49,7 +55,12 @@ namespace AddCustomStampInCustomizedButton
 
                 Point position = new Point(x, y);
                 pdfViewer.AnnotationMode = PdfDocumentView.PdfViewerAnnotationMode.None;
-                var bitmapImage = new BitmapImage(new Uri("../../Data/ThankYou.png", UriKind.RelativeOrAbsolute));
+                var bitmapImage = new BitmapImage();
+#if NETFRAMEWORK
+                bitmapImage = new BitmapImage(new Uri("../../Data/ThankYou.png", UriKind.RelativeOrAbsolute));
+#else
+                bitmapImage = new BitmapImage(new Uri("../../../Data/ThankYou.png", UriKind.RelativeOrAbsolute));
+#endif
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 var image = new System.Windows.Controls.Image() { Source = bitmapImage };
                 var pdfStamp = new PdfStampAnnotation(image);

@@ -4,7 +4,9 @@ using Syncfusion.SfSkinManager;
 using Syncfusion.Windows.PdfViewer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,7 +37,11 @@ public MainWindow()
     pdfViewer.TextMarkupAnnotationChanged += PdfViewer_TextMarkupAnnotationChanged;
     pdfViewer.ShapeAnnotationChanged += PdfViewer_ShapeAnnotationChanged;
     pdfViewer.StampAnnotationChanged += PdfViewer_StampAnnotationChanged;
-    pdfViewer.Load("../../Data/Sample Document.pdf");
+#if NETFRAMEWORK
+            pdfViewer.Load("../../Data/Sample Document.pdf");
+#else
+            pdfViewer.Load( "../../../Data/Sample Document.pdf");
+#endif    
     treeView.Background = new SolidColorBrush(Color.FromRgb(235,235,238));
 }
 

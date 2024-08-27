@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Pdf.Parsing;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +13,12 @@ namespace HideComments
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/Annotations.pdf");
+#else
+             pdfViewer.Load("../../../Data/Annotations.pdf");
+#endif
+            
         }
 
         private void User_Checked(object sender, RoutedEventArgs e)

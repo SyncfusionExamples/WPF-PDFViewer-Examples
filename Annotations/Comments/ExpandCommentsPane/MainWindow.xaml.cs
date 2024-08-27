@@ -1,7 +1,9 @@
 ﻿using Syncfusion.Windows.PdfViewer;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +26,12 @@ namespace ExpandCommentsPane
         public MainWindow()
         {
             InitializeComponent();
+
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/Annotations.pdf");
+#else
+            pdfViewer.Load("../../../Data/Annotations.pdf");
+#endif
             pdfViewer.CommentSettings.IsExpanded = true;
         }
     }

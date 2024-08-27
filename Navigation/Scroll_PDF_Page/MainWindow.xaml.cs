@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +28,11 @@ namespace sample
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK 
             pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#else
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#endif           
             pdfViewer.KeyDown += PdfViewer_KeyDown;
         }
         private void PdfViewer_KeyDown(object sender, KeyEventArgs e)

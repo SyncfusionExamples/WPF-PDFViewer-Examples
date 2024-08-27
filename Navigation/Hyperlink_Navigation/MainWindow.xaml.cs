@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,11 @@ namespace Bookmark_Navigation
         {
             InitializeComponent();
             //Loads the PDF document
+#if NETFRAMEWORK
             pdfViewer.Load("../../../Data/HTTP_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../../Data/HTTP_Succinctly.pdf");
+#endif
             //Navigates to hyperlink page
             pdfViewer.GotoPage(13);
         }

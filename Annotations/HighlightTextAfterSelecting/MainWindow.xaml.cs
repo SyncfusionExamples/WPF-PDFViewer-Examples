@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,8 +30,12 @@ namespace HighlightTextAfterSelecting
     {
         public MainWindow()
         {
-            InitializeComponent();           
-            pdfViewer.Load(@"../../Data/HTTP_Succinctly.pdf");
+            InitializeComponent();
+#if NETFRAMEWORK
+            pdfViewer.Load("../../Data/HTTP_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../Data/HTTP_Succinctly.pdf");
+#endif
             pdfViewer.TextSelectionCompleted += PdfViewer_TextSelectionCompleted;
         }
         private void PdfViewer_TextSelectionCompleted(object sender, TextSelectionCompletedEventArgs args)

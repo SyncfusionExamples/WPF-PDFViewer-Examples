@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Pdf.Parsing;
+using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace PdfViewer
@@ -11,8 +12,14 @@ namespace PdfViewer
         public MainWindow()
         {
             InitializeComponent();
-            PdfLoadedDocument document = new PdfLoadedDocument(@"../../Data/BlankPage.pdf");
+#if NETFRAMEWORK
+            PdfLoadedDocument document = new PdfLoadedDocument("../../Data/BlankPage.pdf");
             pdfViewer.Load(document);
+#else
+            PdfLoadedDocument document = new PdfLoadedDocument( "../../../Data/BlankPage.pdf");
+            pdfViewer.Load(document);
+#endif
+            
         }
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)

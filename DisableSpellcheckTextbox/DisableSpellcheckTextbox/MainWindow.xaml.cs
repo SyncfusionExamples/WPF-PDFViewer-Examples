@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,9 +27,15 @@ namespace DisableSpellcheckTextbox
         public MainWindow()
         {
             InitializeComponent();
-            String filePath = "../../Data/Allianz-EUKV_Antrag Pflege.pdf";
+#if NETFRAMEWORK
             //load the PDF into the PdfLoadedDocument object
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(filePath);
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument("../../Data/Allianz-EUKV_Antrag Pflege.pdf");
+#else
+            //load the PDF into the PdfLoadedDocument object
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument("../../../Data/Allianz-EUKV_Antrag Pflege.pdf");
+#endif
+
+
             //disable spellcheck for the textbox fields
             foreach (PdfField field in loadedDocument.Form.Fields)
             {
