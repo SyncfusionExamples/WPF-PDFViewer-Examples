@@ -26,7 +26,11 @@ namespace AddNewToolbarItem
         public MainWindow()
         {
             InitializeComponent();
-            pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#if NETCOREAPP
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#else
+         pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#endif
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

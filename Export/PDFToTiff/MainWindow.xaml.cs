@@ -14,7 +14,11 @@ namespace PDFToTIFFSample
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             ExportPDFtoTiff("../../Data/Barcode.pdf");
+#else
+            ExportPDFtoTiff("../../../Data/Barcode.pdf");
+#endif
         }
 
         /// <summary>

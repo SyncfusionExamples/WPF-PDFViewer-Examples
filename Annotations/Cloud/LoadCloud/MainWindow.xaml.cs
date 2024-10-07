@@ -10,7 +10,11 @@ namespace PDFViewerNuget
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
+            pdfViewer.Load("../../Data/Cloud.pdf");
+#else
             pdfViewer.Load("../../../Data/Cloud.pdf");
+#endif
         }
     }
 }

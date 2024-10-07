@@ -17,7 +17,11 @@ namespace WpfPDFViewer
         {
             InitializeComponent();
             //Loads the document in PDF Viewer
-            pdfViewer.Load("../../F Sharp Succinctly.pdf");
+#if NETFRAMEWORK
+            pdfViewer.Load("../../Data/F#.pdf");
+#else
+            pdfViewer.Load("../../../Data/F#.pdf");
+#endif
         }
 
         private void Add_Ink_Click(object sender, RoutedEventArgs e)

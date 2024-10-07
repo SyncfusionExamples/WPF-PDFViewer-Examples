@@ -24,7 +24,11 @@ namespace Search_Text_Sample
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/Fsharp_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../Data/Fsharp_Succinctly.pdf");
+#endif
         }
 
         private void search_Click(object sender, RoutedEventArgs e)

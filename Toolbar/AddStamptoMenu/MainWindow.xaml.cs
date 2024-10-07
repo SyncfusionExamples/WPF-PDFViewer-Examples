@@ -15,9 +15,13 @@ namespace Sample_Project
         public MainWindow()
         {
             InitializeComponent();
-
+#if NETFRAMEWORK
             //Load the PDF file
             PdfViewer.Load("../../F Sharp Succinctly.pdf");
+# else
+            //Load the PDF file
+            PdfViewer.Load("../../../F Sharp Succinctly.pdf");
+#endif
         }
 
         private void pdfViewer_Loaded(object sender, RoutedEventArgs e)
@@ -38,7 +42,11 @@ namespace Sample_Project
             //Creates the image from the desired path
             bitmapImage.BeginInit();
             bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+#if NETFRAMEWORK
             bitmapImage.UriSource = new Uri("../../Confidential.png", UriKind.RelativeOrAbsolute);
+#else
+            bitmapImage.UriSource = new Uri("../../../Confidential.png", UriKind.RelativeOrAbsolute);
+#endif
             bitmapImage.EndInit();
             image.Source = bitmapImage;
 

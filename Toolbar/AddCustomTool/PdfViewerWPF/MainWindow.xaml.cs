@@ -14,7 +14,11 @@ namespace PdfViewerWPF
         {
             InitializeComponent();
             pdfViewer.ToolbarSettings.ShowAnnotationTools = false;
-            pdfViewer.Load(@"../../../Data/GIS Succinctly.pdf");           
+#if NETCOREAPP
+            pdfViewer.Load(@"../../../Data/GIS Succinctly.pdf");
+#else
+            pdfViewer.Load(@"../../Data/GIS Succinctly.pdf");
+#endif
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

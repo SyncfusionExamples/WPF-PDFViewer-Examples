@@ -23,7 +23,12 @@ namespace PdfViewer
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
             pdfViewer.PageSelected += PdfViewer_PageSelected;
+#if NETFRAMEWORK
             pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#else
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#endif
+           
         }
 
         private void PdfViewer_PageSelected(object sender, PageSelectedEventArgs e)

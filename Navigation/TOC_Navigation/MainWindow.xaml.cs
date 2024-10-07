@@ -24,7 +24,12 @@ namespace Bookmark_Navigation
         {
             InitializeComponent();
             //Loads the PDF document
+#if NETFRAMEWORK
             pdfViewer.Load("../../../Data/HTTP_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../../Data/HTTP_Succinctly.pdf");
+#endif
+           
             //Navigates to the TOC page
             pdfViewer.GotoPage(4);
         }

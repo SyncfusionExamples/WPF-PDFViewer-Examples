@@ -24,7 +24,11 @@ namespace Copy_Text_Sample
         {
             InitializeComponent();
             this.WindowState = WindowState.Maximized;
-            pdfviewer.Load("../../Data/Fsharp_Succinctly.pdf");
+#if NETCOREAPP
+            pdfviewer.Load("../../../Data/Fsharp_Succinctly.pdf");
+#else
+             pdfviewer.Load("../../Data/Fsharp_Succinctly.pdf");
+#endif
             pdfviewer.GotoPage(2);
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -103,7 +104,7 @@ namespace PDFToImage
         void SaveImages(BitmapSource[] images)
         {
             string outputFolder;
-#if NETCORE
+#if NETCOREAPP
             outputFolder = @"..\..\..\Output\";
 #else
             outputFolder = @"..\..\Output\";
@@ -127,11 +128,12 @@ namespace PDFToImage
 
         void LoadPdf()
         {
-#if NETCORE
-            pdfViewerControl.Load("../../../Data/HTTP Succinctly.pdf");
+#if NETCOREAPP
+              pdfViewerControl.Load("../../../Data/HTTP Succinctly.pdf");
 #else
-            pdfViewerControl.Load("../../Data/HTTP Succinctly.pdf");
+              pdfViewerControl.Load("../../Data/HTTP Succinctly.pdf");
 #endif
+
         }
         #endregion
     }

@@ -24,7 +24,11 @@ namespace PrintPDF
         {
             InitializeComponent();
             // Load the PDF document in pdfViewer.
+        #if NETFRAMEWORK
             pdfViewer.Load("../../Data/Fsharp_Succinctly.pdf");
+        #else
+            pdfViewer.Load("../../../Data/Fsharp_Succinctly.pdf");
+        #endif
         }
 
         private void print_Click(object sender, RoutedEventArgs e)

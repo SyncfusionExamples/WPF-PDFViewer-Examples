@@ -52,7 +52,12 @@ namespace WPF_ScrollNavigateSample
 
         private void Transfer_ScrollData_FromFileToDict()
         {
-            string scrollPositions = System.IO.File.ReadAllText("../../Data/scrolledposition.txt");
+            string scrollPositions;
+#if NETFRAMEWORK
+            scrollPositions = System.IO.File.ReadAllText("../../Data/scrolledposition.txt");
+#else
+            scrollPositions = System.IO.File.ReadAllText("../../../Data/scrolledposition.txt");
+#endif
             if (!scrollPositions.IsNullOrWhiteSpace() && scrollPositions != "")
             {
                 string[] scrollInfo = scrollPositions.Split('\n');
@@ -126,12 +131,21 @@ namespace WPF_ScrollNavigateSample
         }
         private void Transfer_ScrollData_FromDictToFile()
         {
+
+#if NETFRAMEWORK
             System.IO.File.WriteAllText("../../Data/scrolledposition.txt", "");
+#else
+            System.IO.File.WriteAllText("../../../Data/scrolledposition.txt", "");
+#endif
             foreach (var PositionValue in _savedPosition)
             {
                 string filepath = PositionValue.Key;
                 DocPosition lastSavedPosition = PositionValue.Value;
+#if NETFRAMEWORK
                 System.IO.File.AppendAllText("../../Data/scrolledposition.txt", filepath + "," + lastSavedPosition.ZoomPercent + "," + lastSavedPosition.Horizontal.ToString() + "," + lastSavedPosition.Vertical.ToString() + "\n");
+#else
+                System.IO.File.AppendAllText("../../../Data/scrolledposition.txt", filepath + "," + lastSavedPosition.ZoomPercent + "," + lastSavedPosition.Horizontal.ToString() + "," + lastSavedPosition.Vertical.ToString() + "\n");
+#endif 
             }
         }
     }

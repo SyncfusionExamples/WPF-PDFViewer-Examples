@@ -24,7 +24,12 @@ namespace ExpandCommentsPane
         public MainWindow()
         {
             InitializeComponent();
+
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/Annotations.pdf");
+#else
+            pdfViewer.Load("../../../Data/Annotations.pdf");
+#endif
             pdfViewer.CommentSettings.IsExpanded = true;
         }
     }

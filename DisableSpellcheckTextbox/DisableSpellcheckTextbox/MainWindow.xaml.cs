@@ -26,9 +26,15 @@ namespace DisableSpellcheckTextbox
         public MainWindow()
         {
             InitializeComponent();
-            String filePath = "../../Data/Allianz-EUKV_Antrag Pflege.pdf";
+#if NETFRAMEWORK
             //load the PDF into the PdfLoadedDocument object
-            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(filePath);
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument("../../Data/Allianz-EUKV_Antrag Pflege.pdf");
+#else
+            //load the PDF into the PdfLoadedDocument object
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument("../../../Data/Allianz-EUKV_Antrag Pflege.pdf");
+#endif
+
+
             //disable spellcheck for the textbox fields
             foreach (PdfField field in loadedDocument.Form.Fields)
             {

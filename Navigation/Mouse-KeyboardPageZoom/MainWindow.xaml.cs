@@ -22,8 +22,12 @@ namespace Mouse_KeyboardPageZoom
     {
         public MainWindow()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+#if NETFRAMEWORK 
             PdfDocumentView1.Load(@"../../Data/HTTP Succinctly.pdf");
+#else
+            PdfDocumentView1.Load(@"../../../Data/HTTP Succinctly.pdf");
+#endif
             this.SizeChanged += MainWindow_SizeChanged;
             PdfDocumentView1.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.FitWidth;
             //Wire PdfDocumentView PreviewMouseWheel event

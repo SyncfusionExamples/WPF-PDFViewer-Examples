@@ -3,6 +3,7 @@ using Syncfusion.Windows.PdfViewer;
 using Syncfusion.Windows.Shared;
 using System.ComponentModel;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 
@@ -17,8 +18,12 @@ namespace PdfViewer
 
         public ViewModel()
         {
+#if NETFRAMEWORK
             documentStream = new FileStream(@"..\..\Data\Simple Shapes.pdf", FileMode.OpenOrCreate);
-        }
+#else
+            documentStream = new FileStream(@"..\..\..\Data\Simple Shapes.pdf", FileMode.OpenOrCreate);
+#endif 
+    }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -77,13 +82,21 @@ namespace PdfViewer
             AnnotationDataFormat annotationDataFormat;
             if (FormatIndex == 0)
             {
-                annotationDataFormat = AnnotationDataFormat.Fdf;              
+                annotationDataFormat = AnnotationDataFormat.Fdf;
+#if NETFRAMEWORK
                 pdfViewerControl.ExportAnnotations(@"../../Data/Exported Annotations.fdf", annotationDataFormat);
+#else
+                pdfViewerControl.ExportAnnotations(@"../../../Data/Exported Annotations.fdf", annotationDataFormat);
+#endif
             }
             else
             {
                 annotationDataFormat = AnnotationDataFormat.XFdf;
+#if NETFRAMEWORK
                 pdfViewerControl.ExportAnnotations(@"../../Data/Exported Annotations.xfdf", annotationDataFormat);
+#else
+                pdfViewerControl.ExportAnnotations(@"../../../Data/Exported Annotations.xfdf", annotationDataFormat);
+#endif
             }
             
         }
@@ -94,12 +107,20 @@ namespace PdfViewer
             if (FormatIndex == 0)
             {
                 annotationDataFormat = AnnotationDataFormat.Fdf;
+#if NETFRAMEWORK
                 pdfViewerControl.ImportAnnotations(@"../../Data/Annotations.fdf", annotationDataFormat);
+#else
+                pdfViewerControl.ImportAnnotations(@"../../../Data/Annotations.fdf", annotationDataFormat);
+#endif
             }
             else
             {
                 annotationDataFormat = AnnotationDataFormat.XFdf;
+#if NETFRAMEWORK
                 pdfViewerControl.ImportAnnotations(@"../../Data/Annotations.xfdf", annotationDataFormat);
+#else
+                pdfViewerControl.ImportAnnotations(@"../../../Data/Annotations.xfdf", annotationDataFormat);
+#endif
             }
             
         }

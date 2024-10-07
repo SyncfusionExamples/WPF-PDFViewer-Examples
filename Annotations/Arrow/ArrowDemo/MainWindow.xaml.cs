@@ -18,8 +18,11 @@ namespace PDFViewerNuget
             InitializeComponent();
 
             //load your PDF file.
+#if NETFRAMEWORK
+            pdfViewer.Load("../../../../../PDF/HTTP Succinctly.pdf");
+#else
             pdfViewer.Load("../../../../../../PDF/HTTP Succinctly.pdf");
-            
+#endif
             // wire the shape annotation changed event
             pdfViewer.ShapeAnnotationChanged += PdfViewer_ShapeAnnotationChanged;
         }
