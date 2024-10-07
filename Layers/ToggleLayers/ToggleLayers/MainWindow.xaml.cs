@@ -1,5 +1,4 @@
 ﻿using Syncfusion.Windows.PdfViewer;
-using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace ToggleLayers

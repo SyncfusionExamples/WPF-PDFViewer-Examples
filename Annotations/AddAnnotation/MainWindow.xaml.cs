@@ -4,7 +4,6 @@ using Syncfusion.Pdf.Parsing;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace WpfPDFViewer
@@ -19,9 +18,9 @@ namespace WpfPDFViewer
             InitializeComponent();
             //Loads the document in PDF Viewer
 #if NETFRAMEWORK
-            pdfViewer.Load("../../Data/F Sharp Succinctly.pdf");
+            pdfViewer.Load("../../Data/F#.pdf");
 #else
-            pdfViewer.Load("../../../Data/F Sharp Succinctly.pdf");
+            pdfViewer.Load("../../../Data/F#.pdf");
 #endif
         }
 

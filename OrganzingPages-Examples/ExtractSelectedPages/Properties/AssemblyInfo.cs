@@ -9,9 +9,6 @@ using System.Windows;
 // associated with an assembly.
 
 [assembly: AssemblyDescription("")]
-
-
-
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

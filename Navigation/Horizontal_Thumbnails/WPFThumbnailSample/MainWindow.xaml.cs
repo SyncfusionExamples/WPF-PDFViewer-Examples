@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Runtime.InteropServices;
 
 namespace WPFThumbnailSample
 {

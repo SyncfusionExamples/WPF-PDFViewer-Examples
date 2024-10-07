@@ -1,5 +1,4 @@
 ﻿using Syncfusion.Pdf.Parsing;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
 

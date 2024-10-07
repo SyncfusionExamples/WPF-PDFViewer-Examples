@@ -2,7 +2,6 @@
 using Syncfusion.Pdf.Parsing;
 using Syncfusion.Windows.PdfViewer;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace PdfViewer

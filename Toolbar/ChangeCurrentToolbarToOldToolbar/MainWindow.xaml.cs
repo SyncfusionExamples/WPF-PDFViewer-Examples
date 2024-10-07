@@ -34,9 +34,9 @@ namespace customized_toolbar_sample
         {
             InitializeComponent();
 #if NETFRAMEWORK
-            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../Data/F Sharp Succinctly.pdf");
+            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../Data/F#.pdf");
 #else
-            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../../Data/F Sharp Succinctly.pdf");
+            PdfLoadedDocument pdfLoadedDocument = new PdfLoadedDocument(@"../../../Data/F#.pdf");
 #endif
             pdfViewer.Load(pdfLoadedDocument);
         }

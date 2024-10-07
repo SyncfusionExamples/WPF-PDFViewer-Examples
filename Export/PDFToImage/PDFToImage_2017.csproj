@@ -41,10 +41,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <packageReference Include="Syncfusion.Compression.Base" version="*" />
-    <packageReference Include="Syncfusion.Pdf.Base" version="*" />
     <packageReference Include="Syncfusion.PdfViewer.Wpf" version="*" />
-    <packageReference Include="Syncfusion.Shared.Wpf" version="*" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
