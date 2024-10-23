@@ -22,7 +22,11 @@ namespace UriAnnotation
         public MainWindow()
         {
             InitializeComponent();
-            docView.Load("../../../../../PDF/HTTP Succinctly.pdf");
+#if NETFRAMEWORK
+             docView.Load("../../../../../PDF/HTTP Succinctly.pdf");
+#else
+             docView.Load( "../../../../../../PDF/HTTP Succinctly.pdf");
+#endif
         }
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {

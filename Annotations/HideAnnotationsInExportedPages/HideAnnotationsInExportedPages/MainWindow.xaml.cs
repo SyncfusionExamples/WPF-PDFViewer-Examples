@@ -26,7 +26,12 @@ namespace HideAnnotationsInExportedPages
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewerControl.Load("../../Data/JavaScript Succinctly.pdf");
+#else
+             pdfViewerControl.Load("../../../Data/JavaScript Succinctly.pdf");
+#endif
+          
         }
         private void ExportAsImage_Click(object sender, RoutedEventArgs e)
         {
@@ -45,7 +50,13 @@ namespace HideAnnotationsInExportedPages
             //Export pdf pages without annotations
             BitmapSource[] image = pdfViewerControl.ExportAsImage(0, pagecount - 1);
             //Set up the output path
-            string output = @"..\..\Data\Image";
+            string output;
+
+#if NETFRAMEWORK
+                output = "../../Data/Image";
+#else
+                output = "../../../Data/Image";
+#endif
             if (image != null)
             {
                 for (int i = 0; i < image.Length; i++)

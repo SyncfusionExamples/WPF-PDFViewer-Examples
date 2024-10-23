@@ -35,9 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.PdfToImageConverter.Base, Version=23.1460.36.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.PdfToImageConverter.WinForms.23.1.36\lib\net46\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
-    </Reference>
+    <packageReference Include="Syncfusion.PdfToImageConverter.Base" version="*"/>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -89,8 +87,6 @@
   <Import Project="..\packages\Syncfusion.PdfToImageConverter.WinForms.23.1.36\build\net46\Syncfusion.PdfToImageConverter.WinForms.targets" Condition="Exists('..\packages\Syncfusion.PdfToImageConverter.WinForms.23.1.36\build\net46\Syncfusion.PdfToImageConverter.WinForms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Syncfusion.PdfToImageConverter.WinForms.23.1.36\build\net46\Syncfusion.PdfToImageConverter.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Syncfusion.PdfToImageConverter.WinForms.23.1.36\build\net46\Syncfusion.PdfToImageConverter.WinForms.targets'))" />
   </Target>
 </Project>

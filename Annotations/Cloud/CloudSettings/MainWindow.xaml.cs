@@ -14,7 +14,11 @@ namespace PDFViewerNuget
         {
             InitializeComponent();
             //load the PDF file
+#if NETFRAMEWORK
+            pdfViewer.Load("../../Data/Empty.pdf");
+#else
             pdfViewer.Load("../../../Data/Empty.pdf");
+#endif
             // wire the shape annotation changed event
             pdfViewer.ShapeAnnotationChanged += PdfViewer_ShapeAnnotationChanged;
         }
