@@ -1,0 +1,15 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bookmark_Navigation"
+        xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" x:Class="Bookmark_Navigation.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized" Height="450" Width="800">
+    <Grid>
+
+        <PdfViewer:PdfViewerControl Name="pdfViewer"/>
+
+    </Grid>
+</Window>
