@@ -2,35 +2,18 @@
 
 ## Steps to create images from PDF in ASP.NET Core
 
-Step 1: Create a new C# ASP.NET Core Web Application project.
+Step 1: Create a new .NET Console application.
 
-Step 2: Select Web Application pattern (Model-View-Controller) for the project.
+Step 2: Install the [Syncfusion.PdfToImageConverter.Net](https://www.nuget.org/packages/Syncfusion.PdfToImageConverter.Net/) [NuGet package]
 
-Step 3: Install the [Syncfusion.Pdf.Net.Core](https://www.nuget.org/packages/Syncfusion.PdfToImageConverter.Net/) [NuGet package](https://help.syncfusion.com/document-processing/nuget-packages) as reference to your ASP.NET Core applications from [NuGet.org](https://www.nuget.org/).
+Step 3: Add the Data folder and Output folder  parallel to the Program.cs file.Data folder will hold the PDF files that you want to convert.Output Folder will store the resulting image files after conversion.
 
-Step 4: A default controller with name HomeController.cs gets added on creation of ASP.NET Core project. Include the following namespaces in that HomeController.cs file.
-
+Step 4: Add the following namespaces and code in application Programe.cs file.
 
 ```
 using Syncfusion.PdfToImageConverter;
 using System.IO;
-```
 
-Step 5: A default action method named Index will be present in HomeController.cs. Right click on Index method and select Go To View where you will be directed to its associated view page Index.cshtml. Add a new button in the Index.cshtml as shown below.
-
-```
-@{Html.BeginForm("CreateImage", "Home", FormMethod.Get);
-    {
-        <div>
-            <input type="submit" value="Create PDF to Image" style="width:200px;height:27px" />
-        </div>
-    }
-    Html.EndForm();
-}
-```
-
-Step 6: Add a new action method named ``CreateImage`` in HomeController.cs file and include the below code example to generate a image from PDF document using the PdfToImageConverter.
-```
 //Initialize PDF to Image converter.
 PdfToImageConverter imageConverter = new PdfToImageConverter();
 
@@ -54,3 +37,4 @@ using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"Output/Ou
 //Dispose the imageConverter
 imageConverter.Dispose();
 ```
+Step 5 : Run the application, and the images will be saved in the Output folder.
