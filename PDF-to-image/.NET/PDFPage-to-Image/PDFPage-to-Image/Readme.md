@@ -1,6 +1,8 @@
-# Create or Generate images from PDF in ASP.NET Core
+# Create or Generate images from PDF in .NET application
 
-## Steps to create images from PDF in ASP.NET Core
+This Syncfusion® PDF to image converter library allows converting PDF documents to images without opening the document.Plaese refer [PdfToImageConverter](https://help.syncfusion.com/document-processing/pdf/conversions/pdf-to-image/net/convert-pdf-to-image) documentation.
+
+## Steps to create images from PDF in .NET application
 
 Step 1: Create a new .NET Console application.
 
@@ -38,3 +40,5 @@ using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"Output/Ou
 imageConverter.Dispose();
 ```
 Step 5 : Run the application, and the images will be saved in the Output folder.
+
+You can download a complete working sample from [GitHub](https://github.com/SyncfusionExamples/WPF-PDFViewer-Examples/tree/master/PDF-to-image/.NET/PDFPage-to-Image)
