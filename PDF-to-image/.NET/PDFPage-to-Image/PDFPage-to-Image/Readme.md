@@ -1,6 +1,6 @@
 # Create or Generate images from PDF in .NET application
 
-This Syncfusion® PDF to image converter library allows converting PDF documents to images without opening the document.Plaese refer [PdfToImageConverter](https://help.syncfusion.com/document-processing/pdf/conversions/pdf-to-image/net/convert-pdf-to-image) documentation.
+This Syncfusion® PDF to image converter library allows converting PDF documents to images without opening the document.Plaese refer [PdfToImageConverter](https://help.syncfusion.com/document-processing/pdf/conversions/pdf-to-image/net/convert-pdf-to-image) documentation. 
 
 ## Steps to create images from PDF in .NET application
 
