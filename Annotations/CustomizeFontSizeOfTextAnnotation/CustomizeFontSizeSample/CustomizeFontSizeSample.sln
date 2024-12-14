@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomizeFontSizeSample", "CustomizeFontSizeSample.csproj", "{A263C8D9-D9AD-416A-B127-F98C84642E6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A263C8D9-D9AD-416A-B127-F98C84642E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A263C8D9-D9AD-416A-B127-F98C84642E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A263C8D9-D9AD-416A-B127-F98C84642E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A263C8D9-D9AD-416A-B127-F98C84642E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40110A29-E4A3-41A1-9266-14A1A71644BF}
+	EndGlobalSection
+EndGlobal
