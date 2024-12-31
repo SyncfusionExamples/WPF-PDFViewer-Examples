@@ -12,7 +12,11 @@ namespace CustomizeFontSizeSample
         public MainWindow()
         {
             InitializeComponent();
+#if NETCOREAPP
+            pdfViewer.Load("../../../../../../PDF/HTTP Succinctly.pdf");
+#else
             pdfViewer.Load("../../../../../PDF/HTTP Succinctly.pdf");
+#endif
             pdfViewer.Loaded += pdfViewer_Loaded;
         }
         private void pdfViewer_Loaded(object sender, RoutedEventArgs e)
