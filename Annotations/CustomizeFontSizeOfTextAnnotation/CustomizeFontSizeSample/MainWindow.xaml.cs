@@ -12,6 +12,7 @@ namespace CustomizeFontSizeSample
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
 #if NETCOREAPP
             pdfViewer.Load("../../../../../../PDF/HTTP Succinctly.pdf");
 #else
