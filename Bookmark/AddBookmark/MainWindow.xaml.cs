@@ -15,7 +15,11 @@ namespace AddBookmark
         public MainWindow()
         {
             InitializeComponent();
+#if NETCOREAPP
+            pdfViewer.Load("../../../../../PDF/HTTP Succinctly.pdf");
+#else
             pdfViewer.Load("../../../../PDF/HTTP Succinctly.pdf");
+#endif
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
