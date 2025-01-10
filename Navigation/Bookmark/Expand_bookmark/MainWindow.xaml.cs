@@ -22,6 +22,7 @@ namespace Bookmark_Navigation
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             //Expands the bookmark panel
             pdfViewer.BookmarkSettings.IsExpanded = true;
             //Loads the PDF document

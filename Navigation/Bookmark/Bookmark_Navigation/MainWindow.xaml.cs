@@ -24,6 +24,7 @@ namespace Bookmark_Navigation
         public MainWindow()
         {
             InitializeComponent();
+            this.WindowState = WindowState.Maximized;
             //Wire the DocumentLoaded event of PDF Viewer
             pdfViewer.DocumentLoaded += PdfViewer_DocumentLoaded;
 
