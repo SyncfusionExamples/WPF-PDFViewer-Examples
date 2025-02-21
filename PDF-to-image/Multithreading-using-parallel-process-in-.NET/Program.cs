@@ -20,7 +20,7 @@ namespace Multithreading_using_parallel_process
         //Open and save a PDF document using multi-threading.
         static void ConvertPdfToImage(int count)
         {
-            using (FileStream inputStream = new FileStream(@"Data/Input.pdf", FileMode.Open, FileAccess.Read))
+            using (FileStream inputStream = new FileStream(@"../../../Data/Input.pdf", FileMode.Open, FileAccess.Read))
             {
                 //Load an existing PDF document.
                 using (PdfToImageConverter imageConverter = new PdfToImageConverter(inputStream))

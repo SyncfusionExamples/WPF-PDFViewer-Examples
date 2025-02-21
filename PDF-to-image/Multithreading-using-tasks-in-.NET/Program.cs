@@ -21,7 +21,7 @@ namespace Multithreading_using_tasks
         //Open a PDF document and save image using multi-threading.
         static void ConvertPdfToImage()
         {
-            using (FileStream inputStream = new FileStream(@"Data/Input.pdf", FileMode.Open, FileAccess.Read))
+            using (FileStream inputStream = new FileStream(@"../../../Data/Input.pdf", FileMode.Open, FileAccess.Read))
             {
                 //Load an existing PDF document.
                 using (PdfToImageConverter imageConverter = new PdfToImageConverter(inputStream))
@@ -32,7 +32,7 @@ namespace Multithreading_using_tasks
                     outputStream.Position = 0;
 
                     //Create file stream.
-                    using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"Output/Output" + Guid.NewGuid().ToString() + ".jpeg"), FileMode.Create, FileAccess.ReadWrite))
+                    using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"../../../Output/Output" + Guid.NewGuid().ToString() + ".jpeg"), FileMode.Create, FileAccess.ReadWrite))
                     {
                         //Save the image to file stream.
                         outputStream.CopyTo(outputFileStream);
