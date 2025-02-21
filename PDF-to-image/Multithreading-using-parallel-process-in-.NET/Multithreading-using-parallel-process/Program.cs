@@ -1,25 +1,24 @@
 ﻿using Syncfusion.PdfToImageConverter;
 
-namespace Multithreading_using_tasks
+namespace Multithreading_using_parallel_process
 {
     class MultiThreading
     {
-        //Indicates the number of threads to be create.
-        private const int TaskCount = 1000;
-        public static async Task Main()
+        static void Main(string[] args)
         {
-            //Create an array of tasks based on the TaskCount.
-            Task[] tasks = new Task[TaskCount];
-            for (int i = 0; i < TaskCount; i++)
+            //Indicates the number of threads to be create.
+            int limit = 5;
+            Console.WriteLine("Parallel For Loop");
+            Parallel.For(0, limit, count =>
             {
-                tasks[i] = Task.Run(() => OpenPDFAndSaveImage());
-            }
-            //Ensure all tasks complete by waiting on each task.
-            await Task.WhenAll(tasks);
+                Console.WriteLine("Task {0} started", count);
+                //Create multiple PDF document, one document on each thread.
+                OpenPDFAndSaveImage(count);
+                Console.WriteLine("Task {0} is done", count);
+            });
         }
-
-        //Open a PDF document and save image using multi-threading.
-        static void OpenPDFAndSaveImage()
+        //Open and save a PDF document using multi-threading.
+        static void OpenPDFAndSaveImage(int count)
         {
             using (FileStream inputStream = new FileStream(@"Data/Input.pdf", FileMode.Open, FileAccess.Read))
             {
@@ -32,7 +31,7 @@ namespace Multithreading_using_tasks
                     outputStream.Position = 0;
 
                     //Create file stream.
-                    using (FileStream outputFileStream = new FileStream(Path.GetFullPath(@"Output/Output" + Guid.NewGuid().ToString() + ".jpeg"), FileMode.Create, FileAccess.ReadWrite))
+                    using (FileStream outputFileStream = new FileStream("Output" + count + ".jpeg", FileMode.Create, FileAccess.Write))
                     {
                         //Save the image to file stream.
                         outputStream.CopyTo(outputFileStream);
