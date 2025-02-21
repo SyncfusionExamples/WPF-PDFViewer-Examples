@@ -13,12 +13,12 @@ namespace Multithreading_using_parallel_process
             {
                 Console.WriteLine("Task {0} started", count);
                 //Create multiple PDF document, one document on each thread.
-                OpenPDFAndSaveImage(count);
+                ConvertPdfToImage(count);
                 Console.WriteLine("Task {0} is done", count);
             });
         }
         //Open and save a PDF document using multi-threading.
-        static void OpenPDFAndSaveImage(int count)
+        static void ConvertPdfToImage(int count)
         {
             using (FileStream inputStream = new FileStream(@"Data/Input.pdf", FileMode.Open, FileAccess.Read))
             {

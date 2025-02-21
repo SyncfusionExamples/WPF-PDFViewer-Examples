@@ -12,14 +12,14 @@ namespace Multithreading_using_tasks
             Task[] tasks = new Task[TaskCount];
             for (int i = 0; i < TaskCount; i++)
             {
-                tasks[i] = Task.Run(() => OpenPDFAndSaveImage());
+                tasks[i] = Task.Run(() => ConvertPdfToImage());
             }
             //Ensure all tasks complete by waiting on each task.
             await Task.WhenAll(tasks);
         }
 
         //Open a PDF document and save image using multi-threading.
-        static void OpenPDFAndSaveImage()
+        static void ConvertPdfToImage()
         {
             using (FileStream inputStream = new FileStream(@"Data/Input.pdf", FileMode.Open, FileAccess.Read))
             {
