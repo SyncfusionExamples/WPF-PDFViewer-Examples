@@ -27,7 +27,12 @@ namespace BatchPrinting
         {
             char[] charSplitter = new char[] { '/' };
             // Get the PDF files from the directory
+#if NETFRAMEWORK
             files = Directory.GetFiles("../../Data/", "*.pdf");
+#else
+            files = Directory.GetFiles("../../../Data", "*.pdf");
+#endif
+           
             foreach (string file in files)
             {
                 //Splitting the filename from the file path

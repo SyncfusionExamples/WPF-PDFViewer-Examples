@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net8.0-Windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AssemblyName>PdfViewerDemo</AssemblyName>
@@ -14,6 +14,6 @@
     <DefineConstants>TRACE;NETCORE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="18.1.0.52" />
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
   </ItemGroup>
 </Project>

@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Bookmark_Navigation
 {
@@ -24,7 +23,11 @@ namespace Bookmark_Navigation
         {
             InitializeComponent();
             //Loads the PDF document
+#if NETFRAMEWORK
             pdfViewer.Load("../../../Data/HTTP_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../../Data/HTTP_Succinctly.pdf");
+#endif
             //Navigates to hyperlink page
             pdfViewer.GotoPage(13);
         }

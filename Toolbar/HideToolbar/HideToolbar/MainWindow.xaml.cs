@@ -15,7 +15,11 @@ namespace PdfViewerWPF
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewer.Load("../../Data/F Sharp Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../Data/F Sharp Succinctly.pdf");
+#endif
             HideHorizontalToolbar();
             HideVerticalToolbar();
         }

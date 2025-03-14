@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Bookmark_Navigation
 {
@@ -26,7 +25,12 @@ namespace Bookmark_Navigation
             //Expands the bookmark panel
             pdfViewer.BookmarkSettings.IsExpanded = true;
             //Loads the PDF document
+#if NETFRAMEWORK
             pdfViewer.Load("../../../Data/PDF_Succinctly.pdf");
+#else
+            pdfViewer.Load("../../../../Data/PDF_Succinctly.pdf");
+#endif
+            
         }
     }
 }

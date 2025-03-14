@@ -27,7 +27,11 @@ namespace sample
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK 
             pdfViewer.Load(@"../../Data/PDF_Succinctly.pdf");
+#else
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#endif           
             pdfViewer.KeyDown += PdfViewer_KeyDown;
         }
         private void PdfViewer_KeyDown(object sender, KeyEventArgs e)

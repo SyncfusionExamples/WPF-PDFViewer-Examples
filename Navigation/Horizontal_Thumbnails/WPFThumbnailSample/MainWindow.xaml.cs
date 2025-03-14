@@ -15,7 +15,12 @@ namespace WPFThumbnailSample
         public MainWindow()
         {
             InitializeComponent();
+#if NETFRAMEWORK
             pdfViewerControl.Load(@"../../Data/JavaScript Succinctly.pdf");
+#else
+            pdfViewerControl.Load(@"../../../Data/JavaScript Succinctly.pdf");
+#endif
+            
             //Rise PdfViewer document loaded event
             pdfViewerControl.DocumentLoaded += PdfViewerControl_DocumentLoaded;
             //Rise PdfViewer document unloaded event

@@ -26,7 +26,11 @@ namespace CustomizeThemesToolbar
         public MainWindow()
         {
             InitializeComponent();
-            pdfViewer.Load("../../Data/Barcode.pdf");
+#if NETCOREAPP
+            pdfViewer.Load("../../../Data/Barcode.pdf");
+#else
+			pdfViewer.Load("../../Data/Barcode.pdf");
+#endif
         }
         private void FluentLight(object sender, RoutedEventArgs e)
         {
