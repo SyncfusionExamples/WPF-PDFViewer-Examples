@@ -340,7 +340,6 @@
                                 Width="60"
                                 HorizontalAlignment="Left"
                                 syncfusion:Ribbon.KeyTip="Y"
-                                
                                 Foreground="#666666"
                                 Label="Zoom In"
                                 SizeForm="Large"
@@ -369,7 +368,6 @@
                                 Width="60"
                                 HorizontalAlignment="Left"
                                 syncfusion:Ribbon.KeyTip="X"
-                                
                                 Foreground="#666666"
                                 Label="Zoom Out"
                                 SizeForm="Large"

@@ -151,8 +151,6 @@ namespace syncfusion.pdfviewerdemos.wpf
             UnWireEvents();
             m_customToolbarWindow.pdfviewer.ShowToolbar = true;
             m_customToolbarWindow.pdfviewer.Unload(true);
-          
-
         }
 
         /// <summary>
@@ -253,7 +251,6 @@ namespace syncfusion.pdfviewerdemos.wpf
                 
             }
         }
-        
 
         private void FitPage_Click(object sender, RoutedEventArgs e)
         {
@@ -266,7 +263,6 @@ namespace syncfusion.pdfviewerdemos.wpf
                    m_customToolbarWindow.ZoomOut.IsEnabled = false;
                 m_customToolbarWindow.FitWidth.IsEnabled = true;
                 m_customToolbarWindow.FitPage.IsEnabled = false;
-               
             }
         }
 
@@ -284,6 +280,7 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.FitPage.IsEnabled = true;
             }
         }
+
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
@@ -306,10 +303,8 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.FitPage.IsEnabled = true;
                 if(currentZoom >= zoomLevels[0])
                    m_customToolbarWindow.ZoomOut.IsEnabled = true;
-               
             }
         }
-
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
@@ -490,6 +485,7 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.Next.IsEnabled = true;
             }
         }
+
         private void ZoomComboBox_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox zoomBox = sender as ComboBox;
