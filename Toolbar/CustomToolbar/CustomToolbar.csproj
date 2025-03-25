@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -31,43 +31,15 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.Compression.Base">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Compression.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Licensing">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Licensing.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Pdf.Base">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Pdf.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.PdfViewer.WPF">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.PdfViewer.WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.SfSkinManager.WPF">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.SfSkinManager.WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Shared.Wpf">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Shared.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Themes.Office2019Colorful.WPF">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Themes.Office2019Colorful.WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.Tools.WPF">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Assemblies\Syncfusion.Tools.WPF.dll</HintPath>
-    </Reference>
+     <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
+	 <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="*"/>
+    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="*"/>
+	 <PackageReference Include="Syncfusion.Tools.WPF" Version="*"/>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Controls.Ribbon" />
@@ -122,6 +94,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\F# Succinctly.pdf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,39 +104,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icon\Data-Find.png" />
-    <Resource Include="Icon\Fit-To-Size.png" />
-    <Resource Include="Icon\Folder-Open-01.png" />
-    <Resource Include="Icon\Folder-Open.png" />
-    <Resource Include="Icon\Icons_Backward.png" />
-    <Resource Include="Icon\Icons_FitPage.png" />
-    <Resource Include="Icon\Icons_FitWidth.png" />
-    <Resource Include="Icon\Icons_Forward.png" />
-    <Resource Include="Icon\Icons_Front.png" />
-    <Resource Include="Icon\Icons_Last.png" />
-    <Resource Include="Icon\Icons_Open.png" />
-    <Resource Include="Icon\Icons_Print.png" />
-    <Resource Include="Icon\Icons_Save.png" />
-    <Resource Include="Icon\Icons_Search.png" />
-    <Resource Include="Icon\Icons_Stamp.png" />
-    <Resource Include="Icon\Icons_Zoom In.png" />
-    <Resource Include="Icon\Icons_Zoom Out.png" />
-    <Resource Include="Icon\Media Fast-forward.png" />
-    <Resource Include="Icon\Media Next.png" />
-    <Resource Include="Icon\Media Previous.png" />
-    <Resource Include="Icon\Media Rewind.png" />
-    <Resource Include="Icon\Open32.png" />
-    <Resource Include="Icon\OpenFile.png" />
-    <Resource Include="Icon\openHS.png" />
-    <Resource Include="Icon\PrintArea.png" />
-    <Resource Include="Icon\Printer New.png" />
-    <Resource Include="Icon\PrintHS.png" />
-    <Resource Include="Icon\Save As.png" />
-    <Resource Include="Icon\SaveAs32.png" />
-    <Resource Include="Icon\saveHS.png" />
-    <Resource Include="Icon\Scale-To-Fit.png" />
-    <Resource Include="Icon\Zoom-In.png" />
-    <Resource Include="Icon\Zoom-Out.png" />
+    <Resource Include="Data\PdfViewer\Approved.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

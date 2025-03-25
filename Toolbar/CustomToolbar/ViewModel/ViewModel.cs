@@ -14,11 +14,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Resources;
-using System.Windows.Threading;
+
 
 namespace syncfusion.pdfviewerdemos.wpf
 {
@@ -34,8 +34,7 @@ namespace syncfusion.pdfviewerdemos.wpf
         CustomToolBar m_customToolbarWindow = null;
         private string m_fileName;
         private string m_selectedItem;
-       private int[] zoomLevels = { 50, 75, 100, 125, 150, 200, 400 };
-        string folderPath = "../../Data/";
+        private int[] zoomLevels = { 50, 75, 100, 125, 150, 200, 400 };
         #endregion
 
         #region Constructor
@@ -44,16 +43,24 @@ namespace syncfusion.pdfviewerdemos.wpf
         /// </summary>
         public CustomToolbarViewModel()
         {
-            m_documentStream =  folderPath+ "F# Succinctly.pdf";
+#if FRAMEWORK
+            m_documentStream = "../../Data/F# Succinctly.pdf";
+#else
+            m_documentStream = "../../../Data/F# Succinctly.pdf";
+#endif
         }
 
         private Stream GetFileStream(string fileName)
         {
-            FileStream stream = new FileStream(folderPath + fileName, FileMode.Open);
-            return stream;
+#if FRAMEWORK
+            FileStream stream = new FileStream("../../Data/" + fileName, FileMode.Open);
+#else
+             FileStream stream = new FileStream("../../../Data/" + fileName, FileMode.Open);
+#endif
+        return stream;
         }
 
-        #endregion
+#endregion
 
         #region Properties
 
@@ -272,7 +279,7 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.ZoomIn.IsEnabled = true;
                 m_customToolbarWindow.ZoomOut.IsEnabled = true;
                 if(m_customToolbarWindow.pdfviewer.ZoomPercentage >= m_customToolbarWindow.pdfviewer.MaximumZoomPercentage)
-                    m_customToolbarWindow.ZoomOut.IsEnabled = false;
+                    m_customToolbarWindow.ZoomIn.IsEnabled = false;
                 m_customToolbarWindow.FitWidth.IsEnabled = false;
                 m_customToolbarWindow.FitPage.IsEnabled = true;
             }
@@ -333,7 +340,8 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
                 m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
                 m_customToolbarWindow.FitWidth.IsEnabled = true;
-                m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                if (currentZoom <= zoomLevels[6])
+                    m_customToolbarWindow.ZoomIn.IsEnabled = true;
             }
         }
 
