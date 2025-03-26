@@ -618,7 +618,6 @@ namespace syncfusion.pdfviewerdemos.wpf
         /// <summary>
         /// Wires up event handlers for various UI elements in the custom toolbar, 
         /// </summary>
-
          private void WireUpEvents()
          {
             m_customToolbarWindow.Save.Click += new RoutedEventHandler(Save_Click);
@@ -634,7 +633,6 @@ namespace syncfusion.pdfviewerdemos.wpf
         /// <summary>
         /// UnWire the event handlers from various UI elements in the custom toolbar 
         /// </summary>
-
         private void UnWireEvents()
         {
             m_customToolbarWindow.Save.Click -= new RoutedEventHandler(Save_Click);
