@@ -84,7 +84,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             }
         }
         /// <summary>
-        /// Gets or sets the selected item.
+        /// Gets or sets the Zoom combo box selected item.
         /// </summary>
         public string SelectedItem
         {
@@ -186,7 +186,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             }
         }
         /// <summary>
-        /// Opens a file dialog to select a PDF file, loads the selected document into the PDF viewer, 
+        /// Handles the open file dialog to load a PDF document into the viewer.
         /// </summary>
         /// <param name="sender">The button that triggered the event.</param>
         /// <param name="e">Event data for the RoutedEventArgs.</param>
@@ -255,29 +255,32 @@ namespace syncfusion.pdfviewerdemos.wpf
             if (selectedItem != null)
             {
                 string[] zoomPercentage = selectedItem.ToString().Split(':');
-
-                if (zoomPercentage[1] != "" && m_customToolbarWindow.ZoomComboBox.IsDropDownOpen)
+                if (zoomPercentage.Length > 1)
                 {
-                    m_customToolbarWindow.pdfviewer.ZoomTo(int.Parse(zoomPercentage[1]));
-                    m_customToolbarWindow.ZoomComboBox.Text = m_customToolbarWindow.pdfviewer.ZoomPercentage.ToString();
-                    m_customToolbarWindow.FitWidth.IsEnabled = true;
-                    m_customToolbarWindow.FitPage.IsEnabled = true;
-                    m_customToolbarWindow.ZoomOut.IsEnabled = true;
-                    m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                    string zoomValue = zoomPercentage[1].Trim();
+                    if (!string.IsNullOrEmpty(zoomValue) && m_customToolbarWindow.ZoomComboBox.IsDropDownOpen)
+                    {
+                        m_customToolbarWindow.pdfviewer.ZoomTo(int.Parse(zoomValue));
+                        m_customToolbarWindow.ZoomComboBox.Text = m_customToolbarWindow.pdfviewer.ZoomPercentage.ToString();
+                        m_customToolbarWindow.FitWidth.IsEnabled = true;
+                        m_customToolbarWindow.FitPage.IsEnabled = true;
+                        m_customToolbarWindow.ZoomOut.IsEnabled = true;
+                        m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                    }
+                    if (zoomValue.Equals(zoomLevels[0].ToString()))
+                    {
+                        m_customToolbarWindow.ZoomOut.IsEnabled = false;
+                        m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                    }
+                    if (zoomValue.Equals(zoomLevels[6].ToString()))
+                    {
+                        m_customToolbarWindow.ZoomOut.IsEnabled = true;
+                        m_customToolbarWindow.ZoomIn.IsEnabled = false;
+                    }
                 }
-                if (zoomPercentage[1].Equals(" 50"))
-                {
-                    m_customToolbarWindow.ZoomOut.IsEnabled = false;
-                    m_customToolbarWindow.ZoomIn.IsEnabled = true;
-                }
-                if (zoomPercentage[1].Equals(" 400"))
-                {
-                   m_customToolbarWindow.ZoomOut.IsEnabled = true;
-                   m_customToolbarWindow.ZoomIn.IsEnabled = false;
-                }
-                
             }
         }
+
         /// <summary>
         /// Sets the PDF viewer zoom mode to Fit Page and updates the toolbar controls accordingly. 
         /// </summary>
@@ -326,7 +329,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
             {
                 int currentZoom = m_customToolbarWindow.pdfviewer.ZoomPercentage;
-                int nextZoom =0 ;
+                int nextZoom = -1;
                 int currentIndex = Array.IndexOf(zoomLevels, currentZoom);
                 if (currentIndex != -1)
                 {
@@ -346,7 +349,7 @@ namespace syncfusion.pdfviewerdemos.wpf
                         }
                     }
                 }
-                if(nextZoom !=0)
+                if(nextZoom != -1)
                 {
                     m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
                     m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
@@ -368,7 +371,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
             {
                 int currentZoom = m_customToolbarWindow.pdfviewer.ZoomPercentage;
-                int nextZoom = 0;
+                int nextZoom = -1;
                 int currentIndex = Array.IndexOf(zoomLevels, currentZoom);
                 if (currentIndex != -1)
                 {
@@ -389,7 +392,7 @@ namespace syncfusion.pdfviewerdemos.wpf
                     }
 
                 }
-                if (nextZoom != 0)
+                if (nextZoom != -1)
                 {
                     m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
                     m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
@@ -596,23 +599,26 @@ namespace syncfusion.pdfviewerdemos.wpf
                 string zoomEntered = zoomBox.Text;
                 int magnificationValue;
                 int.TryParse(zoomEntered, out magnificationValue);
-                int minimumZoomPercentage = m_customToolbarWindow.pdfviewer.MinimumZoomPercentage;
-                int maximumZoomPercentage = m_customToolbarWindow.pdfviewer.MaximumZoomPercentage;
+                if (magnificationValue != 0)
+                {
+                    int minimumZoomPercentage = m_customToolbarWindow.pdfviewer.MinimumZoomPercentage;
+                    int maximumZoomPercentage = m_customToolbarWindow.pdfviewer.MaximumZoomPercentage;
 
-                if (magnificationValue < minimumZoomPercentage)
-                    magnificationValue = minimumZoomPercentage;
-                if (magnificationValue > maximumZoomPercentage)
-                    magnificationValue = maximumZoomPercentage;
-                if (magnificationValue > minimumZoomPercentage && !m_customToolbarWindow.ZoomOut.IsEnabled)
-                    m_customToolbarWindow.ZoomOut.IsEnabled = true;
-                if (magnificationValue < maximumZoomPercentage && !m_customToolbarWindow.ZoomIn.IsEnabled)
-                    m_customToolbarWindow.ZoomIn.IsEnabled = true;
-                m_customToolbarWindow.FitWidth.IsEnabled = true;
-                m_customToolbarWindow.FitPage.IsEnabled = true;
+                    if (magnificationValue < minimumZoomPercentage)
+                        magnificationValue = minimumZoomPercentage;
+                    if (magnificationValue > maximumZoomPercentage)
+                        magnificationValue = maximumZoomPercentage;
+                    if (magnificationValue > minimumZoomPercentage && !m_customToolbarWindow.ZoomOut.IsEnabled)
+                        m_customToolbarWindow.ZoomOut.IsEnabled = true;
+                    if (magnificationValue < maximumZoomPercentage && !m_customToolbarWindow.ZoomIn.IsEnabled)
+                        m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                    m_customToolbarWindow.FitWidth.IsEnabled = true;
+                    m_customToolbarWindow.FitPage.IsEnabled = true;
 
-                m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
-                m_customToolbarWindow.pdfviewer.ZoomTo(magnificationValue);
-                m_customToolbarWindow.ZoomComboBox.Text = magnificationValue.ToString();
+                    m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
+                    m_customToolbarWindow.pdfviewer.ZoomTo(magnificationValue);
+                    m_customToolbarWindow.ZoomComboBox.Text = magnificationValue.ToString();
+                }
             }
         }
         /// <summary>
