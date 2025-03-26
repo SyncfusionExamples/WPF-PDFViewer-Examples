@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+   
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
+	 <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="*" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="*" />
+	<PackageReference Include="Syncfusion.Tools.WPF" Version="*" />
+  </ItemGroup>
+</Project>
