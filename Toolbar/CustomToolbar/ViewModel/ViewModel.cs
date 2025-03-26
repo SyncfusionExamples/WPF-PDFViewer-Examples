@@ -28,7 +28,7 @@ namespace syncfusion.pdfviewerdemos.wpf
     public class CustomToolbarViewModel : NotificationObject
     {
         #region Private Members
-        private String m_documentStream;
+        private String m_filePath;
         private RibbonButton m_customStampButton = null;
         private List<Image> m_imageList = new List<Image>();
         CustomToolBar m_customToolbarWindow = null;
@@ -44,11 +44,16 @@ namespace syncfusion.pdfviewerdemos.wpf
         public CustomToolbarViewModel()
         {
 #if FRAMEWORK
-            m_documentStream = "../../Data/F# Succinctly.pdf";
+            m_filePath = "../../Data/F# Succinctly.pdf";
 #else
-            m_documentStream = "../../../Data/F# Succinctly.pdf";
+             m_filePath = "../../../Data/F# Succinctly.pdf";
 #endif
         }
+        /// <summary>
+        /// Opens and returns a file stream for the specified file from the Data directory, 
+        /// </summary>
+        /// <param name="fileName">The name of the file to open.</param>
+        /// <returns>A FileStream for the specified file.</returns>
 
         private Stream GetFileStream(string fileName)
         {
@@ -65,20 +70,22 @@ namespace syncfusion.pdfviewerdemos.wpf
         #region Properties
 
         /// <summary>
-        /// Gets or sets the documnet path.
+        /// Gets or sets the file path.
         /// </summary>
-        public String DocumentStream
+        public String FilePath
         {
             get
             {
-                return m_documentStream;
+                return m_filePath;
             }
             set
             {
-                m_documentStream = value;
+                m_filePath = value;
             }
         }
-
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
         public string SelectedItem
         {
             get
@@ -100,6 +107,8 @@ namespace syncfusion.pdfviewerdemos.wpf
         /// <summary>
         /// Loads PDF on load and initializes controls in custom toolbar.
         /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         public void Loaded(object sender, RoutedEventArgs e)
         {
             m_customToolbarWindow = (sender as CustomToolBar).FindName("ribbonwindow") as CustomToolBar;
@@ -144,6 +153,11 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.ZoomComboBox.SelectedIndex = 2;
             }
         }
+        /// <summary>
+        /// Handles cleanup operations when the custom toolbar window is closed.
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the EventArgs.</param>
         public void Closed(object sender, EventArgs e)
         {
             m_customToolbarWindow.CustomStampContextMenu.PreviewMouseDown -= M_customStampMenu_PreviewMouseDown;
@@ -156,6 +170,8 @@ namespace syncfusion.pdfviewerdemos.wpf
         /// <summary>
         /// Occurs when the window size changed.
         /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the SizeChangedEventArgs.</param>
         public void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (m_customToolbarWindow != null)
@@ -169,7 +185,11 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.Stamp.LauncherButton.Visibility = Visibility.Collapsed;
             }
         }
-
+        /// <summary>
+        /// Opens a file dialog to select a PDF file, loads the selected document into the PDF viewer, 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void BtnOpen_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -201,7 +221,11 @@ namespace syncfusion.pdfviewerdemos.wpf
             }
             m_customToolbarWindow.pdfviewer.CurrentPageChanged += pdfviewer1_CurrentPageChanged;
         }
-
+        /// <summary>
+        /// Saves the loaded PDF document to a user-selected location. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
@@ -222,7 +246,10 @@ namespace syncfusion.pdfviewerdemos.wpf
                 }
             }
         }
-
+        /// <summary>
+        /// Adjusts the PDF viewer zoom level based on the selected zoom percentage 
+        /// </summary>
+        /// <param name="selectedItem">The selected zoom level from the dropdown.</param>
         private void OnItemSelect(string selectedItem)
         {
             if (selectedItem != null)
@@ -251,7 +278,11 @@ namespace syncfusion.pdfviewerdemos.wpf
                 
             }
         }
-
+        /// <summary>
+        /// Sets the PDF viewer zoom mode to Fit Page and updates the toolbar controls accordingly. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void FitPage_Click(object sender, RoutedEventArgs e)
         {
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
@@ -265,7 +296,11 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.FitPage.IsEnabled = false;
             }
         }
-
+        /// <summary>
+        /// Sets the PDF viewer zoom mode to Fit Width and updates the toolbar controls accordingly. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void FitWidth_Click(object sender, RoutedEventArgs e)
         {
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
@@ -280,77 +315,116 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.FitPage.IsEnabled = true;
             }
         }
+        /// <summary>
+        /// Increases the zoom level of the PDF viewer to the next predefined zoom level 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
 
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
             if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
             {
                 int currentZoom = m_customToolbarWindow.pdfviewer.ZoomPercentage;
-                int nextZoom = currentZoom;
-
-                for (int i = 0; i < zoomLevels.Length; i++)
-                {
-                    if (currentZoom < zoomLevels[i])
-                    {
-                        nextZoom = zoomLevels[i];
-                        break;
-                    }
-                }
-                m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
-                m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
-                m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
-                m_customToolbarWindow.FitWidth.IsEnabled = true;
-                m_customToolbarWindow.FitPage.IsEnabled = true;
-                if(currentZoom >= zoomLevels[0])
-                   m_customToolbarWindow.ZoomOut.IsEnabled = true;
-            }
-        }
-
-        private void ZoomOut_Click(object sender, RoutedEventArgs e)
-        {
-            if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
-            {
-                int currentZoom = m_customToolbarWindow.pdfviewer.ZoomPercentage;
-                int nextZoom = currentZoom;
+                int nextZoom =0 ;
                 int currentIndex = Array.IndexOf(zoomLevels, currentZoom);
-                if (currentIndex - 1 >= 0)
+                if (currentIndex != -1)
                 {
-                    nextZoom = zoomLevels[currentIndex-1];
+                    if (currentIndex + 1 < zoomLevels.Length)
+                    {
+                        nextZoom = zoomLevels[currentIndex + 1];
+                    }
                 }
                 else
                 {
                     for (int i = 0; i < zoomLevels.Length; i++)
                     {
-                        if (i + 1 < zoomLevels.Length)
+                        if (currentZoom < zoomLevels[i])
                         {
-                            if (currentZoom >= zoomLevels[i] && currentZoom < zoomLevels[i + 1])
-                            {
-                                nextZoom = zoomLevels[i];
-                                break;
-                            }
+                            nextZoom = zoomLevels[i];
+                            break;
                         }
                     }
                 }
-                m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
-                m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
-                m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
-                m_customToolbarWindow.FitWidth.IsEnabled = true;
-                if (currentZoom <= zoomLevels[6])
-                    m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                if(nextZoom !=0)
+                {
+                    m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
+                    m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
+                    m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
+                    m_customToolbarWindow.FitWidth.IsEnabled = true;
+                    m_customToolbarWindow.FitPage.IsEnabled = true;
+                    if (currentZoom >= m_customToolbarWindow.pdfviewer.MinimumZoomPercentage)
+                        m_customToolbarWindow.ZoomOut.IsEnabled = true;
+                }
             }
         }
+        /// <summary>
+        /// Decreases the zoom level of the PDF viewer to the previous predefined zoom level 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
+        private void ZoomOut_Click(object sender, RoutedEventArgs e)
+        {
+            if (m_customToolbarWindow.pdfviewer.LoadedDocument != null)
+            {
+                int currentZoom = m_customToolbarWindow.pdfviewer.ZoomPercentage;
+                int nextZoom = 0;
+                int currentIndex = Array.IndexOf(zoomLevels, currentZoom);
+                if (currentIndex != -1)
+                {
+                    if (currentIndex - 1 >= 0)
+                    {
+                        nextZoom = zoomLevels[currentIndex - 1];
+                    }
+                }
+                else
+                {
+                    for (int i = zoomLevels.Length - 1; i >= 0; i--)
+                    {
+                        if (currentZoom > zoomLevels[i])
+                        {
+                            nextZoom = zoomLevels[i];
+                            break;
+                        }
+                    }
 
+                }
+                if (nextZoom != 0)
+                {
+                    m_customToolbarWindow.pdfviewer.ZoomTo(nextZoom);
+                    m_customToolbarWindow.ZoomComboBox.Text = nextZoom.ToString();
+                    m_customToolbarWindow.pdfviewer.ZoomMode = Syncfusion.Windows.PdfViewer.ZoomMode.Default;
+                    m_customToolbarWindow.FitWidth.IsEnabled = true;
+                    if (currentZoom <= m_customToolbarWindow.pdfviewer.MaximumZoomPercentage)
+                        m_customToolbarWindow.ZoomIn.IsEnabled = true;
+                }
+            }
+        }
+        /// <summary>
+        /// Opens the text search bar in the PDF viewer. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void FindText_Click(object sender, RoutedEventArgs e)
         {
             m_customToolbarWindow.pdfviewer.ShowTextSearchBar();
         }
+        /// <summary>
+        /// Opens the context menu for custom stamps in the PDF viewer. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
 
         private void CustomStamps_Click(object sender, RoutedEventArgs e)
         {
             m_customStampButton = sender as RibbonButton;
             m_customStampButton.ContextMenu.IsOpen = true;
         }
-
+        /// <summary>
+        /// Allows users to select and add image files as custom stamps in the PDF viewer. 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the RoutedEventArgs.</param>
         private void CustomStampBrowse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
@@ -372,7 +446,10 @@ namespace syncfusion.pdfviewerdemos.wpf
                 MessageBox.Show("Selected image(s) are added to the custom stamps collection.", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
+        /// <summary>
+        /// Creates an Image control from the given file path. 
+        /// </summary>
+        /// <param name="filePath">File path of the document </param>
         private System.Windows.Controls.Image GetImage(string filePath)
         {
             System.Windows.Controls.Image image = new System.Windows.Controls.Image();
@@ -381,9 +458,12 @@ namespace syncfusion.pdfviewerdemos.wpf
             m_imageList.Add(image);
             return image;
         }
-
-        Image GetImageFromFolder(string filePath)
-        {
+        // <summary>
+        /// Creates an Image control from a file in the specified folder. 
+        /// </summary>
+        /// <param name="filePath">File path of the document </param>
+      private Image GetImageFromFolder(string filePath)
+      {
             System.Windows.Controls.Image image = new System.Windows.Controls.Image();
             BitmapImage bitmapImage = new BitmapImage();
             image.Source = bitmapImage;
@@ -394,10 +474,14 @@ namespace syncfusion.pdfviewerdemos.wpf
             ValidateImage(image);
             m_imageList.Add(image);
             return image;
-        }
+      }
+        /// <summary>
+        /// Validates and adjusts the size of the given image.
+        /// </summary>
+        /// <param name="image">The Image control to be validated and resized.</param>
 
-        void ValidateImage(Image image)
-        {
+       private void ValidateImage(Image image)
+       {
             image.Margin = new Thickness(5);
             if (image.Source.Width > 200f || image.Source.Height > 140f)
             {
@@ -415,7 +499,12 @@ namespace syncfusion.pdfviewerdemos.wpf
                     image.Height = image.Source.Height * heightPercentage;
                 }
             }
-        }
+       }
+        /// <summary>
+        /// Handles the selection of a custom stamp image.
+        /// </summary>
+        /// <param name="sender">The source of the event (custom stamp menu).</param>
+        /// <param name="e">Mouse button event arguments.</param>
 
         private void M_customStampMenu_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -445,14 +534,19 @@ namespace syncfusion.pdfviewerdemos.wpf
                 }
             }
         }
-
+        /// <summary>
+        /// Initializes custom stamp functionality by wiring event handlers for stamp selection 
+        /// </summary>
         private void InitializeStamp()
         {
             m_customToolbarWindow.CustomStampContextMenu.PreviewMouseDown += M_customStampMenu_PreviewMouseDown;
             m_customToolbarWindow.BrowseStamp.Click += CustomStampBrowse_Click;
             m_customToolbarWindow.CustomStampContextMenu.Items.Add(GetImageFromFolder("pdfviewer/Approved.png"));
         }
-
+        /// <summary>
+        /// Loads the specified PDF document into the viewer and updates the total page count label.
+        /// </summary>
+        /// <param name="fileName">The name of the file to open.</param>
         private void LoadDocument(string fileName)
         {
             FileInfo info = new FileInfo(fileName);
@@ -460,8 +554,12 @@ namespace syncfusion.pdfviewerdemos.wpf
             m_customToolbarWindow.pdfviewer.Load(fileName);
             m_customToolbarWindow.lblTotalPageCount.Text = m_customToolbarWindow.pdfviewer.PageCount.ToString();
         }
-
-        void pdfviewer1_CurrentPageChanged(object sender, EventArgs args)
+        /// <summary>
+        /// Updates the current page index display and enables or disables navigation buttons 
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the EventArgs.</param>
+         private void pdfviewer1_CurrentPageChanged(object sender, EventArgs args)
         {
             m_customToolbarWindow.txtCurrentPageIndex.Text = m_customToolbarWindow.pdfviewer.CurrentPageIndex.ToString();
             if (m_customToolbarWindow.pdfviewer.CurrentPage == 1)
@@ -485,7 +583,11 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.Next.IsEnabled = true;
             }
         }
-
+        /// <summary>
+        /// Handles the Enter key press in the ZoomComboBox to set the PDF viewer zoom level.
+        /// </summary>
+        /// <param name="sender">The button that triggered the event.</param>
+        /// <param name="e">Event data for the KeyEventArgs.</param>
         private void ZoomComboBox_KeyDown(object sender, KeyEventArgs e)
         {
             ComboBox zoomBox = sender as ComboBox;
@@ -513,9 +615,12 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.ZoomComboBox.Text = magnificationValue.ToString();
             }
         }
+        /// <summary>
+        /// Wires up event handlers for various UI elements in the custom toolbar, 
+        /// </summary>
 
-        void WireUpEvents()
-        {
+         private void WireUpEvents()
+         {
             m_customToolbarWindow.Save.Click += new RoutedEventHandler(Save_Click);
             m_customToolbarWindow.FitPage.Click += new RoutedEventHandler(FitPage_Click);
             m_customToolbarWindow.FitWidth.Click += new RoutedEventHandler(FitWidth_Click);
@@ -524,10 +629,13 @@ namespace syncfusion.pdfviewerdemos.wpf
             m_customToolbarWindow.ZoomIn.Click += new RoutedEventHandler(ZoomIn_Click);
             m_customToolbarWindow.ZoomOut.Click += new RoutedEventHandler(ZoomOut_Click);
             m_customToolbarWindow.ZoomComboBox.KeyDown += new KeyEventHandler(ZoomComboBox_KeyDown);
-        }
+         }
 
+        /// <summary>
+        /// UnWire the event handlers from various UI elements in the custom toolbar 
+        /// </summary>
 
-        void UnWireEvents()
+        private void UnWireEvents()
         {
             m_customToolbarWindow.Save.Click -= new RoutedEventHandler(Save_Click);
             m_customToolbarWindow.FitPage.Click -= new RoutedEventHandler(FitPage_Click);

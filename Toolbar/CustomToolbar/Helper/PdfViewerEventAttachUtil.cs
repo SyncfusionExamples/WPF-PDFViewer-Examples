@@ -19,7 +19,9 @@ namespace syncfusion.pdfviewerdemos.wpf
         {
             sender.SetValue(WindowLoaded, command);
         }
-
+        /// <summary>
+        /// Retrieves the parent Window from the given Grid and assigns handlers from the ViewModel.
+        /// </summary>
         public static void WindowLoadedChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             Grid grid = sender as Grid;
@@ -28,16 +30,12 @@ namespace syncfusion.pdfviewerdemos.wpf
                 Window view = grid.Parent as Window;
                 if (view != null)
                 {
-
-                    if (view.ToString().Contains("CustomToolBar"))
-                    {
                         CustomToolbarViewModel viewModel = view.DataContext as CustomToolbarViewModel;
                         if (viewModel != null)
                         {
                             view.Loaded += new RoutedEventHandler(viewModel.Loaded);
                             view.Closed += new EventHandler(viewModel.Closed);
                         }
-                    }
                 }
             }
         }

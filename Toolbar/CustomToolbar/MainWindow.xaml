@@ -585,7 +585,7 @@
         <cc:PdfViewerControl
             Name="pdfviewer"
             Grid.Row="1"
-            ItemSource="{Binding Path=DocumentStream}"
+            ItemSource="{Binding Path=FilePath}"
             ShowToolbar="False" />
     </Grid>
 </syncfusion:RibbonWindow>
