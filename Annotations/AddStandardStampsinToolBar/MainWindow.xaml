@@ -1,0 +1,26 @@
+﻿<Window x:Class="AddingStandardStampsInToolBar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        xmlns:local="clr-namespace:AddingStandardStampsInToolBar"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="addStamp"
+                 Height="30"
+                 Width="100"
+                 Click="addStamp_Click"
+                 Margin="10">
+                AddStamp
+            </Button>
+        </StackPanel>
+        <PdfViewer:PdfViewerControl Grid.Row="1" Name="pdfViewer"/>
+    </Grid>
+</Window>
