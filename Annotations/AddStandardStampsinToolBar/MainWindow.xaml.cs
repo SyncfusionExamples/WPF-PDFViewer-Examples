@@ -27,9 +27,9 @@ namespace AddingStandardStampsInToolBar
             this.WindowState = WindowState.Maximized;
             //Loads the Document
 #if NETFRAMEWORK
-            pdfViewer.Load("../../Data/PDF_Succinctly.pdf");
+            pdfViewer.Load("../../Data/F#.pdf");
 #else
-            pdfViewer.Load("../../../Data/PDF_Succinctly.pdf");
+            pdfViewer.Load("../../../Data/F#.pdf");
 #endif
         }
 
@@ -40,9 +40,9 @@ namespace AddingStandardStampsInToolBar
             //Load the custom image from the local disk.
             System.Windows.Controls.Image image = new System.Windows.Controls.Image();
 #if NETFRAMEWORK
-            image.Source = new BitmapImage(new Uri(@"../../Data/CustomStamp.png", UriKind.RelativeOrAbsolute));
+            image.Source = new BitmapImage(new Uri(@"../../Data/Adventure_Cycle.jpg", UriKind.RelativeOrAbsolute));
 #else
-            image.Source = new BitmapImage(new Uri(@"../../../Data/CustomStamp.png", UriKind.RelativeOrAbsolute));
+            image.Source = new BitmapImage(new Uri(@"../../../Data/Adventure_Cycle.jpg", UriKind.RelativeOrAbsolute));
 #endif
             //Create a new standard stamp from the image.
             PdfStampAnnotation newStandardStamp = new PdfStampAnnotation(image);
