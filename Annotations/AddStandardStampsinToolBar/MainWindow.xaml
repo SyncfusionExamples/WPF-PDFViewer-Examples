@@ -8,19 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="addStamp"
-                 Height="30"
-                 Width="100"
-                 Click="addStamp_Click"
-                 Margin="10">
-                AddStamp
-            </Button>
-        </StackPanel>
-        <PdfViewer:PdfViewerControl Grid.Row="1" Name="pdfViewer"/>
+        <PdfViewer:PdfViewerControl  Name="pdfViewer"/>
     </Grid>
 </Window>
