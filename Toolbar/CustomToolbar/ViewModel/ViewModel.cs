@@ -125,7 +125,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             m_customToolbarWindow.find_text.LauncherButton.Visibility = Visibility.Collapsed;
             m_customToolbarWindow.Stamp.LauncherButton.Visibility = Visibility.Collapsed;
             m_customToolbarWindow.pdfviewer.CurrentPageChanged += pdfviewer1_CurrentPageChanged;
-            m_customToolbarWindow.pdfviewer.PreviewMouseWheel += Pdfviewer_PreviewMouseWheel;
+            m_customToolbarWindow.pdfviewer.PreviewMouseWheel += pdfviewer_PreviewMouseWheel;
             if (m_customToolbarWindow.pdfviewer.LoadedDocument == null)
             {
                 m_customToolbarWindow.txtCurrentPageIndex.Text = "0";
@@ -154,7 +154,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             }
         }
 
-        private void Pdfviewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void pdfviewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
             {
