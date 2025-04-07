@@ -125,7 +125,7 @@ namespace syncfusion.pdfviewerdemos.wpf
             m_customToolbarWindow.find_text.LauncherButton.Visibility = Visibility.Collapsed;
             m_customToolbarWindow.Stamp.LauncherButton.Visibility = Visibility.Collapsed;
             m_customToolbarWindow.pdfviewer.CurrentPageChanged += pdfviewer1_CurrentPageChanged;
-           
+            m_customToolbarWindow.pdfviewer.PreviewMouseWheel += pdfviewer_PreviewMouseWheel;
             if (m_customToolbarWindow.pdfviewer.LoadedDocument == null)
             {
                 m_customToolbarWindow.txtCurrentPageIndex.Text = "0";
@@ -153,6 +153,29 @@ namespace syncfusion.pdfviewerdemos.wpf
                 m_customToolbarWindow.ZoomComboBox.SelectedIndex = 2;
             }
         }
+
+        private void pdfviewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+            {
+                if (e.Delta != 0 && m_customToolbarWindow.ZoomComboBox.Text != m_customToolbarWindow.pdfviewer.ZoomPercentage.ToString())
+                {
+                    m_customToolbarWindow.ZoomComboBox.Text = m_customToolbarWindow.pdfviewer.ZoomPercentage.ToString();
+                    if(m_customToolbarWindow.pdfviewer.ZoomMode == Syncfusion.Windows.PdfViewer.ZoomMode.Default)
+                    {
+                        if(!m_customToolbarWindow.FitWidth.IsEnabled)
+                        {
+                            m_customToolbarWindow.FitWidth.IsEnabled = true;
+                        }
+                        if (!m_customToolbarWindow.FitPage.IsEnabled)
+                        {
+                            m_customToolbarWindow.FitPage.IsEnabled = true;
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Handles cleanup operations when the custom toolbar window is closed.
         /// </summary>
