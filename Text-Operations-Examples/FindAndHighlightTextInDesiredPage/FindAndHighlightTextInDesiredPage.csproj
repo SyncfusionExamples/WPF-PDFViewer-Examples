@@ -37,7 +37,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-	<packageReference Include="Syncfusion.PdfViewer.WPF" version="*" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -100,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.PdfViewer.WPF">
-      <Version>29.2.4</Version>
+      <Version>*</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

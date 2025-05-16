@@ -12,7 +12,7 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button x:Name="Find" Content="Find Text" Width="80" Click="Find_Click" />
+        <Button x:Name="Find" Content="Highlight Text" Width="80" Click="Find_Click" />
         <PdfViewer:PdfViewerControl x:Name="pdfViewer" Grid.Row="1" />
     </Grid>
 </Window>
