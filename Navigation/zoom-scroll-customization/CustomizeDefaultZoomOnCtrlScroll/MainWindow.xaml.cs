@@ -54,7 +54,6 @@ namespace CustomizeDefaultZoomOnCtrlScroll
                     PDFViewer.ZoomTo(currentZoom);
                 }
             }
-            e.Handled = true;
         }
 
 
