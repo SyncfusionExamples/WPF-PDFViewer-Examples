@@ -45,15 +45,16 @@ namespace CustomizeDefaultZoomOnCtrlScroll
             {
                 if (e.Delta > 0)
                 {
-                    int currentZoom = (PDFViewer.ZoomPercentage + 5) - 25;
+                    int currentZoom = (PDFViewer.ZoomPercentage + 5);
                     PDFViewer.ZoomTo(currentZoom);
                 }
                 else
                 {
-                    int currentZoom = (PDFViewer.ZoomPercentage - 5) + 25;
+                    int currentZoom = (PDFViewer.ZoomPercentage - 5);
                     PDFViewer.ZoomTo(currentZoom);
                 }
             }
+          e.Handled = true;
         }
 
 
