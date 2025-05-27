@@ -15,7 +15,6 @@
         <StackPanel Orientation="Horizontal">   
             <Button x:Name="Draw" Content="Draw Bounds" Click="Draw_Click" Width="80" Height="20" Margin="5"/>
             <Button Content="Add Digital Sign" x:Name="btnAdd" HorizontalAlignment="Left" Height="20" Margin="10 0 0 0" Click="BtnAdd_Click"></Button>
-            <Button Content="Add Sign to Window Store" x:Name="WindowStore" Click="WindowStore_Click" Height="20" Margin="10 0 0 0"/>
         </StackPanel>
         <PdfViewer:PdfDocumentView x:Name="docView" Grid.Row="1" ShapeAnnotationChanged="docView_ShapeAnnotationChanged"></PdfViewer:PdfDocumentView>
     </Grid>

@@ -380,20 +380,6 @@ namespace AddDigitalSignature
             Console.WriteLine("Certificate created successfully and saved to " + certFilePath);
         }
 
-        private void WindowStore_Click(object sender, RoutedEventArgs e)
-        {
-            X509Certificate2 certificate = new X509Certificate2(certFilePath, certPassword, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet); using (X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser))
-
-            {
-                store.Open(OpenFlags.ReadWrite);
-
-                store.Add(certificate);
-
-                store.Close();
-
-            }
-        }
-
         private void docView_ShapeAnnotationChanged(object sender, Syncfusion.Windows.PdfViewer.ShapeAnnotationChangedEventArgs e)
         {
             if (e.Action == Syncfusion.Windows.PdfViewer.AnnotationChangedAction.Add || e.Action == Syncfusion.Windows.PdfViewer.AnnotationChangedAction.Resize)
