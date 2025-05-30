@@ -38,7 +38,7 @@ namespace AddButtonsInVerticalToolbar
             button1.Margin = new Thickness(0, 8, 0, 8);
             button1.Width = 30;
             button1.Height = 25;
-            button1.Content = "Btn1";
+            button1.Content = "B1";
             stackPanel.Children.Add(button1);
             button1.Click += Button1_Click; ;
 
@@ -46,7 +46,7 @@ namespace AddButtonsInVerticalToolbar
             button2.Margin = new Thickness(0, 4, 0, 8);
             button2.Width = 30;
             button2.Height = 25;
-            button2.Content = "Btn2";
+            button2.Content = "B2";
             stackPanel.Children.Add(button2);
             button2.Click += Button2_Click; ;
         }
