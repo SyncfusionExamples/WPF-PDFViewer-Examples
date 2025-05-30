@@ -1,0 +1,22 @@
+﻿<syncfusion:RibbonWindow x:Class="AddButtonsInVerticalToolbar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        ShowHelpButton="False"
+        WindowStyle="SingleBorderWindow"
+        Loaded="RibbonWindow_Loaded"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AddButtonsInVerticalToolbar"
+        xmlns:cc="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        mc:Ignorable="d"
+        Title="" Height="450" Width="800">
+    <syncfusion:RibbonWindow.DataContext>
+        <local:PdfReport />
+    </syncfusion:RibbonWindow.DataContext>
+    <cc:PdfViewerControl x:Name="pdfViewer"
+                     AllowDrop="True"
+                     WarnBeforeClose="False"
+                     ItemSource="{Binding Path=DocumentStream}"
+                     ZoomMode="FitWidth" />
+</syncfusion:RibbonWindow>
