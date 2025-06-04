@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D85C4067-2479-4D16-94F4-A9C86FF024C7}</ProjectGuid>
+    <ProjectGuid>{2E199F2C-5FE2-4FAC-AD4B-E4CA63035676}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FormFillingSample</RootNamespace>
     <AssemblyName>FormFillingSample</AssemblyName>
@@ -99,11 +99,4 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="packages\Syncfusion.PdfToImageConverter.WPF.29.2.7\build\net462\Syncfusion.PdfToImageConverter.WPF.targets" Condition="Exists('packages\Syncfusion.PdfToImageConverter.WPF.29.2.7\build\net462\Syncfusion.PdfToImageConverter.WPF.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('packages\Syncfusion.PdfToImageConverter.WPF.29.2.7\build\net462\Syncfusion.PdfToImageConverter.WPF.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Syncfusion.PdfToImageConverter.WPF.29.2.7\build\net462\Syncfusion.PdfToImageConverter.WPF.targets'))" />
-  </Target>
 </Project>
