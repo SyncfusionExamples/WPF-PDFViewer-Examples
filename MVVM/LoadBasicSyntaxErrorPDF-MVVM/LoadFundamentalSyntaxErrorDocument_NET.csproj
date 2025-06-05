@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="25.1.35" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="*" />
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
   </ItemGroup>
 
 </Project>
