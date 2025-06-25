@@ -33,6 +33,8 @@ namespace IdentifySignatureFormField
             filePath = @"../../Data/FormFields.pdf";
 #endif
             pdfViewer.Load(filePath);
+            pdfViewer.DocumentLoaded += pdfViewer_DocumentLoaded;
+            pdfViewer.DocumentUnloaded += pdfViewer_DocumentUnloaded;
             pdfViewer.FormFieldClicked += PdfViewer_FormFieldClicked;
         }
 
