@@ -1,20 +1,9 @@
 ﻿using Syncfusion.Windows.PdfViewer;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PrintAndSaveButtonInMainToolbar
 {
@@ -23,7 +12,6 @@ namespace PrintAndSaveButtonInMainToolbar
     /// </summary>
     public partial class MainWindow : Window
     {
-        string filePath;
         private Button printButton;
         public MainWindow()
         {
@@ -32,12 +20,7 @@ namespace PrintAndSaveButtonInMainToolbar
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-#if NETCOREAPP
-            filePath = @"../../../Data/PDF_Succinctly.pdf";
-#else
-            filePath = @"../../Data/PDF_Succinctly.pdf";
-#endif
-            pdfViewer.Load(filePath);
+            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
             pdfViewer.Loaded += PdfViewer_Loaded;
             pdfViewer.DocumentLoaded += PdfViewer_DocumentLoaded;
             pdfViewer.DocumentUnloaded += PdfViewer_DocumentUnloaded;
