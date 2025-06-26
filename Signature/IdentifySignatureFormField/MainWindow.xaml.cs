@@ -1,19 +1,8 @@
-﻿using Syncfusion.Pdf;
-using Syncfusion.Pdf.Parsing;
+﻿using Syncfusion.Pdf.Parsing;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IdentifySignatureFormField
 {
@@ -23,15 +12,11 @@ namespace IdentifySignatureFormField
     public partial class MainWindow : Window
     {
         string filePath;
-        public List<String> NameList { get; set; }
+        public List<String> NameList;
         public MainWindow()
         {
             InitializeComponent();
-#if NETCOREAPP
             filePath = @"../../../Data/FormFields.pdf";
-#else
-            filePath = @"../../Data/FormFields.pdf";
-#endif
             pdfViewer.Load(filePath);
             pdfViewer.DocumentLoaded += pdfViewer_DocumentLoaded;
             pdfViewer.DocumentUnloaded += pdfViewer_DocumentUnloaded;
@@ -46,7 +31,7 @@ namespace IdentifySignatureFormField
                 TextBox text = args.FormField as TextBox;
                 if(NameList.Contains(text.Name))
                 {
-                    MessageBox.Show("SignatureFormField Clicked");
+                    MessageBox.Show("Signature Form Field Clicked");
                 }
             }
         }
