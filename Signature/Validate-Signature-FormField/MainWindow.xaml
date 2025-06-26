@@ -6,34 +6,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckPDFSignatureformFieldsSigned"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <PdfViewer:PdfViewerControl 
             x:Name="pdfViewer" 
-            Grid.Row="0"
-            IsTextSelectionEnabled="False"
-            ShowHorizontalScrollBar="False"
-            ShowVerticalScrollBar="True"
-            ShowScrollbar="True"
-            IsBookmarkEnabled="False"
-            ShowToolbar="False"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
-            <Button x:Name="btnSignature"
+            Grid.Row="1"/>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Button x:Name="validateSignature"
                     Height="50"
                     Width="80"
-                    Content="Signature"
+                    Content="Validate"
                     Margin="5"
-                    Click="btnSignature_Click"/>
-            <Button x:Name="btnSubmit"
-                    Height="50"
-                    Width="80"
-                    Content="Submit"
-                    Margin="5"
-                    Click="btnSubmit_Click"/>
+                    Click="validateSignature_Click"/>
         </StackPanel>
     </Grid>
 </Window>
