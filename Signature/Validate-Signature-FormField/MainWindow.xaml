@@ -9,16 +9,15 @@
         Title="MainWindow" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <PdfViewer:PdfViewerControl 
             x:Name="pdfViewer" 
             Grid.Row="1"/>
-        <StackPanel Orientation="Horizontal" Margin="5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5" Grid.Row="0">
             <Button x:Name="validateSignature"
-                    Height="50"
-                    Width="80"
+                    Width="60"
                     Content="Validate"
                     Margin="5"
                     Click="validateSignature_Click"/>

@@ -9,10 +9,17 @@ namespace CheckPDFSignatureformFieldsSigned
     /// </summary>
     public partial class MainWindow : Window
     {
+        string filepath;
         public MainWindow()
         {
+#if NETCOREAPP
+
+            filepath = @"../../../Data/Doc_with_sign.pdf";
+#else
+            filepath = @"../../Data/Doc_with_sign.pdf";
+#endif
             InitializeComponent();
-            pdfViewer.Load(@"../../../Data/Doc_with_sign.pdf");
+            pdfViewer.Load(filepath);
         }
 
         private void validateSignature_Click(object sender, RoutedEventArgs e)
