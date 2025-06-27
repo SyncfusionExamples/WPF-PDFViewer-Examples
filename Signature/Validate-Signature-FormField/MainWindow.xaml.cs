@@ -18,10 +18,14 @@ namespace CheckPDFSignatureformFieldsSigned
 #else
             filepath = @"../../Data/Doc_with_sign.pdf";
 #endif
+            //Load the PDF document
             InitializeComponent();
             pdfViewer.Load(filepath);
         }
-
+        
+        /// <summary>
+        /// Validate Is all the signature formField are signed
+        /// </summary>
         private void validateSignature_Click(object sender, RoutedEventArgs e)
         {
             bool isSigned = false;
