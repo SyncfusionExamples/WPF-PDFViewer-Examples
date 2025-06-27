@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Portable.BouncyCastle" Version="*" />
+    <PackageReference Include = "Portable.BouncyCastle" Version = "*" />
     <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,7 +91,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include=".editorconfig" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
