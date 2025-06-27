@@ -1,10 +1,8 @@
-﻿using System;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using Syncfusion.Pdf.Parsing;
 using System.IO;
-using System.Xml.Linq;
 
 namespace LoadFundamentalSyntaxErrorDocument
 {
@@ -33,7 +31,8 @@ namespace LoadFundamentalSyntaxErrorDocument
         {
             var dialog = new OpenFileDialog
             {
-                Filter = "PDF files (*.pdf)|*.pdf"
+                Filter = "PDF files (*.pdf)|*.pdf",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
             };
             if (dialog.ShowDialog() == true)
             {

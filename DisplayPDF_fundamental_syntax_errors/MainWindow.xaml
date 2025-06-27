@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LoadFundamentalSyntaxErrorDocument"
         xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" WindowState="Maximized">
     <Window.DataContext>
         <local:MainWindowViewModel />
     </Window.DataContext>
@@ -15,18 +15,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
+        <StackPanel Grid.Row="0" Orientation="Horizontal"
            Margin="12">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70*" />
-                <ColumnDefinition Width="30*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding FilePath, TargetNullValue=No file selected, StringFormat={}File: {0}}" />
             <Button Content="Open"
-                 Command="{Binding OpenPDFFileCommand}"
-                 Grid.Column="1" />
-        </Grid>
-        <syncfusion:PdfDocumentView Grid.Row="1"
+                 Command="{Binding OpenPDFFileCommand}" 
+                    Width="50"
+                    Height="30"/>
+        </StackPanel>
+        <syncfusion:PdfViewerControl Grid.Row="1"
                                  Margin="12"
                                  ZoomMode="FitPage"
                                  ItemSource="{Binding PdfDocument, UpdateSourceTrigger=PropertyChanged}" />
