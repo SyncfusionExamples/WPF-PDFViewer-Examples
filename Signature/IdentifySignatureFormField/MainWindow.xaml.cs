@@ -16,13 +16,20 @@ namespace IdentifySignatureFormField
         public MainWindow()
         {
             InitializeComponent();
+#if NETCOREAPP
             filePath = @"../../../Data/FormFields.pdf";
+#else
+            filePath = @"../../Data/FormFields.pdf";
+#endif
+            //Load the PDF
             pdfViewer.Load(filePath);
             pdfViewer.DocumentLoaded += pdfViewer_DocumentLoaded;
             pdfViewer.DocumentUnloaded += pdfViewer_DocumentUnloaded;
             pdfViewer.FormFieldClicked += PdfViewer_FormFieldClicked;
         }
-
+        /// <summary>
+        /// Triggered whenever the formField is clicked
+        /// </summary>
         private void PdfViewer_FormFieldClicked(object sender, Syncfusion.Windows.PdfViewer.FormFieldClickedEventArgs args)
         {
             if (args.FormField is TextBox)
@@ -36,6 +43,9 @@ namespace IdentifySignatureFormField
             }
         }
 
+        /// <summary>
+        /// Triggered whenever the PDF document has finished loading.
+        /// </summary>
         private void pdfViewer_DocumentLoaded(object sender, EventArgs args)
         {
             NameList = new List<String>();
@@ -50,7 +60,9 @@ namespace IdentifySignatureFormField
                 }
             }
         }
-
+        /// <summary>
+        /// "Triggered whenever the PDF document has unloaded from PDF Viewer control."
+        /// </summary>
         private void pdfViewer_DocumentUnloaded(object sender, EventArgs e)
         {
             NameList.Clear();
