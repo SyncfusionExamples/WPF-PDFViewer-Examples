@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal"
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"
            Margin="12">
             <Button Content="Open"
                  Command="{Binding OpenPDFFileCommand}" 

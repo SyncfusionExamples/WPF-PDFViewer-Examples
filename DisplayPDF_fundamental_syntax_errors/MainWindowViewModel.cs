@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using Syncfusion.Pdf.Parsing;
+using System;
 using System.IO;
 
 namespace LoadFundamentalSyntaxErrorDocument
@@ -18,6 +19,7 @@ namespace LoadFundamentalSyntaxErrorDocument
         {
             if (!string.IsNullOrEmpty(value) && File.Exists(value))
             {
+                //Repair the PDF document with basic syntax errors
                 PdfDocument = new PdfLoadedDocument(new FileStream(value, FileMode.Open, FileAccess.Read, FileShare.ReadWrite), true);
             }
             else
