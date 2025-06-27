@@ -19,12 +19,15 @@ namespace CustomPasswordDialog
         public MainWindow()
         {
             InitializeComponent();
+            pdfViewer.DocumentLoaded += PdfViewer_DocumentLoaded;
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+        private void PdfViewer_DocumentLoaded(object sender, EventArgs args)
         {
             DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
             ToggleButton FileButton = (ToggleButton)toolbar.Template.FindName("PART_FileToggleButton", toolbar);
 
+            //Iterating the File Context menu and hides the Open button
             ContextMenu FileContextMenu = FileButton.ContextMenu;
             foreach (MenuItem FileMenuItem in FileContextMenu.Items)
             {

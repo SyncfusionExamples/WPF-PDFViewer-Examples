@@ -6,17 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomPasswordDialog"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized" Loaded="Window_Loaded">
+        Title="MainWindow" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="50"/>
+            <RowDefinition  Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
             <Button x:Name="openPDFbutton"
                 Content="Open PDF"
-                Height="30"
-                Width="100"
+                Width="70"
                 Margin="5"
                 Click="openPDFbutton_Click"/>
         </StackPanel>
