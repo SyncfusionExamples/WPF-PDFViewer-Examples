@@ -19,10 +19,10 @@ namespace CustomPasswordDialog
         public MainWindow()
         {
             InitializeComponent();
-            pdfViewer.DocumentLoaded += PdfViewer_DocumentLoaded;
+            pdfViewer.Loaded += PdfViewer_Loaded;
         }
 
-        private void PdfViewer_DocumentLoaded(object sender, EventArgs args)
+        private void PdfViewer_Loaded(object sender, RoutedEventArgs e)
         {
             DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
             ToggleButton FileButton = (ToggleButton)toolbar.Template.FindName("PART_FileToggleButton", toolbar);
