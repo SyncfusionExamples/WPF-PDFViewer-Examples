@@ -1,8 +1,11 @@
 ﻿using Microsoft.Win32;
+using Syncfusion.Windows.PdfViewer;
 using System;
 using System.IO;
 using System.Security;
 using System.Windows;
+using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
 
 namespace CustomPasswordDialog
 {
@@ -19,12 +22,19 @@ namespace CustomPasswordDialog
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            pdfViewer.Visibility = Visibility.Hidden;
+            DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
+            ToggleButton FileButton = (ToggleButton)toolbar.Template.FindName("PART_FileToggleButton", toolbar);
+
+            ContextMenu FileContextMenu = FileButton.ContextMenu;
+            foreach (MenuItem FileMenuItem in FileContextMenu.Items)
+            {
+                if (FileMenuItem.Name == "PART_OpenMenuItem")
+                    FileMenuItem.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void openPDFbutton_Click(object sender, RoutedEventArgs e)
         {
-            pdfViewer.Visibility = Visibility.Visible;
             GetPDFfromLocalStorage();
         }
       
@@ -32,7 +42,7 @@ namespace CustomPasswordDialog
         {
             try
             {
-                var OFD = new OpenFileDialog()
+                var openPdfDialog = new OpenFileDialog()
                 {
                     DefaultExt = "pdf",
                     Filter = "Pdf files|*.pdf",
@@ -40,9 +50,9 @@ namespace CustomPasswordDialog
                     FilterIndex = 1,
                     InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                 };
-                if (OFD.ShowDialog()==true && File.Exists(OFD.FileName))
+                if (openPdfDialog.ShowDialog()==true && File.Exists(openPdfDialog.FileName))
                 {
-                    preLoadPDF = OFD.FileName;
+                    preLoadPDF = openPdfDialog.FileName;
 
                     pdfViewer.ReferencePath = AppDomain.CurrentDomain.BaseDirectory;
                     pdfViewer.Load(preLoadPDF);
@@ -53,9 +63,12 @@ namespace CustomPasswordDialog
                 Console.WriteLine("Unexpected error" + ex.Message);
             }
         }
-
+        /// <summary>
+        /// Occurs every time when you try to open a password protected PDF file in run-time
+        /// </summary>
         private void pdfViewer_GetDocumentPassword(object sender, Syncfusion.Windows.PdfViewer.GetDocumentPasswordEventArgs e)
         {
+            //Initiating the added Custom password dialog box
             passwordDialog = new PasswordDialog();
             passwordDialog.ShowDialog();
             if (passwordDialog.DialogResult == true && !string.IsNullOrEmpty(passwordDialog.password))
@@ -63,17 +76,27 @@ namespace CustomPasswordDialog
                 SecureString secureString = ConvertToSecureString(passwordDialog.password);
                 e.Password = secureString;
             }
+            //Hnadling the GetDocumentPasssword event so that the internal event did not execute
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Triggered whenever the wrong password is entered for the PDF
+        /// </summary>
         private void pdfViewer_ErrorOccurred(object sender, Syncfusion.Windows.PdfViewer.ErrorOccurredEventArgs args)
         {
             if (passwordDialog.DialogResult == true && args.Message == "Can't open an encrypted document. The password is invalid.")
             {
                 MessageBox.Show(args.Message);
+                //Reloads the same document whenever entered the wrong password until correct one is given
                 pdfViewer.Load(preLoadPDF);
             }
         }
+        /// <summary>
+        /// Converts the recieved string to a SecureString object
+        /// </summary>
+        /// <param name="secureString">Password of the document in string format</param>
+        /// <returns>Converted SecureString</returns>
 
         private SecureString ConvertToSecureString(string secureString)
         {

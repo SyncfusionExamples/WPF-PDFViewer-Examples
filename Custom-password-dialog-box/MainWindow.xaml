@@ -9,13 +9,13 @@
         Title="MainWindow" WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition  Height="80"/>
+            <RowDefinition  Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0">
             <Button x:Name="openPDFbutton"
                 Content="Open PDF"
-                Height="40"
+                Height="30"
                 Width="100"
                 Margin="5"
                 Click="openPDFbutton_Click"/>
