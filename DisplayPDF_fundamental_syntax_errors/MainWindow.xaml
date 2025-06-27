@@ -1,0 +1,30 @@
+﻿<Window x:Class="LoadFundamentalSyntaxErrorDocument.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoadFundamentalSyntaxErrorDocument"
+        xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"
+           Margin="12">
+            <Button Content="Open"
+                 Command="{Binding OpenPDFFileCommand}" 
+                    Width="50"
+                    Height="30"/>
+        </StackPanel>
+        <syncfusion:PdfViewerControl Grid.Row="1"
+                                 Margin="12"
+                                 ZoomMode="FitPage"
+                                 ItemSource="{Binding PdfDocument, UpdateSourceTrigger=PropertyChanged}" />
+    </Grid>
+</Window>

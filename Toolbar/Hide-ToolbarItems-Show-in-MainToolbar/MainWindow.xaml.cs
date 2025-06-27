@@ -12,6 +12,7 @@ namespace PrintAndSaveButtonInMainToolbar
     /// </summary>
     public partial class MainWindow : Window
     {
+        string filepath;
         private Button printButton;
         public MainWindow()
         {
@@ -20,7 +21,13 @@ namespace PrintAndSaveButtonInMainToolbar
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            pdfViewer.Load(@"../../../Data/PDF_Succinctly.pdf");
+#if NETCOREAPPP
+            filepath = @"../../../Data/PDF_Succinctly.pdf";
+#else
+            filepath = @"../../Data/PDF_Succinctly.pdf";
+#endif
+            //Load the Document
+            pdfViewer.Load(filepath);
             pdfViewer.Loaded += PdfViewer_Loaded;
             pdfViewer.DocumentLoaded += PdfViewer_DocumentLoaded;
             pdfViewer.DocumentUnloaded += PdfViewer_DocumentUnloaded;
@@ -41,7 +48,7 @@ namespace PrintAndSaveButtonInMainToolbar
         {
             DocumentToolbar toolbar = pdfViewer.Template.FindName("PART_Toolbar", pdfViewer) as DocumentToolbar;
             ToggleButton FileButton = (ToggleButton)toolbar.Template.FindName("PART_FileToggleButton", toolbar);
-
+            //Accessing the File Toggle context Menu's iterating and hiding tthe Print button
             ContextMenu FileContextMenu = FileButton.ContextMenu;
             foreach (MenuItem FileMenuItem in FileContextMenu.Items)
             {
@@ -68,7 +75,7 @@ namespace PrintAndSaveButtonInMainToolbar
             printButton.Margin = new Thickness(10, 0, 0, 0);
 
             StackPanel stackPanel = (StackPanel)toolbar.Template.FindName("PART_FileMenuStack", toolbar);
-
+            //Adding the Print button in the toolbar
             stackPanel.Children.Insert(1, printButton);
         }
 
