@@ -7,9 +7,6 @@
         xmlns:syncfusion="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
-    <Window.DataContext>
-        <local:MainWindowViewModel />
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -17,14 +14,12 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center"
            Margin="12">
-            <Button Content="Open"
-                 Command="{Binding OpenPDFFileCommand}" 
+            <Button Content="Open" 
                     Width="50"
-                    Height="30"/>
+                    Height="30"
+                    Click="Button_Click"/>
         </StackPanel>
         <syncfusion:PdfViewerControl Grid.Row="1"
-                                 Margin="12"
-                                 ZoomMode="FitPage"
-                                 ItemSource="{Binding PdfDocument, UpdateSourceTrigger=PropertyChanged}" />
+                                     x:Name="pdfViewer" />
     </Grid>
 </Window>
