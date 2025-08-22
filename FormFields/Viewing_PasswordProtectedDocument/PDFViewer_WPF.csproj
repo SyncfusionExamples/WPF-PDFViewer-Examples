@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="30.2.6" />
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
   </ItemGroup>
   <Import Project="targets\MultiTargeting.targets" /> 
 </Project>

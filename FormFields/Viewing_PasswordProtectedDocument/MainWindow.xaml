@@ -16,9 +16,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button VerticalAlignment="Top" Content="Owner Password" Grid.Row="1" Grid.Column="0"  Click="Button_Click"  Height="40" Width="150"/>
-        <Button VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Content="User Password" Click="Button_Click_1"  Height="40" Width="150"/>
-        <Label Content="Open encrypted document with" Grid.ColumnSpan="2" FontSize="14" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="222" Height="28"/>
+        <Button VerticalAlignment="Top" Content="Owner Password" Grid.Row="1" Grid.Column="0"  Click="OwnerPassword_Button_Click"  Height="40" Width="150"/>
+        <Button VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Content="User Password" Click="UserPassword_Button_Click"  Height="40" Width="150"/>
+        <Label Content="Open encrypted document with" Grid.ColumnSpan="2" FontSize="16" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="250" Height="35"/>
 
     </Grid>
 </Window>
