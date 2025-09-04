@@ -24,6 +24,7 @@ namespace WPF_Sample_FW
             InitializeComponent();
             PDFViewer.Load("../../../Data/Ink signature.pdf");
             PDFViewer.Loaded += PDFViewer_Loaded;
+            PDFViewer.ZoomMode = ZoomMode.FitPage;
         }
 
         private void PDFViewer_Loaded(object sender, RoutedEventArgs e)
@@ -85,20 +86,17 @@ namespace WPF_Sample_FW
 
         private void PDFViewer_PageClicked(object sender, PageClickedEventArgs args)
         {
-            
-            int pageIndex = PDFViewer.CurrentPageIndex -1;
+
+            int pageIndex = PDFViewer.CurrentPageIndex - 1;
             if (addSignature && pageIndex >= 0)
             {
                 int width = 200;
                 int height = 100;
                 string signerName = "John";
                 string dateTime = DateTime.Now.ToString("yyyy.MM.dd\nHH:mm:ss zzz");
-
                 string text = $"Digitally signed by {signerName}\nDate: {dateTime}\n\n";
-
-                string outputPath = "../../../Data/DigitalSignatureBlock.png";
+                string outputPath = "../../../../Data/DigitalSignatureBlock.png";
                 Directory.CreateDirectory(System.IO.Path.GetDirectoryName(outputPath));
-
                 using (Bitmap bitmap = new Bitmap(width, height))
                 {
                     using (Graphics graphics = System.Drawing.Graphics.FromImage(bitmap))
@@ -107,30 +105,29 @@ namespace WPF_Sample_FW
                         using (SolidBrush backgroundBrush = new SolidBrush(System.Drawing.Color.White))
                         {
                             graphics.FillRectangle(backgroundBrush, 0, 0, width, height);
-
                             RectangleF layoutRect = new RectangleF(10, 10, width - 20, height - 20);
                             graphics.DrawString(text, font, System.Drawing.Brushes.Black, layoutRect);
-
                             bitmap.Save(outputPath, System.Drawing.Imaging.ImageFormat.Png);
                         }
                     }
                 }
-
+                string inputPath = "../../../Data/John.png";   // Replace with your image path
+                string outputPath1 = "../../../Data/Out.png"; // Desired output path
+                ResizeImage(inputPath, outputPath1, 200, 100);
+                Console.WriteLine("Image resized successfully.");
                 // Load the two images
-                using (System.Drawing.Image image1 = System.Drawing.Image.FromFile("../../../Data/John.png"))
+                using (System.Drawing.Image image1 = System.Drawing.Image.FromFile("../../../Data/Out.png"))
                 using (System.Drawing.Image image2 = System.Drawing.Image.FromFile("../../../Data/DigitalSignatureBlock.png"))
                 {
                     // Create a new bitmap with combined width and max height
                     int width1 = image1.Width + image2.Width;
                     int height1 = Math.Max(image1.Height, image2.Height);
-
                     using (Bitmap combinedImage = new Bitmap(width1, height1))
                     using (Graphics g = System.Drawing.Graphics.FromImage(combinedImage))
                     {
                         // Draw both images side by side
                         g.DrawImage(image1, 0, 0);
                         g.DrawImage(image2, image1.Width, 0);
-
                         // Save the result
                         combinedImage.Save("../../../Data/ESign.png", System.Drawing.Imaging.ImageFormat.Png);
                     }
@@ -138,35 +135,66 @@ namespace WPF_Sample_FW
 
                 //Gets the first page of the document
                 PdfLoadedPage page = PDFViewer.LoadedDocument.Pages[pageIndex] as PdfLoadedPage;
-                //Create PDF graphics for the page.
-                PdfGraphics Graphics = page.Graphics;
+
                 //Retrieve the clicked client area position
                 System.Windows.Point clientPoint = args.Position;
-                PdfUnitConvertor convertor = new PdfUnitConvertor();
-                float x = convertor.ConvertFromPixels((float)clientPoint.X, PdfGraphicsUnit.Point);
-                float y = convertor.ConvertFromPixels((float)clientPoint.Y, PdfGraphicsUnit.Point);
+
+                // Convert client point to page point, which accounts for zoom mode.
+                System.Windows.Point pagePoint = PDFViewer.ConvertClientPointToPagePoint(clientPoint, pageIndex + 1);
+                double x = pagePoint.X;
+                double y = pagePoint.Y;
+
                 //Creates a certificate instance from PFX file with private key.
                 PdfCertificate pdfCert = new PdfCertificate("../../../Data/PDF.pfx", "password123");
+
                 //Creates a digital signature
                 PdfSignature Signature = new PdfSignature(PDFViewer.LoadedDocument, page, pdfCert, "Signature");
+
                 //Sets an image for signature field
                 PdfBitmap signatureImage = new PdfBitmap("../../../Data/ESign.png");
-                //Sets Signature information
-                Signature.Bounds = new RectangleF(new PointF(x - ((signatureImage.Width / 2)/2), y - ((signatureImage.Height / 2)/2)), signatureImage.PhysicalDimension);
+
+                // Center the signature on the click position using dimensions in points.
+                float sigWidth = signatureImage.PhysicalDimension.Width;
+                float sigHeight = signatureImage.PhysicalDimension.Height;
+                Signature.Bounds = new System.Drawing.RectangleF((float)(x), (float)(y), sigWidth * 2, sigHeight * 2);
 
                 Signature.ContactInfo = "johndoe@owned.us";
                 Signature.LocationInfo = "Honolulu, Hawaii";
                 Signature.Reason = "I am author of this document.";
+
                 //Draws the signature image
                 Signature.Appearance.Normal.Graphics.DrawImage(signatureImage, 0, 0);
+
                 //Save the document into stream.
                 MemoryStream stream = new MemoryStream();
                 PDFViewer.LoadedDocument.Save(stream);
                 stream.Position = 0;
+
                 //Reloads the document
                 PDFViewer.Load(stream);
-                PDFViewer.GoToPageAtIndex(pageIndex+1);
+                PDFViewer.GoToPageAtIndex(pageIndex + 1);
                 addSignature = false;
+            }
+
+        }
+        private void ResizeImage(string inputPath, string outputPath, int width, int height)
+        {
+
+            using (System.Drawing.Image originalImage = System.Drawing.Image.FromFile(inputPath))
+            {
+                using (Bitmap resizedImage = new Bitmap(width, height))
+                {
+                    using (Graphics graphics = Graphics.FromImage(resizedImage))
+                    {
+                        graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                        graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
+                        graphics.DrawImage(originalImage, 0, 0, width, height);
+                    }
+
+                    resizedImage.Save(outputPath);
+                }
             }
         }
     }
