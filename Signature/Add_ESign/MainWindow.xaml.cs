@@ -141,6 +141,38 @@ namespace WPF_Sample_FW
             int pageIndex = PDFViewer.CurrentPageIndex - 1;
             if(pageIndex < 0)
                 return;
+
+            //Creating image for current date and time details
+            CreateCurrentDataImage();
+
+            //Combine the name image and date-time image into a single image
+            CombineSignatureAntDataImage();
+          
+        }
+
+        private void CombineSignatureAntDataImage()
+        {
+            // Load the two images
+            using (System.Drawing.Image nameImage = System.Drawing.Image.FromFile(filePath + "John.png"))
+            using (System.Drawing.Image signImage = System.Drawing.Image.FromFile(filePath + "DigitalSignatureBlock.png"))
+            {
+                // Create a new bitmap with combined width and max height
+                int signatureWidth = nameImage.Width + signImage.Width;
+                int signatureHeight = Math.Max(nameImage.Height, signImage.Height);
+                using (Bitmap combinedImage = new Bitmap(signatureWidth, signatureHeight))
+                using (Graphics g = System.Drawing.Graphics.FromImage(combinedImage))
+                {
+                    // Draw both images side by side
+                    g.DrawImage(nameImage, 0, 0);
+                    g.DrawImage(signImage, nameImage.Width, 0);
+                    // Save the result
+                    combinedImage.Save(filePath + "ESign.png", System.Drawing.Imaging.ImageFormat.Png);
+                }
+            }
+        }
+
+        private void CreateCurrentDataImage()
+        {
             int width = 200;
             int height = 100;
             string signerName = "John";
@@ -160,25 +192,6 @@ namespace WPF_Sample_FW
                         graphics.DrawString(text, font, System.Drawing.Brushes.Black, layoutRect);
                         bitmap.Save(outputPath, System.Drawing.Imaging.ImageFormat.Png);
                     }
-                }
-            }
-            string inputPath =  filePath + "John.png"; 
-
-            // Load the two images
-            using (System.Drawing.Image nameImage = System.Drawing.Image.FromFile( filePath + "John.png"))
-            using (System.Drawing.Image signImage = System.Drawing.Image.FromFile(filePath + "DigitalSignatureBlock.png"))
-            {
-                // Create a new bitmap with combined width and max height
-                int signatureWidth = nameImage.Width + signImage.Width;
-                int signatureHeight = Math.Max(nameImage.Height, signImage.Height);
-                using (Bitmap combinedImage = new Bitmap(signatureWidth, signatureHeight))
-                using (Graphics g = System.Drawing.Graphics.FromImage(combinedImage))
-                {
-                    // Draw both images side by side
-                    g.DrawImage(nameImage, 0, 0);
-                    g.DrawImage(signImage, nameImage.Width, 0);
-                    // Save the result
-                    combinedImage.Save( filePath + "ESign.png", System.Drawing.Imaging.ImageFormat.Png);
                 }
             }
         }
