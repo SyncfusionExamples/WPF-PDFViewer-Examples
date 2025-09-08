@@ -146,11 +146,11 @@ namespace WPF_Sample_FW
             CreateCurrentDataImage();
 
             //Combine the name image and date-time image into a single image
-            CombineSignatureAntDataImage();
+            CombineSignatureAndDataImage();
           
         }
 
-        private void CombineSignatureAntDataImage()
+        private void CombineSignatureAndDataImage()
         {
             // Load the two images
             using (System.Drawing.Image nameImage = System.Drawing.Image.FromFile(filePath + "John.png"))
