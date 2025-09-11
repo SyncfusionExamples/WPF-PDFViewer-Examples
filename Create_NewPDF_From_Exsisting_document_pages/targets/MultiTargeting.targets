@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <TargetFrameworks>net462;net8.0-windows;net9.0-windows</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <EnableDefaultItems>True</EnableDefaultItems>
+	<EnableDefaultEmbeddedResourceItems>True</EnableDefaultEmbeddedResourceItems>	
+  </PropertyGroup>
+</Project>
