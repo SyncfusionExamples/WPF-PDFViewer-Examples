@@ -20,7 +20,6 @@ namespace WPF_Sample_FW
     public partial class MainWindow : Window
     {
         string filePath = "../../../Data/";
-        bool addSignature = false;
         public MainWindow()
         {
             InitializeComponent();
