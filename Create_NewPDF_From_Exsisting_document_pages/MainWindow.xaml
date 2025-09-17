@@ -8,5 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <PdfViewer:PdfViewerControl Name="PDFViewer"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="56,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>
