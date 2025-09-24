@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddLayer" xml:space="preserve">
+    <value>Ajouter un calque</value>
+  </data>
+  <data name="AddSignatureLabel" xml:space="preserve">
+    <value>Ajouter une étiquette de signature</value>
+  </data>
+  <data name="AddStampMessage" xml:space="preserve">
+    <value>Ajouter un message de tampon</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>Apparence</value>
+  </data>
+  <data name="ApplyLabel" xml:space="preserve">
+    <value>Appliquer l'étiquette</value>
+  </data>
+  <data name="ApplyRedactionLabel" xml:space="preserve">
+    <value>Appliquer l'étiquette de biffure</value>
+  </data>
+  <data name="ApplyRedactionMessage" xml:space="preserve">
+    <value>Appliquer le message de rédaction</value>
+  </data>
+  <data name="Arrow" xml:space="preserve">
+    <value>La Flèche</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Auteure</value>
+  </data>
+  <data name="BookmarkTitle" xml:space="preserve">
+    <value>Titre du signet</value>
+  </data>
+  <data name="BorderColor" xml:space="preserve">
+    <value>Couleur de la bordure</value>
+  </data>
+  <data name="BorderThickness" xml:space="preserve">
+    <value>Épaisseur de la bordure</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="ClearLabel" xml:space="preserve">
+    <value>Effacer l'étiquette</value>
+  </data>
+  <data name="CloseBookmark" xml:space="preserve">
+    <value>Fermer le signet</value>
+  </data>
+  <data name="CloseFontPopUp" xml:space="preserve">
+    <value>Fermer la fenêtre contextuelle des polices</value>
+  </data>
+  <data name="CloseFormOptionsMessage" xml:space="preserve">
+    <value>Fermer le message des options de formulaire</value>
+  </data>
+  <data name="CloseLayer" xml:space="preserve">
+    <value>Fermer le calque</value>
+  </data>
+  <data name="ClosePageOrganizerMessage" xml:space="preserve">
+    <value>Fermer le message de l'organiseur de page</value>
+  </data>
+  <data name="CloseRedactionMessage" xml:space="preserve">
+    <value>Fermer le message de rédaction</value>
+  </data>
+  <data name="CloseSearchBar" xml:space="preserve">
+    <value>Fermer la barre de recherche</value>
+  </data>
+  <data name="CloseThumbnail" xml:space="preserve">
+    <value>Fermer la miniature</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="ColorPicker" xml:space="preserve">
+    <value>Pipette à couleurs</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Commentaire</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>copie</value>
+  </data>
+  <data name="CounterclockwiseMessage" xml:space="preserve">
+    <value>Message dans le sens antihoraire</value>
+  </data>
+  <data name="CreateSignatureLabel" xml:space="preserve">
+    <value>Créer une étiquette de signature</value>
+  </data>
+  <data name="CurrentPageNumber" xml:space="preserve">
+    <value>Numéro de page actuel</value>
+  </data>
+  <data name="CustomTextLabel" xml:space="preserve">
+    <value>Étiquette de texte personnalisée</value>
+  </data>
+  <data name="DecreaseMagnification" xml:space="preserve">
+    <value>Diminuer le grossissement</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Effacer</value>
+  </data>
+  <data name="DeleteLayer" xml:space="preserve">
+    <value>Supprimer le calque</value>
+  </data>
+  <data name="DeletePagesMesage" xml:space="preserve">
+    <value>Supprimer le mesage de pages</value>
+  </data>
+  <data name="DocumentProtected" xml:space="preserve">
+    <value>Document protégé</value>
+  </data>
+  <data name="DrawCircle" xml:space="preserve">
+    <value>Cercle</value>
+  </data>
+  <data name="DrawingTools" xml:space="preserve">
+    <value>Outils de dessin</value>
+  </data>
+  <data name="DrawInk" xml:space="preserve">
+    <value>Dessiner de l'encre</value>
+  </data>
+  <data name="DrawLine" xml:space="preserve">
+    <value>Ligne</value>
+  </data>
+  <data name="DrawPolygon" xml:space="preserve">
+    <value>Polygone</value>
+  </data>
+  <data name="DrawPolyline" xml:space="preserve">
+    <value>Polyligne</value>
+  </data>
+  <data name="DrawRectangle" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="EnlargePageThumbnails" xml:space="preserve">
+    <value>Agrandir les vignettes de page</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Entrer le mot de passe</value>
+  </data>
+  <data name="EssentialPdfViewer" xml:space="preserve">
+    <value>Visionneuse PDF essentielle</value>
+  </data>
+  <data name="ExportDataMessage" xml:space="preserve">
+    <value>Exporter le message de données</value>
+  </data>
+  <data name="FillColor" xml:space="preserve">
+    <value>La couleur de remplissage</value>
+  </data>
+  <data name="FillOpacityLabel" xml:space="preserve">
+    <value>Remplir l'étiquette d'opacité</value>
+  </data>
+  <data name="FitPage" xml:space="preserve">
+    <value>Ajuster la page</value>
+  </data>
+  <data name="FitWidth" xml:space="preserve">
+    <value>Ajuster la largeur</value>
+  </data>
+  <data name="FontColorLabel" xml:space="preserve">
+    <value>Couleur de la police</value>
+  </data>
+  <data name="FontLabel" xml:space="preserve">
+    <value>Étiquette de police</value>
+  </data>
+  <data name="FontSizeLabel" xml:space="preserve">
+    <value>Étiquette de taille de police</value>
+  </data>
+  <data name="FormDataLabel" xml:space="preserve">
+    <value>Données de formulaire</value>
+  </data>
+  <data name="FormDataMessage" xml:space="preserve">
+    <value>Données de formulaireMessage</value>
+  </data>
+  <data name="FormExportLabel" xml:space="preserve">
+    <value>Exportation de formulaire</value>
+  </data>
+  <data name="FormImportLabel" xml:space="preserve">
+    <value>Importation de formulaire</value>
+  </data>
+  <data name="FreeTextBox" xml:space="preserve">
+    <value>TextBox gratuit</value>
+  </data>
+  <data name="FreeTextProperties" xml:space="preserve">
+    <value>Propriétés du texte libre</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Générale</value>
+  </data>
+  <data name="GoToFirstPage" xml:space="preserve">
+    <value>Aller à la première page</value>
+  </data>
+  <data name="GoToLastPage" xml:space="preserve">
+    <value>Aller à la dernière page</value>
+  </data>
+  <data name="GoToNextPage" xml:space="preserve">
+    <value>Aller à la page suivante</value>
+  </data>
+  <data name="GoToPreviousPage" xml:space="preserve">
+    <value>Aller à la page précédente</value>
+  </data>
+  <data name="HandwrittenSignatureMessage" xml:space="preserve">
+    <value>Message de signature manuscrite</value>
+  </data>
+  <data name="HandwrittenSignaturePropertiesLabel" xml:space="preserve">
+    <value>Étiquette de propriétés de signature manuscrite</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Aidez-moi</value>
+  </data>
+  <data name="HighlightProperties" xml:space="preserve">
+    <value>Mettre en évidence les propriétés</value>
+  </data>
+  <data name="HighlightText" xml:space="preserve">
+    <value>Texte surligné</value>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icône</value>
+  </data>
+  <data name="ImportDataMessage" xml:space="preserve">
+    <value>Importer un message de données</value>
+  </data>
+  <data name="IncreaseMagnification" xml:space="preserve">
+    <value>Augmenter le grossissement</value>
+  </data>
+  <data name="InkProperties" xml:space="preserve">
+    <value>Propriétés de l'encre</value>
+  </data>
+  <data name="InsertTextBlock" xml:space="preserve">
+    <value>Insérer</value>
+  </data>
+  <data name="Key" xml:space="preserve">
+    <value>Clé</value>
+  </data>
+  <data name="LayerTitle" xml:space="preserve">
+    <value>Titre du calque</value>
+  </data>
+  <data name="LineProperties" xml:space="preserve">
+    <value>Propriétés de la ligne</value>
+  </data>
+  <data name="MakeDefault" xml:space="preserve">
+    <value>Faire défaut</value>
+  </data>
+  <data name="MarkForRedactionLabel" xml:space="preserve">
+    <value>Marquer pour étiquette de biffure</value>
+  </data>
+  <data name="MarkForRedactionMessage" xml:space="preserve">
+    <value>Marquer pour le message de biffure</value>
+  </data>
+  <data name="MarqueeZoom" xml:space="preserve">
+    <value>Zoom de sélection</value>
+  </data>
+  <data name="MatchCase" xml:space="preserve">
+    <value>Cas de correspondance</value>
+  </data>
+  <data name="Modified" xml:space="preserve">
+    <value>Modifié</value>
+  </data>
+  <data name="MoreActions" xml:space="preserve">
+    <value>Plus d'actions</value>
+  </data>
+  <data name="NewParagraph" xml:space="preserve">
+    <value>Nouveau paragraphe</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivante</value>
+  </data>
+  <data name="NoMatchesFound" xml:space="preserve">
+    <value>Aucun résultat</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Remarque</value>
+  </data>
+  <data name="Of" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>D'accord</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>Opacité</value>
+  </data>
+  <data name="OpenDocument" xml:space="preserve">
+    <value>Ouvrir le document</value>
+  </data>
+  <data name="OpenPopupNote" xml:space="preserve">
+    <value>Ouvrir la note contextuelle</value>
+  </data>
+  <data name="OutlineColorLabel" xml:space="preserve">
+    <value>Étiquette de couleur de contour</value>
+  </data>
+  <data name="OvalProperties" xml:space="preserve">
+    <value>Propriétés ovales</value>
+  </data>
+  <data name="OverlayTextTitleLabel" xml:space="preserve">
+    <value>Étiquette de titre de texte de superposition</value>
+  </data>
+  <data name="PageCount" xml:space="preserve">
+    <value>Nombre de pages</value>
+  </data>
+  <data name="PageOrganizerTitle" xml:space="preserve">
+    <value>Titre de l'organiseur de page</value>
+  </data>
+  <data name="Panning" xml:space="preserve">
+    <value>Panoramique</value>
+  </data>
+  <data name="Paragraph" xml:space="preserve">
+    <value>Paragraphe</value>
+  </data>
+  <data name="PasswordCancelButton" xml:space="preserve">
+    <value>Bouton d'annulation du mot de passe</value>
+  </data>
+  <data name="PasswordOkButton" xml:space="preserve">
+    <value>Bouton OK du mot de passe</value>
+  </data>
+  <data name="PolygonLineProperties" xml:space="preserve">
+    <value>Propriétés des lignes de polygone</value>
+  </data>
+  <data name="PolygonProperties" xml:space="preserve">
+    <value>Propriétés du polygone</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Précédente</value>
+  </data>
+  <data name="PrintDocument" xml:space="preserve">
+    <value>Imprimer le document</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Propriétés</value>
+  </data>
+  <data name="RectangleProperties" xml:space="preserve">
+    <value>Propriétés du rectangle</value>
+  </data>
+  <data name="RedactedAreaFillLabel" xml:space="preserve">
+    <value>Remplissage de la zone expurgée</value>
+  </data>
+  <data name="RedactionLabel" xml:space="preserve">
+    <value>Étiquette de biffure</value>
+  </data>
+  <data name="RedactionMarkAppearancelabel" xml:space="preserve">
+    <value>Apparence de la marque de biffure</value>
+  </data>
+  <data name="RedactionMessage" xml:space="preserve">
+    <value>Message de rédaction</value>
+  </data>
+  <data name="RedactionPropertiesLabel" xml:space="preserve">
+    <value>Étiquette de propriétés de biffure</value>
+  </data>
+  <data name="RedactionPropertiesMessage" xml:space="preserve">
+    <value>Message de propriétés de rédaction</value>
+  </data>
+  <data name="ReducePageThumbnails" xml:space="preserve">
+    <value>Réduire les miniatures de page</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Renommer</value>
+  </data>
+  <data name="RotateClockwiseMessage" xml:space="preserve">
+    <value>Faire pivoter le message dans le sens des aiguilles d'une montre</value>
+  </data>
+  <data name="SaveDocument" xml:space="preserve">
+    <value>Enregistrer le document</value>
+  </data>
+  <data name="SearchIndicator" xml:space="preserve">
+    <value>Indicateur de recherche</value>
+  </data>
+  <data name="SearchText" xml:space="preserve">
+    <value>Texte de recherche</value>
+  </data>
+  <data name="SelectionTool" xml:space="preserve">
+    <value>Outil de sélection</value>
+  </data>
+  <data name="StampPropertiesLabel" xml:space="preserve">
+    <value>Étiquette des propriétés du tampon</value>
+  </data>
+  <data name="StandardLabel" xml:space="preserve">
+    <value>Étiquette standard</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Début</value>
+  </data>
+  <data name="StickyNote" xml:space="preserve">
+    <value>Note collante</value>
+  </data>
+  <data name="StickyNoteProperties" xml:space="preserve">
+    <value>Propriétés du pense-bête</value>
+  </data>
+  <data name="StrikeoutProperties" xml:space="preserve">
+    <value>Propriétés barrées</value>
+  </data>
+  <data name="StrikeoutText" xml:space="preserve">
+    <value>Texte barré</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Matière</value>
+  </data>
+  <data name="TextProperties" xml:space="preserve">
+    <value>Propriétés du texte</value>
+  </data>
+  <data name="Thickness" xml:space="preserve">
+    <value>Épaisseur</value>
+  </data>
+  <data name="ThumbnailTitle" xml:space="preserve">
+    <value>Titre de la miniature</value>
+  </data>
+  <data name="UnderlineProperties" xml:space="preserve">
+    <value>Propriétés de soulignement</value>
+  </data>
+  <data name="UnderlineText" xml:space="preserve">
+    <value>Texte souligné</value>
+  </data>
+  <data name="UseOverlayTextLabel" xml:space="preserve">
+    <value>Utiliser l'étiquette de texte de superposition</value>
+  </data>
+  <data name="ViewBookmarks" xml:space="preserve">
+    <value>Afficher les favoris</value>
+  </data>
+  <data name="ViewLayers" xml:space="preserve">
+    <value>Afficher les couches</value>
+  </data>
+  <data name="ViewPageOrganizerMessage" xml:space="preserve">
+    <value>Afficher le message de l'organiseur de page</value>
+  </data>
+  <data name="ViewThumbnails" xml:space="preserve">
+    <value>Afficher les miniatures</value>
+  </data>
+  <data name="ZoomLevel" xml:space="preserve">
+    <value>Le niveau de zoom</value>
+  </data>
+  <data name="BookmarkNotExists" xml:space="preserve">
+    <value>Le signet n'existe pas</value>
+  </data>
+  <data name="ConfirmationBeforeClose" xml:space="preserve">
+    <value>Confirmation avant la fermeture</value>
+  </data>
+  <data name="DeletePagesConfirmation" xml:space="preserve">
+    <value>Confirmation de la suppression des pages</value>
+  </data>
+  <data name="DeletePagesLimitation" xml:space="preserve">
+    <value>Supprimer la limitation des pages</value>
+  </data>
+  <data name="FileAlreadyOpenedInformation" xml:space="preserve">
+    <value>Informations sur le fichier déjà ouvert</value>
+  </data>
+  <data name="IncorrectNumericEntry" xml:space="preserve">
+    <value>Entrée numérique incorrecte</value>
+  </data>
+  <data name="InvalidPasswordError" xml:space="preserve">
+    <value>Erreur de mot de passe non valide</value>
+  </data>
+  <data name="PageNotExists" xml:space="preserve">
+    <value>La page n'existe pas</value>
+  </data>
+  <data name="RedactionConfirmation" xml:space="preserve">
+    <value>Confirmation de rédaction</value>
+  </data>
+  <data name="RedactionWarning" xml:space="preserve">
+    <value>RedactionWarning</value>
+  </data>
+  <data name="RequestCorrectPassword" xml:space="preserve">
+    <value>Demander un mot de passe correct</value>
+  </data>
+  <data name="ValueExceedsLimit" xml:space="preserve">
+    <value>La valeur dépasse la limite</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="IncorrectPassword" xml:space="preserve">
+    <value>Mot de passe incorrect</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="LoadingPage" xml:space="preserve">
+    <value>Page de chargement</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>avertissement</value>
+  </data>
+  <data name="EnableMultiplePageSelection" xml:space="preserve">
+    <value>Activer la sélection de pages multiples</value>
+  </data>
+  <data name="AddStickyNote" xml:space="preserve">
+    <value>Ajouter un post-it</value>
+  </data>
+  <data name="BrowseButtonHeaderText" xml:space="preserve">
+    <value>Ajouter un tampon</value>
+  </data>
+  <data name="Butt" xml:space="preserve">
+    <value>Bout</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Fermé</value>
+  </data>
+  <data name="CustomStampHeaderText" xml:space="preserve">
+    <value>Tampons personnalisés</value>
+  </data>
+  <data name="Diamond" xml:space="preserve">
+    <value>diamant</value>
+  </data>
+  <data name="FilesViewMessage" xml:space="preserve">
+    <value>Cliquez pour ouvrir, enregistrer et imprimer un document PDF</value>
+  </data>
+  <data name="FileText" xml:space="preserve">
+    <value>Déposer</value>
+  </data>
+  <data name="FreeText" xml:space="preserve">
+    <value>Texte libre</value>
+  </data>
+  <data name="Highlight" xml:space="preserve">
+    <value>Surligner</value>
+  </data>
+  <data name="Ink" xml:space="preserve">
+    <value>Encrer</value>
+  </data>
+  <data name="InkEraser" xml:space="preserve">
+    <value>Cliquez pour effacer une partie de l'annotation à l'encre (dessins à main levée)</value>
+  </data>
+  <data name="NoMoreMatchesFound" xml:space="preserve">
+    <value>Le lecteur a terminé la recherche dans le document. Aucune autre correspondance n'a été trouvée</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>Rien</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Ouvert</value>
+  </data>
+  <data name="Oval" xml:space="preserve">
+    <value>ovale</value>
+  </data>
+  <data name="PrintHeaderText" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="ReversedClose" xml:space="preserve">
+    <value>Fermé (Inversé)</value>
+  </data>
+  <data name="ReversedOpen" xml:space="preserve">
+    <value>Ouvert (Inversé)</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>Rond</value>
+  </data>
+  <data name="SaveAsDocument" xml:space="preserve">
+    <value>Cliquez pour enregistrer le document sur le disque local</value>
+  </data>
+  <data name="SaveAsHeaderText" xml:space="preserve">
+    <value>Enregistrer sous</value>
+  </data>
+  <data name="SaveHeaderText" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="Slash" xml:space="preserve">
+    <value>Sabrer</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>Carré</value>
+  </data>
+  <data name="Stamp" xml:space="preserve">
+    <value>Timbre</value>
+  </data>
+  <data name="Strikethrough" xml:space="preserve">
+    <value>Barré</value>
+  </data>
+  <data name="Underline" xml:space="preserve">
+    <value>Souligner</value>
+  </data>
+  <data name="OpenHeaderText" xml:space="preserve">
+    <value>Ouvrir</value>
+  </data>
+  <data name="Squiggly" xml:space="preserve">
+    <value>Onduleux</value>
+  </data>
+  <data name="Cloud" xml:space="preserve">
+    <value>Nuage</value>
+  </data>
+  <data name="DrawTextCallout" xml:space="preserve">
+    <value>Légende de texte</value>
+  </data>
+  <data name="InsertButtonText" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="BlankPageMessage" xml:space="preserve">
+    <value>Page blanche</value>
+  </data>
+  <data name="FromFileMessage" xml:space="preserve">
+    <value>À partir du fichier</value>
+  </data>
+  <data name="InsertPagesTitle" xml:space="preserve">
+    <value>Insérer des pages</value>
+  </data>
+  <data name="FirstText" xml:space="preserve">
+    <value>D'abord</value>
+  </data>
+  <data name="LastText" xml:space="preserve">
+    <value>Dernier</value>
+  </data>
+  <data name="PageText" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="PageGroupTitle" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="OfText" xml:space="preserve">
+    <value>De</value>
+  </data>
+  <data name="InsertPdfTitle" xml:space="preserve">
+    <value>Sélectionnez le PDF à insérer</value>
+  </data>
+  <data name="InsertText" xml:space="preserve">
+    <value>Insérer du texte</value>
+  </data>
+  <data name="BlankPageText" xml:space="preserve">
+    <value>Page blanche</value>
+  </data>
+  <data name="LocationText" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="After" xml:space="preserve">
+    <value>Après</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>Avant</value>
+  </data>
+</root>
