@@ -5,25 +5,25 @@ This repository contains various example projects of WPF PDF Viewer control.
 In WPF applications, the [WPF PDF Viewer](https://www.syncfusion.com/pdf-viewer-sdk/wpf-pdf-viewer?utm_source=github&utm_medium=listing&utm_campaign=winforms-pdf-viewer-github-samples) lets you view, review, and print PDF files in WPF applications. The thumbnail, bookmark, hyperlink, and table of contents support provides easy navigation within and outside the PDF files. The form-filling support provides a platform to fill, flatten, save, and print PDF files with AcroForm. The PDF files can be reviewed with the abundant available annotation tools.
 
 ## Requirements to run the Examples
-*Operating System: Windows 11 or Windows 10 (version 1809, build 17763 or later).
-*Development Environment: Visual Studio 2022 or later.
+* Operating System: Windows 11 or Windows 10 (version 1809, build 17763 or later).
+* Development Environment: Visual Studio 2022 or later.
 
 ## How to run the Examples
-*Clone the repository to your local machine.
-*Open the desired sample solution (.sln) file in Visual Studio.
-*Restore the required NuGet packages automatically through Visual Studio.
-*Build and run the selected sample project to explore its functionality.
+* Clone the repository to your local machine.
+* Open the desired sample solution (.sln) file in Visual Studio.
+* Restore the required NuGet packages automatically through Visual Studio.
+* Build and run the selected sample project to explore its functionality.
 
 ## Features and Benefits:
-*High performance: Fast loading and optimized memory usage for smooth PDF rendering.
-*[Magnification and view modes](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/magnifying-pdf-documents): Enhanced viewing experience with zoom and layout options.
-*Image rendering: Export PDF pages as images in various formats.
-*[Text interaction](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/extract-text-from-pdf): Select, copy, highlight, and search text within PDF documents.
-*Form filling and [annotation](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/working-with-annotations/ink-annotation): Fill interactive PDF forms and annotate documents with highlights, shapes, and notes.
-*Digital signatures: Sign PDF documents digitally within the viewer.
-*[Navigation tools](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/working-with-thumbnail-navigation): Use bookmarks and table of contents for easy document navigation.
-*Printing support: Print documents directly from the viewer.
-*Highly customizable: Configure viewer behavior and appearance to match your application needs.
+* High performance: Fast loading and optimized memory usage for smooth PDF rendering.
+* [Magnification and view modes](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/magnifying-pdf-documents): Enhanced viewing experience with zoom and layout options.
+* Image rendering: Export PDF pages as images in various formats.
+* [Text interaction](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/extract-text-from-pdf): Select, copy, highlight, and search text within PDF documents.
+* Form filling and [annotation](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/working-with-annotations/ink-annotation): Fill interactive PDF forms and annotate documents with highlights, shapes, and notes.
+* Digital signatures: Sign PDF documents digitally within the viewer.
+* [Navigation tools](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/wpf/working-with-thumbnail-navigation): Use bookmarks and table of contents for easy document navigation.
+* Printing support: Print documents directly from the viewer.
+* Highly customizable: Configure viewer behavior and appearance to match your application needs.
 
 ## Related links
 
