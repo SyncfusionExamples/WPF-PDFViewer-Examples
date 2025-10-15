@@ -41,24 +41,27 @@ namespace CustomContextMenu
         }
         private void PdfViewer_ContextMenuOpening(object sender, ContextMenuOpeningEventArgs e)
         {
-            ContextMenu contextmenu = new ContextMenu();
-            contextmenu.FlowDirection = FlowDirection.LeftToRight;
-            contextmenu.HorizontalAlignment = HorizontalAlignment.Center;
-            MenuItem selectZoomArea = new MenuItem();
-            selectZoomArea.Header = "Select Zoom Area";
-            selectZoomArea.Click += SelectZoomArea_Click;
-            contextmenu.Items.Add(selectZoomArea);
-            MenuItem fitToPageMenuItem = new MenuItem();
-            fitToPageMenuItem.Header = "Fit to Page";
-            fitToPageMenuItem.Click += FitToPageMenuItem_Click;
-            contextmenu.Items.Add(fitToPageMenuItem);
-            MenuItem pan = new MenuItem();
-            pan.Header = "Pan";
-            pan.Click += Pan_Click;
-            contextmenu.Items.Add(pan);
-            contextmenu.IsOpen = true;
-            contextmenu.StaysOpen = true;
-            e.Handled = true;
+            if (e.Source == "Text Selection")
+            {
+                ContextMenu contextmenu = new ContextMenu();
+                contextmenu.FlowDirection = FlowDirection.LeftToRight;
+                contextmenu.HorizontalAlignment = HorizontalAlignment.Center;
+                MenuItem selectZoomArea = new MenuItem();
+                selectZoomArea.Header = "Select Zoom Area";
+                selectZoomArea.Click += SelectZoomArea_Click;
+                contextmenu.Items.Add(selectZoomArea);
+                MenuItem fitToPageMenuItem = new MenuItem();
+                fitToPageMenuItem.Header = "Fit to Page";
+                fitToPageMenuItem.Click += FitToPageMenuItem_Click;
+                contextmenu.Items.Add(fitToPageMenuItem);
+                MenuItem pan = new MenuItem();
+                pan.Header = "Pan";
+                pan.Click += Pan_Click;
+                contextmenu.Items.Add(pan);
+                contextmenu.IsOpen = true;
+                contextmenu.StaysOpen = true;
+                e.Handled = true;
+            }
         }
     }
 }
