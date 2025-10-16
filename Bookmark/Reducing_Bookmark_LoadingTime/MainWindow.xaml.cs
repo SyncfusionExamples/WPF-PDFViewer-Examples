@@ -24,7 +24,7 @@ namespace ReduceBookmarkLoadingTime
         public MainWindow()
         {
             InitializeComponent();
-            pdfViewer.Load(@"../../../Data/98290.pdf");
+            pdfViewer.Load(@"../../../Data/Input.pdf");
             pdfViewer.Loaded += PdfViewer_Loaded;
         }
 
