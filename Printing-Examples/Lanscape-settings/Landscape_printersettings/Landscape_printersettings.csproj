@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="*" />
+  </ItemGroup>
+  <Import Project="targets\MultiTargeting.targets" /> 
+
+</Project>
