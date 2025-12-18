@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- NET core -->
+  <ItemGroup >
+		<Content Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-x64\native\**\*.*">
+		  <Link>Pdfium\x64\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		  <PublishState>Included</PublishState>
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  <Pack>false</Pack>
+		  <Visible>False</Visible>
+		  <IncludeInVsix>true</IncludeInVsix>
+		</Content>
+		<Content Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-x86\native\**\*.*">
+		  <Link>Pdfium\x86\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		  <PublishState>Included</PublishState>
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  <Pack>false</Pack>
+		  <Visible>False</Visible>
+		  <IncludeInVsix>true</IncludeInVsix>
+		</Content>
+		<Content Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-arm64\native\**\*.*">
+		  <Link>Pdfium\arm64\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		  <PublishState>Included</PublishState>
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  <Pack>false</Pack>
+		  <Visible>False</Visible>
+		  <IncludeInVsix>true</IncludeInVsix>
+		</Content>
+	</ItemGroup>
+	<Target Name="SyncfusionPdfToImageConverterWPFBuild" BeforeTargets="Build">
+		<ItemGroup >
+			<RuntimesNativeLibsBuild Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-x64\native\**\*.*" />
+		</ItemGroup>
+		<Copy
+				SourceFiles="@(RuntimesNativeLibsBuild)"
+				DestinationFolder="$(OutputPath)Pdfium\x64\%(RecursiveDir)"
+		/>
+		<ItemGroup >
+			<RuntimesNativeLibsBuild Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-x86\native\**\*.*" />
+		</ItemGroup>
+		<Copy
+				SourceFiles="@(RuntimesNativeLibsBuild)"
+				DestinationFolder="$(OutputPath)Pdfium\x86\%(RecursiveDir)"
+		/>
+		<ItemGroup >
+			<RuntimesNativeLibsBuild Include="$(MSBuildThisFileDirectory)..\..\Pdfium\win-arm64\native\**\*.*" />
+		</ItemGroup>
+		<Copy
+				SourceFiles="@(RuntimesNativeLibsBuild)"
+				DestinationFolder="$(OutputPath)Pdfium\arm64\%(RecursiveDir)"
+		/>
+	</Target>
+</Project>
