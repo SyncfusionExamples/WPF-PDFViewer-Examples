@@ -1,22 +1,11 @@
 ﻿using Syncfusion.Windows.PdfViewer;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Custom_stamp
+namespace Custom_Stamp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,8 +15,8 @@ namespace Custom_stamp
         public MainWindow()
         {
             InitializeComponent();
+            pdfViewer.Load("../../../Data/Input.pdf");
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string authorName = "John Doe";
@@ -35,7 +24,7 @@ namespace Custom_stamp
             string metaText = $"{authorName} | {dateTimeText}";
 
             // Load original stamp image
-            Bitmap originalStamp = new Bitmap("Approved.png");
+            Bitmap originalStamp = new Bitmap("../../../Data/Approved.png");
 
             using (Graphics g = Graphics.FromImage(originalStamp))
             {
