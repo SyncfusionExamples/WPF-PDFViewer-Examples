@@ -1,24 +1,11 @@
 ﻿using Syncfusion.PdfToImageConverter;
-using Syncfusion.Windows.Tools.Controls;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace PrintCollate
+namespace Print_Collate
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -33,7 +20,7 @@ namespace PrintCollate
         {
             PdfToImageConverter imageConverter = new PdfToImageConverter();
 
-            FileStream inputStream = new FileStream("../../testing.pdf", FileMode.Open, FileAccess.ReadWrite);
+            FileStream inputStream = new FileStream("../../../Data/testing.pdf", FileMode.Open, FileAccess.ReadWrite);
             imageConverter.Load(inputStream);
 
             int pageCount = imageConverter.PageCount;
@@ -48,10 +35,9 @@ namespace PrintCollate
 
             PrintImages(images);
         }
-
         private void PrintImages(List<System.Drawing.Image> images)
         {
-            bool collate = false;
+            bool collate = true;
             short copies = 2;
             PrintDocument printDoc = new PrintDocument();
             printDoc.PrinterSettings.Collate = collate;
