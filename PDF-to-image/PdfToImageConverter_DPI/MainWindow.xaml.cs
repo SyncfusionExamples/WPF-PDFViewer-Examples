@@ -1,21 +1,9 @@
 ﻿using Syncfusion.PdfToImageConverter;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Windows;
 
 namespace PdfToImageConverter_DPI
 {
@@ -29,7 +17,7 @@ namespace PdfToImageConverter_DPI
             InitializeComponent();
             PdfToImageConverter imageConverter = new PdfToImageConverter();
 
-            FileStream inputStream = new FileStream("../../Input.pdf", FileMode.Open, FileAccess.ReadWrite);
+            FileStream inputStream = new FileStream("../../../Data/Input.pdf", FileMode.Open, FileAccess.ReadWrite);
             imageConverter.Load(inputStream);
 
             // Convert PDF page to image stream with desired DPI
