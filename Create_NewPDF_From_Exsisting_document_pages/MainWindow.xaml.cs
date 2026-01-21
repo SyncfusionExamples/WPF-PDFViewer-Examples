@@ -24,13 +24,18 @@ namespace WPF_Sample_FW
         {
             InitializeComponent();
 
+            PDFViewer.Load(filePath + "Input.pdf");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             //Load a PDF document
-            PdfLoadedDocument ldoc = new PdfLoadedDocument(filePath  + "Input.pdf");
+            PdfLoadedDocument ldoc = new PdfLoadedDocument(filePath + "Input.pdf");
 
             ldoc.FlattenAnnotations();
 
-            if(ldoc.Form != null && ldoc.Form.Fields.Count > 0)
-                    ldoc.Form.FlattenFields();
+            if (ldoc.Form != null && ldoc.Form.Fields.Count > 0)
+                ldoc.Form.FlattenFields();
 
             //Create a new instance of PdfDocument class
             PdfDocument document = new PdfDocument();
@@ -56,7 +61,7 @@ namespace WPF_Sample_FW
                 g.DrawPdfTemplate(template, new PointF(0, 0), new SizeF(page.GetClientSize().Width, page.GetClientSize().Height));
 
             }
-            document.Save( filePath + "Output.pdf");
+            document.Save(filePath + "Output.pdf");
             PDFViewer.Load(filePath + "Output.pdf");
         }
     }
