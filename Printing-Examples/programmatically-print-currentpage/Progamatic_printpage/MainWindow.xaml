@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="Print" Content="Print" Width="100" Height="30" Margin="10" Click="Print_Click"/>
+        <Button x:Name="Print_Currentpage" Content="Print" Width="100" Height="30" Margin="10" Click="Print_Click"/>
         <syncfusion:PdfViewerControl x:Name="pdfViewer" Grid.Row="1"></syncfusion:PdfViewerControl>
     </Grid>
 </Window>
