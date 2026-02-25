@@ -33,7 +33,7 @@ namespace Printersettings
             FileStream inputStream = new FileStream("../../../testing.pdf", FileMode.Open, FileAccess.ReadWrite);
             imageConverter.Load(inputStream);
             //Convert PDF to Image.
-            Stream outputStream = imageConverter.Convert(0, false, true);
+            Stream outputStream = imageConverter.Convert(0, false, false);
             Bitmap image = new Bitmap(outputStream);
             image.Save("tmp_without.png");
             PrintImage("tmp_without.png");
