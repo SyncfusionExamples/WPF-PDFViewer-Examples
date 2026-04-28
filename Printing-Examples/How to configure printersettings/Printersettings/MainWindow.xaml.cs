@@ -1,4 +1,5 @@
 ﻿using Syncfusion.PdfToImageConverter;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -28,48 +29,61 @@ namespace Printersettings
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PdfToImageConverter imageConverter = new PdfToImageConverter();
-            //Load the PDF document as a stream
-            FileStream inputStream = new FileStream("../../../testing.pdf", FileMode.Open, FileAccess.ReadWrite);
-            imageConverter.Load(inputStream);
-            //Convert PDF to Image.
-            Stream outputStream = imageConverter.Convert(0, false, false);
-            Bitmap image = new Bitmap(outputStream);
-            image.Save("tmp_without.png");
-            PrintImage("tmp_without.png");
+            List<System.Drawing.Image> pages = ConvertPdfToImages("../../../testing.pdf");
+            PrintImage(pages);
         }
 
-        private void PrintImage(string imagePath)
+        private List<System.Drawing.Image> ConvertPdfToImages(string pdfPath)
         {
-            using (System.Drawing.Image original = System.Drawing.Image.FromFile(imagePath))
+            PdfToImageConverter converter = new PdfToImageConverter();
+
+            FileStream fs = new FileStream(pdfPath, FileMode.Open, FileAccess.Read);
+            converter.Load(fs);
+
+            List<System.Drawing.Image> images = new List<System.Drawing.Image>();
+
+            for (int i = 0; i < converter.PageCount; i++)
             {
-                PrintDocument printDoc = new PrintDocument();
-                var img = original;
-                printDoc.PrinterSettings.DefaultPageSettings.Color = true;
-                //customize printer settings
-                printDoc.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169);
-                // Set margins
-                printDoc.DefaultPageSettings.Margins = new Margins(100, 200, 150, 150);
-                //Set paper source
-                printDoc.DefaultPageSettings.PaperSource.RawKind = (int)PaperSourceKind.LargeFormat;
-                //// Set paper kind
-                //printDoc.PrinterSettings.DefaultPageSettings.PaperSize.RawKind = (int)PaperKind.A4;
-                // Set duplex printing
-                if (printDoc.PrinterSettings.CanDuplex)
-                    printDoc.PrinterSettings.Duplex = Duplex.Horizontal;
-                // Set printer resolution
-                printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
-                // Check if the printer supports color printing
-                if (!printDoc.PrinterSettings.DefaultPageSettings.Color)
-                {
-                    img = ToGrayscale(original);
-                }
-                printDoc.PrintPage += (s, e) =>
-                {
-                    e.Graphics.DrawImage(img, e.MarginBounds);
-                };
-                printDoc.Print();
+                Stream stream = converter.Convert(i, false, false);
+                images.Add(System.Drawing.Image.FromStream(stream));
             }
+
+            return images;
+        }
+
+        private void PrintImage(List<System.Drawing.Image> images)
+        {
+
+            PrintDocument printDoc = new PrintDocument();
+            int pageIndex = 0;
+            printDoc.DefaultPageSettings.Color = true;
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize("A4", 827, 1169);
+            printDoc.DefaultPageSettings.Margins = new Margins(100, 200, 150, 150);
+            printDoc.DefaultPageSettings.PaperSource.RawKind = (int)PaperSourceKind.LargeFormat;
+
+            if (printDoc.PrinterSettings.CanDuplex)
+                printDoc.PrinterSettings.Duplex = Duplex.Horizontal;
+
+            printDoc.PrinterSettings.DefaultPageSettings.PrinterResolution.Kind =
+                PrinterResolutionKind.High;
+
+            printDoc.PrintPage += (s, e) =>
+            {
+                System.Drawing.Image img = images[pageIndex];
+
+                if (!e.PageSettings.Color)
+                    img = ToGrayscale(img);
+
+                e.Graphics.DrawImage(img, e.MarginBounds);
+
+                pageIndex++;
+                e.HasMorePages = pageIndex < images.Count;
+            };
+
+            printDoc.Print();
+            foreach (var img in images)
+                img.Dispose();
+
         }
         private static System.Drawing.Image ToGrayscale(System.Drawing.Image source)
         {
