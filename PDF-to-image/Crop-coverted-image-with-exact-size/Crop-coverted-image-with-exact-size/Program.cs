@@ -4,16 +4,11 @@ using SkiaSharp;
 
 PdfToImageConverter imageConverter = new PdfToImageConverter();
 
-using (FileStream inputStream = new FileStream("../../../Input.pdf",
-    FileMode.Open, FileAccess.Read))
+using (FileStream inputStream = new FileStream("../../../Input.pdf",FileMode.Open, FileAccess.Read))
 {
     imageConverter.Load(inputStream);
-
     int pageCount = imageConverter.PageCount;
-
-    for (int i = 0; i < pageCount; i++)
-    {
-        using (Stream stream = imageConverter.Convert(i, false, false))
+        using (Stream stream = imageConverter.Convert(0, false, false))
         {
             stream.Position = 0;
             using (SKBitmap originalBitmap = SKBitmap.Decode(stream))
@@ -23,14 +18,6 @@ using (FileStream inputStream = new FileStream("../../../Input.pdf",
                 int cropWidth = 400;
                 int cropHeight = 300;
                 SKRectI cropRect = new SKRectI(cropX, cropY, cropX + cropWidth, cropY + cropHeight);
-
-                if (cropRect.Right > originalBitmap.Width ||
-                    cropRect.Bottom > originalBitmap.Height)
-                {
-                    Console.WriteLine($"Invalid crop area on page {i + 1}");
-                    continue;
-                }
-
                 using (SKBitmap croppedBitmap = new SKBitmap(cropWidth, cropHeight))
                 {
                     using (SKCanvas canvas = new SKCanvas(croppedBitmap))
@@ -44,7 +31,7 @@ using (FileStream inputStream = new FileStream("../../../Input.pdf",
                     using (SKImage image = SKImage.FromBitmap(croppedBitmap))
                     using (SKData data = image.Encode(SKEncodedImageFormat.Png, 100))
                     {
-                        string outputPath = $"Cropped_Page_{i + 1}.png";
+                        string outputPath = $"Cropped.png";
 
                         using (FileStream fs = File.OpenWrite(outputPath))
                         {
@@ -56,7 +43,5 @@ using (FileStream inputStream = new FileStream("../../../Input.pdf",
                 }
             }
         }
-    }
 }
-
 Console.WriteLine("Cropping completed successfully!");
