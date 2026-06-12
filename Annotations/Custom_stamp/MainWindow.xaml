@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <!-- Button in the first row -->
-        <Button Grid.Row="0" Content="Button" Width="100" Height="30" Margin="10" Click="Button_Click"/>
+        <Button Grid.Row="0" Content="Add Stamp" Width="100" Height="30" Margin="10" Click="Button_Click"/>
         <syncfusion:PdfViewerControl Grid.Row="1" x:Name="pdfViewer"></syncfusion:PdfViewerControl>
     </Grid>
 </Window>
