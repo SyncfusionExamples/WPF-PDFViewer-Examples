@@ -59,39 +59,33 @@ namespace Formfields_Readonly
 
             }
         }
+
+        private void SetFieldsReadOnly(ObservableCollection<PdfField> fields, bool isReadOnly)
+        {
+            foreach (var field in fields)
+            {
+                if (field is PdfLoadedTextBoxField textField)
+                {
+                    textField.ReadOnly = isReadOnly;
+                }
+            }
+        }
+
         private void UserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (pdfViewer.LoadedDocument == null) return;
 
-            var selectedUser = (UserComboBox.SelectedItem as ComboBoxItem).Content.ToString();
+            var selectedUser = (UserComboBox.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
             if (selectedUser == "User1")
             {
-                foreach (var field in user1List)
-                {
-                    if (field is PdfLoadedTextBoxField textField)
-                        textField.ReadOnly = false;
-                }
-
-                foreach (var field in user2List)
-                {
-                    if (field is PdfLoadedTextBoxField textField)
-                        textField.ReadOnly = true;
-                }
+                SetFieldsReadOnly(user1List, false);
+                SetFieldsReadOnly(user2List, true);
             }
             else if (selectedUser == "User2")
             {
-                foreach (var field in user2List)
-                {
-                    if (field is PdfLoadedTextBoxField textField)
-                        textField.ReadOnly = false;
-                }
-
-                foreach (var field in user1List)
-                {
-                    if (field is PdfLoadedTextBoxField textField)
-                        textField.ReadOnly = true;
-                }
+                SetFieldsReadOnly(user2List, false);
+                SetFieldsReadOnly(user1List, true);
             }
         }
     }
