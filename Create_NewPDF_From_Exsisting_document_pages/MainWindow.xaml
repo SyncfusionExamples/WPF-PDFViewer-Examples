@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <PdfViewer:PdfViewerControl Name="PDFViewer"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <PdfViewer:PdfViewerControl Name="PDFViewer" Grid.Row="1"/>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Create document"  Margin="45,10,0,0"  Click="Button_Click" RenderTransformOrigin="-0.112,0.559"/>
     </Grid>
 </Window>
